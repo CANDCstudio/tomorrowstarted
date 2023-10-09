@@ -1,0 +1,246 @@
+/* global definitions */
+:root {
+	/* this sets a lot of our sizing rules and defines various spacing paramters */
+	--ratio: 1.314 /* pi */;
+	--s-5: calc(var(--s-4) / var(--ratio));
+	--s-4: calc(var(--s-3) / var(--ratio));
+	--s-3: calc(var(--s-2) / var(--ratio));
+	--s-2: calc(var(--s-1) / var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s0: 1rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s1) * var(--ratio));
+	--s3: calc(var(--s2) * var(--ratio));
+	--s4: calc(var(--s3) * var(--ratio));
+	--s5: calc(var(--s4) * var(--ratio));
+	/* this is mainly used to define/exclude/capture the max-inline-size, in units of characters */
+	--measure: 60ch;
+}
+
+/* universal definitions */
+* {
+	box-sizing: border-box;
+	max-inline-size: var(--measure);
+	font-size: var(--s-1);
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* important exclusions to the max-inline-size definition */
+html,
+body,
+div,
+header,
+nav,
+main,
+footer,
+.cover {
+  max-inline-size: none;
+}
+
+/* background image styling begin */
+
+/* using the body tag we define the same file at a low resolution and at a high resolution. */
+/* html will load in the low-res file first always, and once the hi-res file is ready will load that in */
+/* subsequent background-* need to be attributed for the amount of images defined. separated by a comma */
+
+body {
+    background-image: url("images/background/tsbg-hres.jpg"), url("images/background/tsbg-lres.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-size: cover, cover;
+    background-position: center,center;
+}
+/* background image styling end */
+
+/* type styling begin */
+h1 {
+	font-size: var(--s2);
+    font-family: 'Times New Roman', Times, serif;
+}
+h2 {
+	font-size: var(--s2);
+}
+h3{
+	font-size: var(--s1);
+}
+/* type styling end */
+
+/* link styling begin */
+a:link {
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: black;
+}
+a:visited{
+    color: inherit;
+}
+a:hover{
+    font-style: italic;
+}
+a:active{
+    font-style: italic;
+}
+/* link styling end */
+
+/* every layout tools begin */
+/* resource designed by heydon pickering and andy bell used throughout this website */
+/* cover - tool for span multiple elements evenly vertically */
+.cover {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 98vh;
+    padding: 0;
+  }
+  
+  .cover > * {
+    margin-block: 1rem;
+  }
+  
+  .cover > :first-child:not(h4) {
+    margin-block-start: 0;
+  }
+  
+  .cover > :last-child:not(h4) {
+    margin-block-end: 0;
+  }
+  
+  .cover > h4 {
+    margin-block: auto;
+  }
+/* every layout tools end */
+
+/* pop up windows styling begins */
+/* for post layout, to change after demo */
+.post_outline {
+    width: 576px;
+    height: 704px;
+    background-color: rgba(159, 152, 147, 0.5);
+}
+.post_container {
+    width: 554px;
+    height: 680px;
+    background-color: white;
+    margin: 12px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.post_title {
+    padding-top: var(--s2);
+    padding-bottom: var(--s2);
+    margin-left: var(--s3);
+}
+.post_content {
+    padding-top: var(--s2);
+    padding-bottom: var(--s2);
+    margin-left: var(--s4);
+}
+.post_img {
+    max-inline-size: none;
+    width: inherit;
+}
+
+/* for archives layout, to change after demo */
+.archives_outline {
+    width: 690px;
+    height: 704px;
+    background-color: rgba(159, 152, 147, 0.5);
+    display: flex;
+}
+.archives_container {
+    width: 554px;
+    height: 680px;
+    background-color: white;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+    margin-left: 6px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.archives_list {
+    width: 100px;
+    height: 680px;
+    background-color: white;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-right: 6px;
+    margin-left: 12px;
+    padding-left: var(--s0);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* floating link trees, to change after demo */
+.linktree_outline{
+    width: 200px;
+    height: 15vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.linktree_container{
+    padding-left: var(--s4);
+}
+/* pop up windows styling ends */
+
+/* footer menu styling begins */
+.menu {
+    padding-bottom: var(--s4);
+}
+.nav {
+    max-inline-size: none;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+li {
+    display: inline-block;
+    margin: auto;
+    padding-left: var(--s0);
+    padding-right: var(--s0);
+}
+li a {
+    display: inline-block;
+    text-align: center;
+}
+a:hover {
+    font-style: italic;
+}
+/* nifty solution to resolve shifting during normal to italic hover transition */
+/* github user 350D proposed this */
+/* does not work with default serif fonts for whatever reason */ 
+a::before {
+    display: block;
+    content: attr(title);
+    font-style: italic;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+/* footer menu styling ends */
+
+/* scrollbar styling begins */
+/* a lot of compromise with scrollbars because firefox does not behave like any other browser */
+/* scrollbars run with ::-webkit-scrollbar for safari, opera, chrome, edge */
+::-webkit-scrollbar {
+    width: 16px;
+}
+::-webkit-scrollbar-track {
+    border-left: 16px solid rgba(159, 152, 147, 0.6);
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-left: 8px solid rgba(159, 152, 147, 0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+/* .post-container scrollbar runs with .scroll for specifically firefox and ie, hugely simplified because of those browsers' limitations */
+.scroll {
+    overflow-y: scroll;
+}
+.scroll-color-colors {
+    scrollbar-color: white rgba(159, 152, 147, 0.36);
+}
+/* scrollbar styling ends */

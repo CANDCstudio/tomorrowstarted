@@ -1,0 +1,90 @@
+/* type styling begin */
+h1 {
+	font-size: var(--s2);
+    font-family: 'Times New Roman', Times, serif;
+}
+h2 {
+	font-size: var(--s2);
+}
+h3{
+	font-size: var(--s1);
+}
+/* type styling end */
+
+/* link styling begin */
+a:link {
+    text-decoration: none;
+    font-family: 'Times New Roman';
+    font-size: 14px;
+    color: black;
+}
+a:visited{
+    color: inherit;
+}
+a:hover{
+    font-style: italic;
+}
+a:active{
+    font-style: italic;
+}
+/* link styling end */
+
+.cover {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 98vh;
+    padding: 0;
+  }
+  
+  .cover > * {
+    margin-block: 1rem;
+  }
+  
+  .cover > :first-child:not(h4) {
+    margin-block-start: 0;
+  }
+  
+  .cover > :last-child:not(h4) {
+    margin-block-end: 0;
+  }
+  
+  .cover > h4 {
+    margin-block: auto;
+  }
+
+.menu {
+    padding-bottom: var(--s4);
+}
+
+.nav {
+    max-inline-size: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    display: inline-block;
+    font-size: 0;
+}
+
+li a {
+    display: inline-block;
+    text-align: center;
+    font: 16px 'Times New Roman';
+    text-transform: uppercase;
+}
+
+a:hover {
+    font-style: italic;
+}
+
+/* SOLUTION */
+/* The pseudo element has the same content and hover style, so it pre-sets the width of the element and visibility: hidden hides the pseudo element from actual view. */
+a::before {
+    display: block;
+    content: attr(title);
+    font-style: italic;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
