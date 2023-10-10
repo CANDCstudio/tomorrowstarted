@@ -2,6 +2,8 @@
 <html lang="en-US">
 <head>
     <link rel="stylesheet" href="style.css">
+    <script type = "text/javascript" src="menutoggle.js"></script>
+    <script></script>
 </head>
 <body class="cover">
 
@@ -9,7 +11,7 @@
 
 <h4></h4>
 
-<div class="post_outline">
+<div id="post" class="post_outline">
     <div class="post_container scroll scroll-color-colors">
         <div class="post_title"><a href="#"><h1>HOW TO COME UP WITH A GOOD TITLE</h1></a></div>
         <img class="post_img" src="images/andre kertesz distortion 1 TS.jpg">
@@ -19,7 +21,8 @@
     </div>
 </div>
 
-<div class="archives_outline">
+<div id="archives" >
+    <div class="archives_outline">
     <div class="archives_list scroll scroll-color-colors">
        <a href="#"><p>october 2023</p></a>
        <a href="#"><p>september 2023</p></a>
@@ -63,19 +66,32 @@
         <img class="post_img" src="images/andre kertesz distortion 1 TS.jpg">
         <p class="post_content">here is an example. here is an example. here is an example. here is an example. here is an example. here is an example. </p>
     </div>
+    </div>
 </div>
 
 <div class="linktree_outline">
-    <div><a href="#"><h3>categories</h3></a></div>
-    <div class="linktree_container">
-        <a href="#"><p>item 1</p></a>
-        <a href="#"><p>item 2</p></a>
-        <a href="#"><p>item 3</p></a>
-        <a href="#"><p>item 4</p></a>
-        <a href="#"><p>item 5</p></a>
-        <a href="#"><p>item 6</p></a>
+    <a onclick="categoriesToggle()" title="categories"><h3>categories</h3></a>
+    <div id="categories" class="linktree_content">
+        <div class="linktree_nav">
+            <div><img id="slideUp" type="button" class="arrow up" src="images/arrow up.png" alt="arrow up image"></div>
+            <div><img id="slideDown" type="button" class="arrow down" src="images/arrow down.png" alt="arrow down image"></div>
+        </div>
+        <div id="linktree_container">
+            <a href="#"><p>item 1</p></a>
+            <a href="#"><p>item 2</p></a>
+            <a href="#"><p>item 3</p></a>
+            <a href="#"><p>item 4</p></a>
+            <a href="#"><p>item 5</p></a>
+            <a href="#"><p>item 6</p></a>
+            <a href="#"><p>item 7</p></a>
+            <a href="#"><p>item 8</p></a>
+            <a href="#"><p>item 9</p></a>
+            <a href="#"><p>item 10</p></a>
+            <a href="#"><p>item 11</p></a>
+            <a href="#"><p>item 12</p></a>
+        </div>
     </div>
-    
+
 </div>
 
 <div class="menu">
@@ -84,17 +100,28 @@
     <li><a href="#" title="search"><h2>search</h2></a></li>
 </div>
 <div>
-    <li><a href="#" title="archives"><h2>archives</h2></a></li>
+    <li><a onclick="archivesToggle()" title="archives"><h2>archives</h2></a></li>
     <li><a href="#" title="randomizer"><h2>randomizer</h2></a></li>
     <li><a href="#" title="daily track"><h2>daily track</h2></a></li>
     <li><a href="#" title="meet the cast"><h2>meet the cast</h2></a></li>
     &emsp;&emsp;&emsp;&emsp;
-    <li><a href="#" title="tomorrow started"><h2>tomorrow started</h2></a></li>
+    <li><a onclick="postToggle()" title="post"><h2>tomorrow started</h2></a></li>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 </div>
 </ul>
 </div>
 
+<script>
+    const buttonRight = document.getElementById('slideDown');
+    const buttonLeft = document.getElementById('slideUp');
+
+    buttonRight.onclick = function () {
+      document.getElementById('linktree_container').scrollBy(0, 31);
+    };
+    buttonLeft.onclick = function () {
+      document.getElementById('linktree_container').scrollBy(0, -31);
+    };
+</script>
 
 </body>
 

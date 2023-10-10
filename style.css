@@ -39,7 +39,6 @@ footer,
 }
 
 /* background image styling begin */
-
 /* using the body tag we define the same file at a low resolution and at a high resolution. */
 /* html will load in the low-res file first always, and once the hi-res file is ready will load that in */
 /* subsequent background-* need to be attributed for the amount of images defined. separated by a comma */
@@ -84,6 +83,46 @@ a:active{
 }
 /* link styling end */
 
+/* scrollbar styling begins */
+/* a lot of compromise with scrollbars because firefox does not behave like any other browser */
+/* scrollbars run with ::-webkit-scrollbar for safari, opera, chrome, edge */
+::-webkit-scrollbar {
+    width: 16px;
+}
+::-webkit-scrollbar-track {
+    border-left: 16px solid rgba(159, 152, 147, 0.6);
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-left: 8px solid rgba(159, 152, 147, 0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+/* .post-container scrollbar runs with .scroll for specifically firefox and ie, hugely simplified because of those browsers' limitations */
+.scroll {
+    overflow-y: scroll;
+}
+.scroll-color-colors {
+    scrollbar-color: white rgba(159, 152, 147, 0.36);
+}
+/* arrow styling variant */
+/* requires a script - to specify still */
+/* shape of arrow */
+.arrow {
+    width: var(--s1);
+    display: block;
+    padding: 3px;
+  }
+/* arrow rotation */
+.up {
+    margin-top: 3ch;
+}
+.down {
+    margin-bottom: 1ch;
+}
+/* scrollbar styling ends */
+
 /* every layout tools begin */
 /* resource designed by heydon pickering and andy bell used throughout this website */
 /* cover - tool for span multiple elements evenly vertically */
@@ -108,6 +147,12 @@ a:active{
   
   .cover > h4 {
     margin-block: auto;
+  }
+
+/* box - tool for organizing content */
+.box {
+    padding: var(--s1);
+    border: var(--border-thin) solid;
   }
 /* every layout tools end */
 
@@ -148,17 +193,6 @@ a:active{
     background-color: rgba(159, 152, 147, 0.5);
     display: flex;
 }
-.archives_container {
-    width: 554px;
-    height: 680px;
-    background-color: white;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-right: 12px;
-    margin-left: 6px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
 .archives_list {
     width: 100px;
     height: 680px;
@@ -171,17 +205,39 @@ a:active{
     overflow-y: scroll;
     overflow-x: hidden;
 }
-
-/* floating link trees, to change after demo */
-.linktree_outline{
-    width: 200px;
-    height: 15vh;
+.archives_container {
+    width: 554px;
+    height: 680px;
+    background-color: white;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+    margin-left: 6px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
-.linktree_container{
-    padding-left: var(--s4);
+
+
+/* floating link trees, to change after demo */
+.linktree_outline{
+    width: 20vw;
 }
+.linktree_content{
+    margin-left: var(--s1);
+    display: flex;
+}
+#linktree_container{
+    height: 15em;
+    overflow: hidden;
+    direction: ltr;
+}
+
+.linktree_nav{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-right: 10px;
+  }
 /* pop up windows styling ends */
 
 /* footer menu styling begins */
@@ -219,28 +275,3 @@ a::before {
     visibility: hidden;
 }
 /* footer menu styling ends */
-
-/* scrollbar styling begins */
-/* a lot of compromise with scrollbars because firefox does not behave like any other browser */
-/* scrollbars run with ::-webkit-scrollbar for safari, opera, chrome, edge */
-::-webkit-scrollbar {
-    width: 16px;
-}
-::-webkit-scrollbar-track {
-    border-left: 16px solid rgba(159, 152, 147, 0.6);
-}
-::-webkit-scrollbar-thumb {
-    background: white;
-    border-left: 8px solid rgba(159, 152, 147, 0.6);
-}
-::-webkit-scrollbar-thumb:hover {
-    background: white;
-}
-/* .post-container scrollbar runs with .scroll for specifically firefox and ie, hugely simplified because of those browsers' limitations */
-.scroll {
-    overflow-y: scroll;
-}
-.scroll-color-colors {
-    scrollbar-color: white rgba(159, 152, 147, 0.36);
-}
-/* scrollbar styling ends */
