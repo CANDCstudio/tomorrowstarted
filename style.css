@@ -1,3 +1,7 @@
+
+
+
+
 /* global definitions */
 :root {
 	/* this sets a lot of our sizing rules and defines various spacing paramters */
@@ -106,15 +110,13 @@ a:active{
 .scroll-color-colors {
     scrollbar-color: white rgba(159, 152, 147, 0.36);
 }
-/* arrow styling variant */
-/* requires a script - to specify still */
-/* shape of arrow */
+/* arrow styling */
 .arrow {
     width: var(--s1);
     display: block;
     padding: 3px;
   }
-/* arrow rotation */
+/* arrow in-element position */
 .up {
     margin-top: 3ch;
 }
@@ -162,6 +164,7 @@ a:active{
     width: 576px;
     height: 704px;
     background-color: rgba(159, 152, 147, 0.5);
+    display: flex;
 }
 .post_container {
     width: 554px;
@@ -220,25 +223,26 @@ a:active{
 
 /* floating link trees, to change after demo */
 .linktree_outline{
-    width: 20vw;
+    width: 200px;
 }
 .linktree_content{
     margin-left: var(--s1);
     display: flex;
+    justify-content: flex-start;
 }
-#linktree_container{
-    height: 15em;
-    overflow: hidden;
-    direction: ltr;
-}
-
 .linktree_nav{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     padding-right: 10px;
   }
+#linktree_list{
+    height: 15em;
+    overflow: hidden;
+    direction: ltr;
+}
 /* pop up windows styling ends */
+
 
 /* footer menu styling begins */
 .menu {
@@ -275,3 +279,34 @@ a::before {
     visibility: hidden;
 }
 /* footer menu styling ends */
+
+#dragcategories {
+    z-index: 5;
+    position: absolute;
+    top: 100px;
+  }
+
+#dragcategoriesheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragarchives {
+    z-index: 5;
+    position: absolute;
+    top: 300px;
+}
+#dragarchivesheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+  #dragpost {
+    z-index: 5;
+    position: absolute;
+    top: 300px;
+}
+#dragpostheader {
+    cursor: move;
+    z-index: 10;
+  }
