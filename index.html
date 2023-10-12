@@ -2,8 +2,11 @@
 <html lang="en-US">
 <head>
     <link rel="stylesheet" href="style.css">
-    <script type = "text/javascript" src="menutoggle.js"></script>
-    <script type = "text/javascript" src="action.js"></script>
+    
+    <script src="menutoggle.js"></script>
+    <script src="action.js"></script>
+    <script src="linktreescrollcategories.js"></script>
+    
 </head>
 <body>
     
@@ -16,7 +19,7 @@
                     <div><img id="slideUp" type="button" class="arrow up" src="images/arrow up.png" alt="arrow up image"></div>
                     <div><img id="slideDown" type="button" class="arrow down" src="images/arrow down.png" alt="arrow down image"></div>
                 </div>
-                <div id="linktree_list">
+                <div id="linktreelist">
                     <a href="#"><p>item 1</p></a>
                     <a href="#"><p>item 2</p></a>
                     <a href="#"><p>item 3</p></a>
@@ -35,8 +38,37 @@
         </div>
     </div>
 
-<!-- this is a draggable element. exist outside the "cover" class -->
+<!-- this is a draggable element. exist outside the "cover" class
+<div id="dragshop">
+    <div id="dragshopheader">
+        <a onclick="shopToggle()" title="shop"><h3>shop</h3></a>
+        <div id="shop" class="linktree_content">
+            <div class="linktree_nav">
+                <div><img id="slideUpshop" type="button" class="arrow up" src="images/arrow up.png" alt="arrow up image"></div>
+                <div><img id="slideDownshop" type="button" class="arrow down" src="images/arrow down.png" alt="arrow down image"></div>
+            </div>
+            <div id="linktreelistshop">
+                <a href="#"><p>item 1</p></a>
+                <a href="#"><p>item 2</p></a>
+                <a href="#"><p>item 3</p></a>
+                <a href="#"><p>item 4</p></a>
+                <a href="#"><p>item 5</p></a>
+                <a href="#"><p>item 6</p></a>
+                <a href="#"><p>item 7</p></a>
+                <a href="#"><p>item 8</p></a>
+                <a href="#"><p>item 9</p></a>
+                <a href="#"><p>item 10</p></a>
+                <a href="#"><p>item 11</p></a>
+                <a href="#"><p>item 12</p></a>
+            </div>
+        </div>
+    
+    </div>
+</div>
+ -->
 
+
+<!-- this is a draggable element. exist outside the "cover" class -->
 <div id="dragarchives">
     <div id="dragarchivesheader">
     <div id="archives">
@@ -89,8 +121,7 @@
     </div>
     </div>
 
-
-    <!-- still need to resolve the glitch with post_outline class -->
+<!-- this is a draggable element. exist outside the "cover" class -->
 <div id="dragpost">
 <div id="dragpostheader">
 <div id="post" class="post_outline">
@@ -104,9 +135,6 @@
 </div>
 </div>
 </div>
-
-
-
 
 <div class="cover">
 
@@ -133,22 +161,19 @@
 
 </div>
 
-<script>
+<!-- <script>
+
     const buttonRight = document.getElementById('slideDown');
     const buttonLeft = document.getElementById('slideUp');
 
     buttonRight.onclick = function () {
-      document.getElementById('linktree_list').scrollBy(0, 31);
+      document.getElementById('linktreelist').scrollBy(0, 30);
     };
     buttonLeft.onclick = function () {
-      document.getElementById('linktree_list').scrollBy(0, -31);
+      document.getElementById('linktreelist').scrollBy(0, -30);
     };
-</script>
+
+</script> -->
 
 </body>
-
 </html>
-
-<!--
-
--->

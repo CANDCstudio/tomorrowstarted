@@ -236,17 +236,24 @@ a:active{
     flex-direction: column;
     padding-right: 10px;
   }
-#linktree_list{
+#linktreelist{
     height: 15em;
     overflow: hidden;
     direction: ltr;
 }
+/*#linktreelistshop{
+    height: 15em;
+    overflow: hidden;
+    direction: ltr;
+}*/
+
 /* pop up windows styling ends */
 
 
 /* footer menu styling begins */
 .menu {
     padding-bottom: var(--s4);
+    z-index: 10;
 }
 .nav {
     max-inline-size: none;
@@ -285,8 +292,17 @@ a::before {
     position: absolute;
     top: 100px;
   }
-
 #dragcategoriesheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragshop {
+    z-index: 5;
+    position: absolute;
+    top: 300px;
+  }
+#dragshopheader {
     cursor: move;
     z-index: 10;
   }
@@ -294,17 +310,17 @@ a::before {
 #dragarchives {
     z-index: 5;
     position: absolute;
-    top: 300px;
+    top: 800px;
 }
 #dragarchivesheader {
     cursor: move;
     z-index: 10;
   }
 
-  #dragpost {
+#dragpost {
     z-index: 5;
     position: absolute;
-    top: 300px;
+    top: 900px;
 }
 #dragpostheader {
     cursor: move;
