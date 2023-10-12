@@ -53,6 +53,7 @@ body {
     background-attachment: fixed, fixed;
     background-size: cover, cover;
     background-position: center,center;
+    overflow: hidden;
 }
 /* background image styling end */
 
@@ -85,6 +86,17 @@ a:hover{
 a:active{
     font-style: italic;
 }
+/* nifty solution to resolve shifting during normal to italic hover transition */
+/* github user 350D proposed this */
+/* does not work with the default serif fonts for whatever reason */ 
+a::before {
+    display: block;
+    content: attr(title);
+    font-style: italic;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
 /* link styling end */
 
 /* scrollbar styling begins */
@@ -116,12 +128,15 @@ a:active{
     display: block;
     padding: 3px;
   }
-/* arrow in-element position */
+/* arrow in-element position/status */
 .up {
     margin-top: 3ch;
 }
 .down {
     margin-bottom: 1ch;
+}
+.hidden {
+    opacity: 0;
 }
 /* scrollbar styling ends */
 
@@ -150,16 +165,13 @@ a:active{
   .cover > h4 {
     margin-block: auto;
   }
-
-/* box - tool for organizing content */
-.box {
-    padding: var(--s1);
-    border: var(--border-thin) solid;
-  }
 /* every layout tools end */
 
 /* pop up windows styling begins */
 /* for post layout, to change after demo */
+#post {
+    display: none;
+}
 .post_outline {
     width: 576px;
     height: 704px;
@@ -190,6 +202,9 @@ a:active{
 }
 
 /* for archives layout, to change after demo */
+#archives {
+    display: none;
+}
 .archives_outline {
     width: 690px;
     height: 704px;
@@ -220,8 +235,24 @@ a:active{
     overflow-x: hidden;
 }
 
-
 /* floating link trees, to change after demo */
+/* this makes it that the linktree list is closed when loading page */
+#categories{
+    display: none;
+}
+#shop{
+    display: none;
+}
+#listenup{
+    display: none;
+}
+#references{
+    display: none;
+}
+#newsstand{
+    display: none;
+}
+
 .linktree_outline{
     width: 200px;
 }
@@ -236,19 +267,33 @@ a:active{
     flex-direction: column;
     padding-right: 10px;
   }
-#linktreelist{
+
+#linktreelistcategories{
     height: 15em;
     overflow: hidden;
     direction: ltr;
 }
-/*#linktreelistshop{
+#linktreelistshop{
     height: 15em;
     overflow: hidden;
     direction: ltr;
-}*/
-
+}
+#linktreelistlistenup{
+    height: 15em;
+    overflow: hidden;
+    direction: ltr;
+}
+#linktreelistreferences{
+    height: 15em;
+    overflow: hidden;
+    direction: ltr;
+}
+#linktreelistnewsstand{
+    height: 15em;
+    overflow: hidden;
+    direction: ltr;
+}
 /* pop up windows styling ends */
-
 
 /* footer menu styling begins */
 .menu {
@@ -264,33 +309,22 @@ a:active{
 li {
     display: inline-block;
     margin: auto;
-    padding-left: var(--s0);
-    padding-right: var(--s0);
+    padding-left: var(--s-3);
+    padding-right: var(--s2);
 }
 li a {
     display: inline-block;
     text-align: center;
 }
-a:hover {
-    font-style: italic;
-}
-/* nifty solution to resolve shifting during normal to italic hover transition */
-/* github user 350D proposed this */
-/* does not work with default serif fonts for whatever reason */ 
-a::before {
-    display: block;
-    content: attr(title);
-    font-style: italic;
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
-}
 /* footer menu styling ends */
 
+/* dragging styling begins */
+/* in conjunction with action.js file */
 #dragcategories {
     z-index: 5;
     position: absolute;
-    top: 100px;
+    bottom: 80vh;
+    left: var(--s5);
   }
 #dragcategoriesheader {
     cursor: move;
@@ -300,9 +334,43 @@ a::before {
 #dragshop {
     z-index: 5;
     position: absolute;
-    top: 300px;
+    bottom: 65vh;
+    left: var(--s5);
   }
 #dragshopheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#draglistenup {
+    z-index: 5;
+    position: absolute;
+    bottom: 50vh;
+    left: var(--s5);
+  }
+#draglistenupheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragreferences {
+    z-index: 5;
+    position: absolute;
+    bottom: 35vh;
+    left: var(--s5);
+  }
+#dragreferencesheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragnewsstand {
+    z-index: 5;
+    position: absolute;
+    bottom: 20vh;
+    left: var(--s5);
+  }
+#dragnewsstandheader {
     cursor: move;
     z-index: 10;
   }
@@ -310,7 +378,8 @@ a::before {
 #dragarchives {
     z-index: 5;
     position: absolute;
-    top: 800px;
+    top: 5vh;
+    left: 35rem;
 }
 #dragarchivesheader {
     cursor: move;
@@ -320,9 +389,11 @@ a::before {
 #dragpost {
     z-index: 5;
     position: absolute;
-    top: 900px;
+    top: 15vh;
+    left: 65rem;
 }
 #dragpostheader {
     cursor: move;
     z-index: 10;
   }
+/* dragging styling ends */

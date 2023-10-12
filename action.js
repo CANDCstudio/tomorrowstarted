@@ -1,7 +1,11 @@
-// Make the DIV element draggable:
+// Makes the DIV element draggable:
 window.onload = function() {
 
     dragElement(document.getElementById("dragcategories"));
+    dragElement(document.getElementById("dragshop"));
+    dragElement(document.getElementById("draglistenup"));
+    dragElement(document.getElementById("dragreferences"));
+    dragElement(document.getElementById("dragnewsstand"));
     dragElement(document.getElementById("dragarchives"));
     dragElement(document.getElementById("dragpost"));
 };
