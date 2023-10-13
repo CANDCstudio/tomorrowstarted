@@ -83,9 +83,6 @@ a:visited{
 a:hover{
     font-style: italic;
 }
-a:active{
-    font-style: italic;
-}
 /* nifty solution to resolve shifting during normal to italic hover transition */
 /* github user 350D proposed this */
 /* does not work with the default serif fonts for whatever reason */ 
@@ -376,7 +373,7 @@ li a {
   }
 
 #dragarchives {
-    z-index: 5;
+    z-index: 1;
     position: absolute;
     top: 5vh;
     left: 35rem;
@@ -387,7 +384,7 @@ li a {
   }
 
 #dragpost {
-    z-index: 5;
+    z-index: 1;
     position: absolute;
     top: 15vh;
     left: 65rem;
