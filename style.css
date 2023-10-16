@@ -164,6 +164,59 @@ a::before {
   }
 /* every layout tools end */
 
+.window {
+    background-color: rgba(159, 152, 147, 0.5);
+    min-width: 30rem;
+    height: 75vh;
+}
+
+#a {
+    max-width: 50vw;
+}
+
+.container {
+    display: flex;
+    flex-direction: flex-start;
+    height: inherit;
+    padding: var(--s1);
+}
+
+.pane {
+    display: block;
+    width: inherit;
+    background-color: white;
+    flex-grow: 3; /* set the proportion of room taken by mutliple panes */
+    order: 2; /* so that subsequent panes fall to the left and not the right */
+    overflow-y: auto;
+}
+
+.pane + .pane {
+    display: block;
+    width: 10rem;
+    background-color: white;
+    flex-grow: 1; /* set the proportion of room taken by mutliple panes */
+    order: 1; /* assures that the subsequent pane will be left of first pane */
+    margin-right: var(--s1);
+}
+
+.pane img {
+    max-inline-size: none;
+    width: 100%;
+}
+
+.pane h1 {
+    padding-top: var(--s2);
+    padding-bottom: var(--s2);
+    margin-left: var(--s3);
+}
+
+.pane p {
+    padding-top: var(--s2);
+    padding-bottom: var(--s2);
+    padding-right: var(--s2);
+    margin-left: var(--s4);
+}
+
 /* pop up windows styling begins */
 /* for post layout, to change after demo */
 #post {
@@ -193,10 +246,7 @@ a::before {
     padding-bottom: var(--s2);
     margin-left: var(--s4);
 }
-.post_img {
-    max-inline-size: none;
-    width: inherit;
-}
+
 
 /* for archives layout, to change after demo */
 #archives {
@@ -234,9 +284,7 @@ a::before {
 
 /* floating link trees, to change after demo */
 /* this makes it that the linktree list is closed when loading page */
-#categories{
-    display: none;
-}
+
 #shop{
     display: none;
 }
@@ -246,9 +294,7 @@ a::before {
 #references{
     display: none;
 }
-#newsstand{
-    display: none;
-}
+
 
 .linktree_outline{
     width: 200px;
@@ -265,11 +311,6 @@ a::before {
     padding-right: 10px;
   }
 
-#linktreelistcategories{
-    height: 15em;
-    overflow: hidden;
-    direction: ltr;
-}
 #linktreelistshop{
     height: 15em;
     overflow: hidden;
@@ -281,11 +322,6 @@ a::before {
     direction: ltr;
 }
 #linktreelistreferences{
-    height: 15em;
-    overflow: hidden;
-    direction: ltr;
-}
-#linktreelistnewsstand{
     height: 15em;
     overflow: hidden;
     direction: ltr;
@@ -317,17 +353,6 @@ li a {
 
 /* dragging styling begins */
 /* in conjunction with action.js file */
-#dragcategories {
-    z-index: 5;
-    position: absolute;
-    bottom: 80vh;
-    left: var(--s5);
-  }
-#dragcategoriesheader {
-    cursor: move;
-    z-index: 10;
-  }
-
 #dragshop {
     z-index: 5;
     position: absolute;
@@ -360,18 +385,6 @@ li a {
     cursor: move;
     z-index: 10;
   }
-
-#dragnewsstand {
-    z-index: 5;
-    position: absolute;
-    bottom: 20vh;
-    left: var(--s5);
-  }
-#dragnewsstandheader {
-    cursor: move;
-    z-index: 10;
-  }
-
 #dragarchives {
     z-index: 1;
     position: absolute;

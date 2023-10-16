@@ -1,13 +1,5 @@
 // link trees
-// categories
-function categoriesToggle() {
-  var x = document.getElementById("categories");
-  if (x.style.display === "flex") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "flex";
-  }
-}
+
 // shop
 function shopToggle() {
   var x = document.getElementById("shop");
@@ -35,15 +27,6 @@ function referencesToggle() {
     x.style.display = "flex";
   }
 }
-// newsstand
-function newsstandToggle() {
-  var x = document.getElementById("newsstand");
-  if (x.style.display === "flex") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "flex";
-  }
-}
 
 // footer menu 
 // post _tomorrow started_
@@ -64,3 +47,4 @@ function postToggle() {
       x.style.display = "flex";
     }
   }
+  
