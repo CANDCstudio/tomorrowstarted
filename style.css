@@ -70,6 +70,19 @@ h3{
 }
 /* type styling end */
 
+/* list styling begin */
+li {
+    display: inline-block;
+    margin: auto;
+    padding-left: var(--s-3);
+    padding-right: var(--s2);
+}
+li a {
+    display: inline-block;
+    text-align: center;
+}
+/* list styling end */
+
 /* link styling begin */
 a:link {
     text-decoration: none;
@@ -164,14 +177,31 @@ a::before {
   }
 /* every layout tools end */
 
+
+/* pop up windows styling begins */
 .window {
     background-color: rgba(159, 152, 147, 0.5);
-    min-width: 30rem;
-    height: 75vh;
+    min-width: 50rem;
+    
 }
 
-#a {
-    max-width: 50vw;
+/* styling specific to post _tomorrowstarted window */ 
+#post {
+    width: 45vw;
+    height: 75vh;
+    display: none;
+}
+
+/* styling specific to archives window */
+#archives {
+    width: 40vw;
+    height: 85vh;
+    display: none;
+}
+
+/* styling specific to categories pane */
+#categories {
+    display: none;
 }
 
 .container {
@@ -188,101 +218,41 @@ a::before {
     flex-grow: 3; /* set the proportion of room taken by mutliple panes */
     order: 2; /* so that subsequent panes fall to the left and not the right */
     overflow-y: auto;
+    padding-top: var(--s1);
+    padding-bottom: var(--s2)
 }
 
 .pane + .pane {
     display: block;
-    width: 10rem;
     background-color: white;
     flex-grow: 1; /* set the proportion of room taken by mutliple panes */
     order: 1; /* assures that the subsequent pane will be left of first pane */
     margin-right: var(--s1);
+    padding-top: var(--s1);
+    padding-bottom: var(--s1);
 }
 
 .pane img {
     max-inline-size: none;
     width: 100%;
+    padding-top: var(--s2);
+    padding-bottom: var(--s2);
 }
 
 .pane h1 {
-    padding-top: var(--s2);
-    padding-bottom: var(--s2);
-    margin-left: var(--s3);
-}
-
-.pane p {
     padding-top: var(--s2);
     padding-bottom: var(--s2);
     padding-right: var(--s2);
     margin-left: var(--s4);
 }
 
-/* pop up windows styling begins */
-/* for post layout, to change after demo */
-#post {
-    display: none;
+.pane p {
+    padding-right: var(--s2);
+    margin-left: var(--s2);
 }
-.post_outline {
-    width: 576px;
-    height: 704px;
-    background-color: rgba(159, 152, 147, 0.5);
-    display: flex;
-}
-.post_container {
-    width: 554px;
-    height: 680px;
-    background-color: white;
-    margin: 12px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-.post_title {
-    padding-top: var(--s2);
-    padding-bottom: var(--s2);
-    margin-left: var(--s3);
-}
-.post_content {
-    padding-top: var(--s2);
-    padding-bottom: var(--s2);
-    margin-left: var(--s4);
-}
+/* pop up windows styling end */
 
-
-/* for archives layout, to change after demo */
-#archives {
-    display: none;
-}
-.archives_outline {
-    width: 690px;
-    height: 704px;
-    background-color: rgba(159, 152, 147, 0.5);
-    display: flex;
-}
-.archives_list {
-    width: 100px;
-    height: 680px;
-    background-color: white;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-right: 6px;
-    margin-left: 12px;
-    padding-left: var(--s0);
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-.archives_container {
-    width: 554px;
-    height: 680px;
-    background-color: white;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-right: 12px;
-    margin-left: 6px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-/* floating link trees, to change after demo */
+/* link trees style begin , to change after demo */
 /* this makes it that the linktree list is closed when loading page */
 
 #shop{
@@ -295,12 +265,8 @@ a::before {
     display: none;
 }
 
-
-.linktree_outline{
-    width: 200px;
-}
 .linktree_content{
-    margin-left: var(--s1);
+    margin-left: var(--s0);
     display: flex;
     justify-content: flex-start;
 }
@@ -308,25 +274,25 @@ a::before {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding-right: 10px;
+    padding-right: var(--s0);
   }
 
 #linktreelistshop{
-    height: 15em;
+    height: 12rem;
     overflow: hidden;
     direction: ltr;
 }
 #linktreelistlistenup{
-    height: 15em;
+    height: 10rem;
     overflow: hidden;
     direction: ltr;
 }
 #linktreelistreferences{
-    height: 15em;
+    height: 10rem;
     overflow: hidden;
     direction: ltr;
 }
-/* pop up windows styling ends */
+/* link trees styling ends */
 
 /* footer menu styling begins */
 .menu {
@@ -337,16 +303,6 @@ a::before {
     max-inline-size: none;
     display: flex;
     justify-content: space-between;
-    text-align: center;
-}
-li {
-    display: inline-block;
-    margin: auto;
-    padding-left: var(--s-3);
-    padding-right: var(--s2);
-}
-li a {
-    display: inline-block;
     text-align: center;
 }
 /* footer menu styling ends */
