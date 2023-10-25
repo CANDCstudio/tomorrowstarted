@@ -93,9 +93,6 @@ a:link {
 a:visited{
     color: inherit;
 }
-a:hover{
-    font-style: italic;
-}
 /* nifty solution to resolve shifting during normal to italic hover transition */
 /* github user 350D proposed this */
 /* does not work with the default serif fonts for whatever reason */ 
@@ -106,6 +103,14 @@ a::before {
     height: 0;
     overflow: hidden;
     visibility: hidden;
+}
+
+.link {
+    font-style: normal;
+}
+
+.link_italic {
+    font-style: italic;
 }
 /* link styling end */
 

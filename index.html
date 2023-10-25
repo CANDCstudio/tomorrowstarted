@@ -183,13 +183,13 @@
         <li><div href="#" title="search"><h2>search</h2></div></li>
     </div>
     <div>
-        <li><a onclick="archivesToggle()" title="archives"><h2>archives</h2></a></li>
+        <li><a onclick="archivesToggle()" title="archives"><h2 class="link">archives</h2></a></li>
         <li><a onclick="categoriesToggle()" title="categories"><h2>categories</h2></a></li>
         <li><div href="#" title="randomizer"><h2>randomizer</h2></div></li>
         <li><div href="#" title="daily track"><h2>daily track</h2></div></li>
         <li><div href="#" title="meet the cast"><h2>meet the cast</h2></div></li>
             &emsp;&emsp;&emsp;&emsp;
-        <li><a onclick="postToggle()" title="post"><h2>tomorrow started</h2></a></li>
+        <li><a onclick="postToggle()" title="post"><h2 class="link">tomorrow started</h2></a></li>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
     </div>
 </ul>
@@ -208,6 +208,19 @@
       document.getElementById('linktreelistshop').scrollBy(0, -29);
     };
 </script>
+
+<!-- <script>
+    window.onload = function(){
+    document.querySelector('.link').onclick = function(){
+        if(this.className.match('link_italic')) {
+            this.className = 'link';
+        }
+        else {
+            this.className = 'link link_italic';
+        }
+    };
+};
+</script> -->
 
 </body>
 </html>
