@@ -12,7 +12,7 @@
 <!-- this is a draggable element. exist outside the "cover" class -->
 <div id="dragshop">
 <div id="dragshopheader">
-    <a onclick="shopToggle()" title="shop"><h3>shop</h3></a>
+    <div onclick="shopToggle()" title="shop"><h3 class="linkshop">shop</h3></div>
     <div id="shop" class="linktree_content">
         <div class="linktree_nav">
             <div ><img class="arrow" id="slideUpshop" src="images/arrow up.png" alt="arrow up image"></div>
@@ -51,7 +51,7 @@
 <!-- this is a draggable element. exist outside the "cover" class -->
 <div id="draglistenup">
 <div id="draglistenupheader">
-    <a onclick="listenupToggle()" title="listenup"><h3>listen up</h3></a>
+    <div onclick="listenupToggle()" title="listenup"><h3 class="linklistenup">listen up</h3></div>
     <div id="listenup" class="linktree_content">
         <div class="linktree_nav">
             <div><img class="arrow hidden" src="images/arrow up.png" alt="arrow up image"></div>
@@ -70,7 +70,7 @@
 <!-- this is a draggable element. exist outside the "cover" class -->
 <div id="dragreferences">
 <div id="dragreferencesheader">
-    <a onclick="referencesToggle()" title="references"><h3>references</h3></a>
+    <div onclick="referencesToggle()" title="references"><h3 class="linkreferences">references</h3></div>
     <div id="references" class="linktree_content">
         <div class="linktree_nav">
             <div><img class="arrow hidden" src="images/arrow up.png" alt="arrow up image"></div>
@@ -169,7 +169,7 @@
 
 
 <!-- cover class is used to position the footer menu in place. -->
-<!-- it is slightly awkward here as it relies on two elements, one DIV and one H4, that are not being used. -->
+<!-- it is slightly awkward here as it relies on two extra and empty elements, one DIV and one H4. -->
 <!-- Should be resolved. -->
 <div class="cover">
     
@@ -180,16 +180,16 @@
 <div class="menu">
 <ul class="nav">
     <div>
-        <li><div href="#" title="search"><h2>search</h2></div></li>
+        <li href="#" title="search"><h2 style="opacity:0.3;">search</h2></li>
     </div>
     <div>
-        <li><a onclick="archivesToggle()" title="archives"><h2 class="link">archives</h2></a></li>
-        <li><a onclick="categoriesToggle()" title="categories"><h2>categories</h2></a></li>
-        <li><div href="#" title="randomizer"><h2>randomizer</h2></div></li>
-        <li><div href="#" title="daily track"><h2>daily track</h2></div></li>
-        <li><div href="#" title="meet the cast"><h2>meet the cast</h2></div></li>
+        <li onclick="archivesToggle()" title="archives"><h2 class="linkarchives">archives</h2></li>
+        <li onclick="categoriesToggle()" title="categories"><h2 class="linkcategories">categories</h2></li>
+        <li href="#" title="randomizer"><h2 style="opacity:0.3;">randomizer</h2></li>
+        <li href="#" title="daily track"><h2 style="opacity:0.3;">daily track</h2></li>
+        <li href="#" title="meet the cast"><h2 style="opacity:0.3;">meet the cast</h2></li>
             &emsp;&emsp;&emsp;&emsp;
-        <li><a onclick="postToggle()" title="post"><h2 class="link">tomorrow started</h2></a></li>
+        <li onclick="postToggle()" title="post"><h2 class="linkpost">tomorrow started</h2></li>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
     </div>
 </ul>
@@ -208,19 +208,6 @@
       document.getElementById('linktreelistshop').scrollBy(0, -29);
     };
 </script>
-
-<!-- <script>
-    window.onload = function(){
-    document.querySelector('.link').onclick = function(){
-        if(this.className.match('link_italic')) {
-            this.className = 'link';
-        }
-        else {
-            this.className = 'link link_italic';
-        }
-    };
-};
-</script> -->
 
 </body>
 </html>

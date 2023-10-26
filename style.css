@@ -104,14 +104,48 @@ a::before {
     overflow: hidden;
     visibility: hidden;
 }
-
-.link {
-    font-style: normal;
-}
-
-.link_italic {
+a:hover{
     font-style: italic;
 }
+
+.linkshop {
+    font-style: normal;
+}
+.linkshop_italic {
+    font-style: italic;
+}
+.linklistenup {
+    font-style: normal;
+}
+.linklistenup_italic {
+    font-style: italic;
+}
+.linkreferences {
+    font-style: normal;
+}
+.linkreferences_italic {
+    font-style: italic;
+}
+
+.linkarchives {
+    font-style: normal;
+}
+.linkarchives_italic {
+    font-style: italic;
+}
+.linkcategories {
+    font-style: normal;
+}
+.linkcategories_italic {
+    font-style: italic;
+}
+.linkpost {
+    font-style: normal;
+}
+.linkpost_italic {
+    font-style: italic;
+}
+
 /* link styling end */
 
 /* scrollbar styling begins */
@@ -179,6 +213,21 @@ a::before {
   
   .cover > h4 {
     margin-block: auto;
+  }
+
+
+  .imposter {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .imposter.contain {
+    --margin: 0px;
+    overflow: auto;
+    max-inline-size: calc(100% - (var(--margin) * 2));
+    max-block-size: calc(100% - (var(--margin) * 2));
   }
 /* every layout tools end */
 
