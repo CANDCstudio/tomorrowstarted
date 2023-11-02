@@ -1,5 +1,7 @@
 // link trees
 
+/*
+
 // shop
 function shopToggle() {
   var x = document.getElementById("shop");
@@ -28,8 +30,9 @@ function referencesToggle() {
   }
 }
 
-// footer menu 
-// post _tomorrow started_
+*/
+
+// posts
 function postToggle() {
     var x = document.getElementById("post");
     if (x.style.display === "block") {
@@ -48,8 +51,19 @@ function postToggle() {
     }
   }
 
+// categories
   function categoriesToggle() {
     var x = document.getElementById("categories");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
+//cast-of-character _tomorrowstarted_
+  function castToggle() {
+    var x = document.getElementById("cast");
     if (x.style.display === "block") {
       x.style.display = "none";
     } else {

@@ -2,6 +2,7 @@
 <html lang="en-US">
 <head>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-foractionjs.css">
     
     <script src="menutoggle.js"></script>
     <script src="action.js"></script>
@@ -138,7 +139,6 @@
     </div>
 
 <!-- this is a draggable element. exist outside the "cover" class -->
-
 <div id="dragpost">
 <div id="dragpostheader">
 <div class="window" id="post">
@@ -167,6 +167,47 @@
 </div>
 </div>
 
+<div id="dragcast">
+<div id="dragcastheader">
+<div class="window" id="cast">
+    <div class="container">
+    <div class="pane scroll scroll-color-colors">
+
+        <h1 style="text-align:center;">CAST OF CHARACTERS</h1>
+
+        <div class="grid"> 
+            <div><img src="images/cast-of-characters/tomorrow-started-uh-square.png"><p><i>uh</i>, getting old, but not tired</p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-kc-square.png"><p><i>kc</i> finds it all too boring</p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-kt-square.gif"><p><i>kt</i> is in the dauuuug haus</p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-lb-square.png"><p><i>lb</i> is looking… looking for the right boy…</p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-lsd-square.png"><p><i>jusqu’ici tout va bien, mais l’important c’est pas la chute – c’est l’atterrissage.</i> or, something to that extent. -<i>lsd</i></p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-nwa-square.png"><p>this is <i>nwa…</i> the OG… before there was eazy-e… there was the ‘norwegian with an attitude”</div>
+            <div><img src="images/cast-of-characters/tomorrow-started-pp-square.png"><p><i>pp</i>, home reading what appears to be a book</p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-kl-square.png"><p><i>kl</i>, shocked to find out <i>pp</i> is reading a book</p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-cm-square.png"><p><i>cm</i> endlessly desirable</p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-kv-square.png"><p><i>kv</i> will never fix the gap</p></div>
+            
+        </div>
+
+        <br><br>
+
+        <div style="margin-left: var(--s2);">
+        <p>subjects in this rear view mirror may appear slightly better<br>than they really are… well except uh. but nonetheless, they are entertaining.<br><br>disclaimer: all characters appearing in this work are fictitious. any resemblance to real persons, living or dead, is purely coincidental. </p>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- this is a draggable element. exist outside the "cover" class -->
+<div id="dragfly">
+<div id="dragflyheader">
+<img onclick="flyToggle()" title="fly"id="fly" src="images/fly-houseful-photograph leo edit.png">
+</div>
+</div>
+
+
 
 <!-- cover class is used to position the footer menu in place. -->
 <!-- it is slightly awkward here as it relies on two extra and empty elements, one DIV and one H4. -->
@@ -178,18 +219,17 @@
 <h4></h4>
 
 <div class="menu">
-<ul class="nav">
+<div class="nav">
     <div>
-        <li href="#" title="search"><h2 style="opacity:0.3;">search</h2></li>
+        <button href="#" title="search"><h2 style="opacity:0.3;">search</h2></button>
     </div>
     <div>
-        <li onclick="archivesToggle()" title="archives"><h2 class="linkarchives">archives</h2></li>
-        <li onclick="categoriesToggle()" title="categories"><h2 class="linkcategories">categories</h2></li>
-        <li href="#" title="randomizer"><h2 style="opacity:0.3;">randomizer</h2></li>
-        <li href="#" title="daily track"><h2 style="opacity:0.3;">daily track</h2></li>
-        <li href="#" title="meet the cast"><h2 style="opacity:0.3;">meet the cast</h2></li>
+        <button onclick="archivesToggle()" title="archives"><h2 class="linkarchives">archives</h2></button>
+        <button onclick="categoriesToggle()" title="categories"><h2 class="linkcategories">categories</h2></button>
+        <button href="#" title="randomizer"><h2 style="opacity:0.3;">randomizer</h2></button>
+        <button onclick="postToggle()" title="post"><h2 class="linkpost">posts</h2></button>
             &emsp;&emsp;&emsp;&emsp;
-        <li onclick="postToggle()" title="post"><h2 class="linkpost">tomorrow started</h2></li>
+        <button onclick="castToggle()" title="meet the cast"><h2 class="linkcast">tomorrow started</h2></button>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
     </div>
 </ul>

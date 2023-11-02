@@ -6,6 +6,8 @@ window.onload = function() {
     dragElement(document.getElementById("dragreferences"));
     dragElement(document.getElementById("dragarchives"));
     dragElement(document.getElementById("dragpost"));
+    dragElement(document.getElementById("dragcast"));
+    dragElement(document.getElementById("dragfly"));
 };
 
 function dragElement(elmnt) {
@@ -83,6 +85,15 @@ document.querySelector('.linkpost').onclick = function(){
       this.className = 'linkpost linkpost_italic';
   }
 };
+document.querySelector('.linkcast').onclick = function(){
+  if(this.className.match('linkcast_italic')) {
+      this.className = 'linkcast';
+  }
+  else {
+      this.className = 'linkcast linkcast_italic';
+  }
+};
+
 
 // linktrees
 document.querySelector('.linkshop').onclick = function(){

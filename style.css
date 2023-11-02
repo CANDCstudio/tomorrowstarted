@@ -108,6 +108,7 @@ a:hover{
     font-style: italic;
 }
 
+/*
 .linkshop {
     font-style: normal;
 }
@@ -126,6 +127,7 @@ a:hover{
 .linkreferences_italic {
     font-style: italic;
 }
+*/
 
 .linkarchives {
     font-style: normal;
@@ -145,8 +147,29 @@ a:hover{
 .linkpost_italic {
     font-style: italic;
 }
+.linkcast {
+    font-style: normal;
+}
+.linkcast_italic {
+    font-style: italic;
+}
 
 /* link styling end */
+
+button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+    display: inline-block;
+    margin: auto;
+    padding-left: var(--s-3);
+    padding-right: var(--s2);
+}
 
 /* scrollbar styling begins */
 /* a lot of compromise with scrollbars because firefox does not behave like any other browser */
@@ -215,19 +238,21 @@ a:hover{
     margin-block: auto;
   }
 
-
-  .imposter {
-    position: absolute;
-    inset-block-start: 50%;
-    inset-inline-start: 50%;
-    transform: translate(-50%, -50%);
+  .grid {
+    display: grid;
+    grid-gap: var(--s3);
+    margin-left: var(--s3);
+    margin-right: var(--s3);
   }
   
-  .imposter.contain {
-    --margin: 0px;
-    overflow: auto;
-    max-inline-size: calc(100% - (var(--margin) * 2));
-    max-block-size: calc(100% - (var(--margin) * 2));
+  @supports (width: min(200px, 100%)) {
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    }
+  }
+
+  .grid p {
+    text-align: center;
   }
 /* every layout tools end */
 
@@ -239,7 +264,7 @@ a:hover{
     
 }
 
-/* styling specific to post _tomorrowstarted window */ 
+/* styling specific to post window */ 
 #post {
     width: 45vw;
     height: 75vh;
@@ -248,8 +273,14 @@ a:hover{
 
 /* styling specific to archives window */
 #archives {
-    width: 40vw;
-    height: 85vh;
+    width: 25vw;
+    height: 55vh;
+    display: none;
+}
+
+/* styling specific to cast of characters window */
+#cast {
+    height: 65vh;
     display: none;
 }
 
@@ -260,7 +291,6 @@ a:hover{
 
 .container {
     display: flex;
-    flex-direction: flex-start;
     height: inherit;
     padding: var(--s1);
 }
@@ -295,7 +325,6 @@ a:hover{
 
 .pane h1 {
     padding-top: var(--s2);
-    padding-bottom: var(--s2);
     padding-right: var(--s2);
     margin-left: var(--s4);
 }
@@ -307,17 +336,6 @@ a:hover{
 /* pop up windows styling end */
 
 /* link trees style begin , to change after demo */
-/* this makes it that the linktree list is closed when loading page */
-
-#shop{
-    display: none;
-}
-#listenup{
-    display: none;
-}
-#references{
-    display: none;
-}
 
 .linktree_content{
     margin-left: var(--s0);
@@ -348,6 +366,12 @@ a:hover{
 }
 /* link trees styling ends */
 
+/* song of the day fly styling begins */
+#fly {
+    width: 8rem;
+}
+/* song of the day fly styling ends */
+
 /* footer menu styling begins */
 .menu {
     padding-bottom: var(--s4);
@@ -360,60 +384,3 @@ a:hover{
     text-align: center;
 }
 /* footer menu styling ends */
-
-/* dragging styling begins */
-/* in conjunction with action.js file */
-#dragshop {
-    z-index: 5;
-    position: absolute;
-    bottom: 65vh;
-    left: var(--s5);
-  }
-#dragshopheader {
-    cursor: move;
-    z-index: 10;
-  }
-
-#draglistenup {
-    z-index: 5;
-    position: absolute;
-    bottom: 50vh;
-    left: var(--s5);
-  }
-#draglistenupheader {
-    cursor: move;
-    z-index: 10;
-  }
-
-#dragreferences {
-    z-index: 5;
-    position: absolute;
-    bottom: 35vh;
-    left: var(--s5);
-  }
-#dragreferencesheader {
-    cursor: move;
-    z-index: 10;
-  }
-#dragarchives {
-    z-index: 1;
-    position: absolute;
-    top: 5vh;
-    left: 35rem;
-}
-#dragarchivesheader {
-    cursor: move;
-    z-index: 10;
-  }
-
-#dragpost {
-    z-index: 1;
-    position: absolute;
-    top: 15vh;
-    left: 65rem;
-}
-#dragpostheader {
-    cursor: move;
-    z-index: 10;
-  }
-/* dragging styling ends */

@@ -1,0 +1,78 @@
+/* dragging styling begins */
+/* in conjunction with action.js file */
+#dragshop {
+    z-index: 5;
+    position: absolute;
+    bottom: 65vh;
+    left: var(--s5);
+  }
+#dragshopheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#draglistenup {
+    z-index: 5;
+    position: absolute;
+    bottom: 50vh;
+    left: var(--s5);
+  }
+#draglistenupheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragreferences {
+    z-index: 5;
+    position: absolute;
+    bottom: 35vh;
+    left: var(--s5);
+  }
+#dragreferencesheader {
+    cursor: move;
+    z-index: 10;
+  }
+#dragarchives {
+    z-index: 1;
+    position: absolute;
+    top: 5vh;
+    left: 35rem;
+}
+#dragarchivesheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragpost {
+    z-index: 1;
+    position: absolute;
+    top: 15vh;
+    left: 65rem;
+}
+#dragpostheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragcast {
+    z-index: 1;
+    position: absolute;
+    top: 15vh;
+    left: 65rem;
+}
+#dragcastheader {
+    cursor: move;
+    z-index: 10;
+  }
+
+#dragfly {
+    z-index: 7;
+    position: absolute;
+    top: 15vh;
+    left: 65rem;
+}
+#dragfly header {
+    cursor: move;
+    z-index: 10;
+  }
+/* dragging styling ends */
