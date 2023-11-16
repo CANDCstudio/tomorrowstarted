@@ -41,6 +41,7 @@ function postToggle() {
       x.style.display = "block";
     }
   }
+
 // archives  
   function archivesToggle() {
     var x = document.getElementById("archives");

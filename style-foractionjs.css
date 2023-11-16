@@ -1,9 +1,21 @@
 /* dragging styling begins */
 /* in conjunction with action.js file */
+
+#dragfly {
+  z-index: 7;
+  position: absolute;
+  top: 75vh;
+  right: 19vw;
+}
+#dragflyheader {
+  cursor: move;
+  z-index: 10;
+}
+
 #dragshop {
     z-index: 5;
     position: absolute;
-    bottom: 65vh;
+    top: 15vh;
     left: var(--s5);
   }
 #dragshopheader {
@@ -14,7 +26,7 @@
 #draglistenup {
     z-index: 5;
     position: absolute;
-    bottom: 50vh;
+    top: 40vh;
     left: var(--s5);
   }
 #draglistenupheader {
@@ -25,7 +37,7 @@
 #dragreferences {
     z-index: 5;
     position: absolute;
-    bottom: 35vh;
+    top: 65vh;
     left: var(--s5);
   }
 #dragreferencesheader {
@@ -33,7 +45,7 @@
     z-index: 10;
   }
 #dragarchives {
-    z-index: 1;
+    z-index: 3;
     position: absolute;
     top: 5vh;
     left: 35rem;
@@ -44,7 +56,7 @@
   }
 
 #dragpost {
-    z-index: 1;
+    z-index: 4;
     position: absolute;
     top: 15vh;
     left: 65rem;
@@ -65,14 +77,15 @@
     z-index: 10;
   }
 
-#dragfly {
-    z-index: 7;
-    position: absolute;
-    top: 15vh;
-    left: 65rem;
+#dragmenu {
+  z-index: 5;
+  position: absolute;
+  top: 40vh;
+  left: 50vw;
 }
-#dragfly header {
-    cursor: move;
-    z-index: 10;
-  }
+#dragmenuheader {
+  cursor: move;
+  z-index: 10;
+}
+
 /* dragging styling ends */

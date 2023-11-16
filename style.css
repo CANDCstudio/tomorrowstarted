@@ -1,7 +1,3 @@
-
-
-
-
 /* global definitions */
 :root {
 	/* this sets a lot of our sizing rules and defines various spacing paramters */
@@ -11,14 +7,14 @@
 	--s-3: calc(var(--s-2) / var(--ratio));
 	--s-2: calc(var(--s-1) / var(--ratio));
 	--s-1: calc(var(--s0) / var(--ratio));
-	--s0: 1rem;
+	--s0: 1.05rem;
 	--s1: calc(var(--s0) * var(--ratio));
 	--s2: calc(var(--s1) * var(--ratio));
 	--s3: calc(var(--s2) * var(--ratio));
 	--s4: calc(var(--s3) * var(--ratio));
 	--s5: calc(var(--s4) * var(--ratio));
 	/* this is mainly used to define/exclude/capture the max-inline-size, in units of characters */
-	--measure: 60ch;
+	--measure: 75ch;
 }
 
 /* universal definitions */
@@ -42,11 +38,6 @@ footer,
   max-inline-size: none;
 }
 
-/* background image styling begin */
-/* using the body tag we define the same file at a low resolution and at a high resolution. */
-/* html will load in the low-res file first always, and once the hi-res file is ready will load that in */
-/* subsequent background-* need to be attributed for the amount of images defined. separated by a comma */
-
 body {
     background-image: url("images/background/tsbg-hres.jpg"), url("images/background/tsbg-lres.jpg");
     background-repeat: no-repeat, no-repeat;
@@ -55,44 +46,31 @@ body {
     background-position: center,center;
     overflow: hidden;
 }
-/* background image styling end */
 
-/* type styling begin */
-h1 {
-	font-size: var(--s2);
-    font-family: 'Times New Roman', Times, serif;
-}
-h2 {
-	font-size: var(--s2);
-}
-h3{
-	font-size: var(--s1);
-}
-/* type styling end */
+h1 { font-size: var(--s2); }
+h2 { font-size: var(--s2); }
+h3{ font-size: var(--s1); }
 
-/* list styling begin */
-li {
-    display: inline-block;
-    margin: auto;
-    padding-left: var(--s-3);
-    padding-right: var(--s2);
-}
-li a {
-    display: inline-block;
-    text-align: center;
-}
-/* list styling end */
+li { display: inline-block; margin: auto; padding-left: var(--s-3); padding-right: var(--s2); }
+li a { display: inline-block; text-align: center; }
 
-/* link styling begin */
-a:link {
-    text-decoration: none;
-    font-family: inherit;
-    font-size: inherit;
-    color: black;
+button {
+    background:none;
+	color:inherit;
+	border:none;
+	padding:0;
+	font:inherit;
+	cursor:pointer;
+	outline:inherit;
+
+    display:inline-block;
+    margin:auto;
+    padding-left:var(--s-3);
+    padding-right:var(--s2);
 }
-a:visited{
-    color: inherit;
-}
+
+a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: black; }
+a:visited{ color: inherit; }
 /* nifty solution to resolve shifting during normal to italic hover transition */
 /* github user 350D proposed this */
 /* does not work with the default serif fonts for whatever reason */ 
@@ -104,231 +82,80 @@ a::before {
     overflow: hidden;
     visibility: hidden;
 }
-a:hover{
-    font-style: italic;
-}
+a:hover{ font-style: italic; }
+.linkarchives { font-style: normal; }
+.linkarchives_italic { font-style: italic; }
+.linkcategories { font-style: normal; writing-mode: vertical-rl; text-orientation: mixed;}
+.linkcategories_italic { font-style: italic; }
+.linkpost { font-style: normal; }
+.linkpost_italic { font-style: italic; }
+.linkcast { font-style: normal; }
+.linkcast_italic { font-style: italic; }
 
-/*
-.linkshop {
-    font-style: normal;
-}
-.linkshop_italic {
-    font-style: italic;
-}
-.linklistenup {
-    font-style: normal;
-}
-.linklistenup_italic {
-    font-style: italic;
-}
-.linkreferences {
-    font-style: normal;
-}
-.linkreferences_italic {
-    font-style: italic;
-}
-*/
+::-webkit-scrollbar { width: 20px; }
+::-webkit-scrollbar-track { border-left: 10px transparent; }
+::-webkit-scrollbar-thumb { background: black; border-left: 10px solid white; }
 
-.linkarchives {
-    font-style: normal;
-}
-.linkarchives_italic {
-    font-style: italic;
-}
-.linkcategories {
-    font-style: normal;
-}
-.linkcategories_italic {
-    font-style: italic;
-}
-.linkpost {
-    font-style: normal;
-}
-.linkpost_italic {
-    font-style: italic;
-}
-.linkcast {
-    font-style: normal;
-}
-.linkcast_italic {
-    font-style: italic;
-}
+.arrow { width:var(--s1); display:block; padding:3px; }
+.up { margin-top:3ch; }
+.down { margin-bottom:1ch; }
+.hidden { opacity:0; }
 
-/* link styling end */
+#landing { position:absolute; bottom:13vh; right:20vw; }
+#landing h3 { direction: rtl; }
+#landing img {display: none; mix-blend-mode: multiply; }
 
-button {
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+#landing:hover img { display: inline-block; position: absolute; bottom:30vh; }
 
-    display: inline-block;
-    margin: auto;
-    padding-left: var(--s-3);
-    padding-right: var(--s2);
-}
-
-/* scrollbar styling begins */
-/* a lot of compromise with scrollbars because firefox does not behave like any other browser */
-/* scrollbars run with ::-webkit-scrollbar for safari, opera, chrome, edge */
-::-webkit-scrollbar {
-    width: 16px;
-}
-::-webkit-scrollbar-track {
-    border-left: 16px solid rgba(159, 152, 147, 0.6);
-}
-::-webkit-scrollbar-thumb {
-    background: white;
-    border-left: 8px solid rgba(159, 152, 147, 0.6);
-}
-::-webkit-scrollbar-thumb:hover {
-    background: white;
-}
-/* .post-container scrollbar runs with .scroll for specifically firefox and ie, hugely simplified because of those browsers' limitations */
-.scroll {
-    overflow-y: scroll;
-}
-.scroll-color-colors {
-    scrollbar-color: white rgba(159, 152, 147, 0.36);
-}
-/* arrow styling */
-.arrow {
-    width: var(--s1);
-    display: block;
-    padding: 3px;
-  }
-/* arrow in-element position/status */
-.up {
-    margin-top: 3ch;
-}
-.down {
-    margin-bottom: 1ch;
-}
-.hidden {
-    opacity: 0;
-}
-/* scrollbar styling ends */
-
-/* every layout tools begin */
-/* resource designed by heydon pickering and andy bell used throughout this website */
-/* cover - tool for span multiple elements evenly vertically */
-.cover {
-    display: flex;
-    flex-direction: column;
-    min-block-size: 98vh;
-    padding: 0;
-  }
-  
-  .cover > * {
-    margin-block: 1rem;
-  }
-  
-  .cover > :first-child:not(h4) {
-    margin-block-start: 0;
-  }
-  
-  .cover > :last-child:not(h4) {
-    margin-block-end: 0;
-  }
-  
-  .cover > h4 {
-    margin-block: auto;
-  }
-
-  .grid {
-    display: grid;
-    grid-gap: var(--s3);
-    margin-left: var(--s3);
-    margin-right: var(--s3);
-  }
-  
-  @supports (width: min(200px, 100%)) {
-    .grid {
-      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-    }
-  }
-
-  .grid p {
-    text-align: center;
-  }
-/* every layout tools end */
-
+header { margin-top:5vh; padding-bottom:var(--s4); }
+.nav { display: flex; justify-content: space-between; text-align: center;}
+.nav div { margin-left:5vw; margin-right:5vw; z-index:5; }
 
 /* pop up windows styling begins */
-.window {
-    background-color: rgba(159, 152, 147, 0.5);
-    min-width: 50rem;
-    
-}
+.window { background-color:white; min-width:50rem; box-shadow: var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); }
 
 /* styling specific to post window */ 
-#post {
-    width: 45vw;
-    height: 75vh;
-    display: none;
-}
-
+#post { width:45vw; height:75vh; display:none; }
 /* styling specific to archives window */
-#archives {
-    width: 25vw;
-    height: 55vh;
-    display: none;
-}
-
+#archives { width:25vw; height:55vh; display:none; }
 /* styling specific to cast of characters window */
-#cast {
-    height: 65vh;
-    display: none;
-}
-
+#cast { height:65vh; display:none; }
 /* styling specific to categories pane */
-#categories {
-    display: none;
-}
+#categories { display:none; }
 
-.container {
-    display: flex;
-    height: inherit;
-    padding: var(--s1);
-}
+.container { display:flex; height:inherit; padding:var(--s1); }
 
 .pane {
     display: block;
     width: inherit;
-    background-color: white;
+    background-color:white;
     flex-grow: 3; /* set the proportion of room taken by mutliple panes */
     order: 2; /* so that subsequent panes fall to the left and not the right */
     overflow-y: auto;
     padding-top: var(--s1);
-    padding-bottom: var(--s2)
+    padding-bottom: var(--s2);
+    padding-right: var(--s0);
 }
-
 .pane + .pane {
     display: block;
-    background-color: white;
+    background-color:white;
     flex-grow: 1; /* set the proportion of room taken by mutliple panes */
     order: 1; /* assures that the subsequent pane will be left of first pane */
     margin-right: var(--s1);
     padding-top: var(--s1);
     padding-bottom: var(--s1);
 }
-
 .pane img {
     max-inline-size: none;
     width: 100%;
     padding-top: var(--s2);
     padding-bottom: var(--s2);
 }
-
 .pane h1 {
     padding-top: var(--s2);
     padding-right: var(--s2);
     margin-left: var(--s4);
 }
-
 .pane p {
     padding-right: var(--s2);
     margin-left: var(--s2);
@@ -336,7 +163,6 @@ button {
 /* pop up windows styling end */
 
 /* link trees style begin , to change after demo */
-
 .linktree_content{
     margin-left: var(--s0);
     display: flex;
@@ -348,14 +174,13 @@ button {
     flex-direction: column;
     padding-right: var(--s0);
   }
-
 #linktreelistshop{
     height: 12rem;
     overflow: hidden;
     direction: ltr;
 }
 #linktreelistlistenup{
-    height: 10rem;
+    height: 12rem;
     overflow: hidden;
     direction: ltr;
 }
@@ -367,20 +192,42 @@ button {
 /* link trees styling ends */
 
 /* song of the day fly styling begins */
-#fly {
-    width: 8rem;
-}
+#fly { width:18rem; height:18rem; padding: 5rem; }
 /* song of the day fly styling ends */
 
-/* footer menu styling begins */
-.menu {
-    padding-bottom: var(--s4);
-    z-index: 10;
+.grid {
+    display: grid;
+    grid-gap: var(--s3);
+    margin-left: var(--s3);
+    margin-right: var(--s3);
+}  
+@supports (width: min(200px, 100%)) {
+.grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 }
-.nav {
+}
+.grid p { text-align:center; }
+
+.post {
+    height: 80vh;
+    width: 60vw;
+    margin: 15vh 25vw;
     max-inline-size: none;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: scaleX(-1);
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
-/* footer menu styling ends */
+
+.post::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.post_content {
+    padding-left: 2rem;
+    transform: scaleX(-1);
+}

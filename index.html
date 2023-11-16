@@ -10,7 +10,16 @@
 
 <body>
 
-<!-- this is a draggable element. exist outside the "cover" class -->
+<header class="nav">
+    <div>
+        <button href="#" title="search"><h2 style="opacity:0.3;">search</h2></button>
+    </div>
+    <div onclick="castToggle()" title="meet the cast">
+        <button class="linkcast"><h2 >tomorrow started</h2></button>
+    </div>
+</header>
+
+<!-- this is a draggable element -->
 <div id="dragshop">
 <div id="dragshopheader">
     <div onclick="shopToggle()" title="shop"><h3 class="linkshop">shop</h3></div>
@@ -25,7 +34,7 @@
             <a href="https://threeasfour.com/" target="_blank"><p>3 AS FOUR SHOP</p></a>
             <a href="https://www.apc-us.com/" target="_blank"><p>A.P.C</p></a>
             <a href="https://acrnm.com/" target="_blank"><p>ACRNM</p></a>
-            <a href="https://www.aimeleondore.com//" target="_blank"><p>AIMÉ LEON DORE</p></a>
+            <a href="https://www.aimeleondore.com//" target="_blank"><p>AIM&Eacute; LEON DORE</p></a>
             <a href="https://antonioli.eu/en-us" target="_blank"><p>ANTONIOLI</p></a>
             <a href="https://apoc-store.com/" target="_blank"><p>APOC</p></a>
             <a href="https://store.apolisglobal.com/" target="_blank"><p>APOLIS</p></a>
@@ -49,14 +58,14 @@
 </div>
 </div>
 
-<!-- this is a draggable element. exist outside the "cover" class -->
+<!-- this is a draggable element -->
 <div id="draglistenup">
 <div id="draglistenupheader">
-    <div onclick="listenupToggle()" title="listenup"><h3 class="linklistenup">listen up</h3></div>
+    <div><h3>listen up</h3></div>
     <div id="listenup" class="linktree_content">
         <div class="linktree_nav">
-            <div><img class="arrow hidden" src="images/arrow up.png" alt="arrow up image"></div>
-            <div><img class="arrow hidden" src="images/arrow down.png" alt="arrow down image"></div>
+            <div><img class="arrow hidden" id="slideUplistenup" src="images/arrow up.png" alt="arrow up image"></div>
+            <div><img class="arrow hidden" id="slideDownlistenup" src="images/arrow down.png" alt="arrow down image"></div>
         </div>
         <div id="linktreelistlistenup">
             <a href="https://daily.bandcamp.com/" target="_blank"><p>BANDCAMP DAILY</p></a>
@@ -68,7 +77,7 @@
 </div>
 </div>
 
-<!-- this is a draggable element. exist outside the "cover" class -->
+<!-- this is a draggable element -->
 <div id="dragreferences">
 <div id="dragreferencesheader">
     <div onclick="referencesToggle()" title="references"><h3 class="linkreferences">references</h3></div>
@@ -85,7 +94,7 @@
 </div>
 </div>
 
-<!-- this is a draggable element. exist outside the "cover" class -->
+<!-- this is a draggable element -->
 <div id="dragarchives">
 <div id="dragarchivesheader">
     <div class="window" id="archives">
@@ -138,11 +147,12 @@
     </div>
     </div>
 
-<!-- this is a draggable element. exist outside the "cover" class -->
+<!-- this is a draggable element -->
 <div id="dragpost">
 <div id="dragpostheader">
 <div class="window" id="post">
     <div class="container">
+        <button onclick="categoriesToggle()" title="categories"><p class="linkcategories">categories</p></button>
         <div class="pane scroll scroll-color-colors">
                 <a href="#"><h1>HOW TO COME UP WITH A GOOD TITLE</h1></a>
                 <img src="images/andre kertesz distortion 1 TS.jpg">
@@ -167,20 +177,28 @@
 </div>
 </div>
 
+<!-- this is a draggable element -->
 <div id="dragcast">
 <div id="dragcastheader">
 <div class="window" id="cast">
     <div class="container">
     <div class="pane scroll scroll-color-colors">
 
-        <h1 style="text-align:center;">CAST OF CHARACTERS</h1>
+        <h1>ABOUT US</h1>
+
+        <br>
+
+        <p>tomorrow started is a visual collective<br><br>this blog serves as a visual notebook for a group of bandit bloggers. we post things we see and like. our lives don’t revolve around singular topics and neither does our blog.<br><br>sorry! nothing is in-or-out of context here. enjoy xx</p>
+
+            
+        <h1>CAST OF CHARACTERS</h1>
 
         <div class="grid"> 
             <div><img src="images/cast-of-characters/tomorrow-started-uh-square.png"><p><i>uh</i>, getting old, but not tired</p></div>
             <div><img src="images/cast-of-characters/tomorrow-started-kc-square.png"><p><i>kc</i> finds it all too boring</p></div>
             <div><img src="images/cast-of-characters/tomorrow-started-kt-square.gif"><p><i>kt</i> is in the dauuuug haus</p></div>
             <div><img src="images/cast-of-characters/tomorrow-started-lb-square.png"><p><i>lb</i> is looking… looking for the right boy…</p></div>
-            <div><img src="images/cast-of-characters/tomorrow-started-lsd-square.png"><p><i>jusqu’ici tout va bien, mais l’important c’est pas la chute – c’est l’atterrissage.</i> or, something to that extent. -<i>lsd</i></p></div>
+            <div><img src="images/cast-of-characters/tomorrow-started-lsd-square.png"><p><i>jusqu’ici tout va bien, mais l’important c’est pas la chute – c’est l’atterrissage.</i> or, something to that extent -lsd</p></div>
             <div><img src="images/cast-of-characters/tomorrow-started-nwa-square.png"><p>this is <i>nwa…</i> the OG… before there was eazy-e… there was the ‘norwegian with an attitude”</div>
             <div><img src="images/cast-of-characters/tomorrow-started-pp-square.png"><p><i>pp</i>, home reading what appears to be a book</p></div>
             <div><img src="images/cast-of-characters/tomorrow-started-kl-square.png"><p><i>kl</i>, shocked to find out <i>pp</i> is reading a book</p></div>
@@ -200,53 +218,27 @@
 </div>
 </div>
 
-<!-- this is a draggable element. exist outside the "cover" class -->
+<!-- this is a draggable element -->
+<div id="dragmenu">
+<div id="dragmenuheader">
+    <div style="display:flex; width:40rem; height:10rem; margin-left: 5rem; padding-top: 2.5rem;">
+        <div onclick="archivesToggle()" title="archives"><button class="linkarchives"><h3>archives</h3></button></div>
+        <div onclick="" title="randomizer"><button><h3 style="opacity:0.3;">randomizer</h3></button></div>
+        <div onclick="postToggle()" title="post"><button class="linkpost"><h3>posts</h3></button></div>
+    </div>
+</div>
+</div>
+
+
+<!-- this is a draggable element.-->
 <div id="dragfly">
 <div id="dragflyheader">
-<img onclick="flyToggle()" title="fly"id="fly" src="images/fly-houseful-photograph leo edit.png">
+<img onclick="flyToggle()" title="fly" id="fly" src="images/fly-houseful-photograph leo edit.png">
 </div>
-</div>
-
-
-
-<!-- cover class is used to position the footer menu in place. -->
-<!-- it is slightly awkward here as it relies on two extra and empty elements, one DIV and one H4. -->
-<!-- Should be resolved. -->
-<div class="cover">
-    
-<div></div>
-
-<h4></h4>
-
-<div class="menu">
-<div class="nav">
-    <div>
-        <button href="#" title="search"><h2 style="opacity:0.3;">search</h2></button>
-    </div>
-    <div>
-        <button onclick="archivesToggle()" title="archives"><h2 class="linkarchives">archives</h2></button>
-        <button onclick="categoriesToggle()" title="categories"><h2 class="linkcategories">categories</h2></button>
-        <button href="#" title="randomizer"><h2 style="opacity:0.3;">randomizer</h2></button>
-        <button onclick="postToggle()" title="post"><h2 class="linkpost">posts</h2></button>
-            &emsp;&emsp;&emsp;&emsp;
-        <button onclick="castToggle()" title="meet the cast"><h2 class="linkcast">tomorrow started</h2></button>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-    </div>
-</ul>
-</div>
-
 </div>
 
 <script>
-    const buttonRight = document.getElementById('slideDownshop');
-    const buttonLeft = document.getElementById('slideUpshop');
 
-    buttonRight.onclick = function () {
-      document.getElementById('linktreelistshop').scrollBy(0, 29);
-    };
-    buttonLeft.onclick = function () {
-      document.getElementById('linktreelistshop').scrollBy(0, -29);
-    };
 </script>
 
 </body>

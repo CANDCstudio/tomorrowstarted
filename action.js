@@ -1,13 +1,16 @@
 // Makes the DIV element draggable:
 window.onload = function() {
 
+    dragElement(document.getElementById("dragfly"));
     dragElement(document.getElementById("dragshop"));
     dragElement(document.getElementById("draglistenup"));
     dragElement(document.getElementById("dragreferences"));
     dragElement(document.getElementById("dragarchives"));
     dragElement(document.getElementById("dragpost"));
     dragElement(document.getElementById("dragcast"));
-    dragElement(document.getElementById("dragfly"));
+    dragElement(document.getElementById("dragmenu"));
+    
+    
 };
 
 function dragElement(elmnt) {
@@ -120,6 +123,17 @@ document.querySelector('.linkreferences').onclick = function(){
       this.className = 'linkreferences linkreferences_italic';
   }
 };
+
+const buttonRight = document.getElementById('slideDownshop');
+const buttonLeft = document.getElementById('slideUpshop');
+
+buttonRight.onclick = function () {
+  document.getElementById('linktreelistshop').scrollBy(0, 29);
+};
+buttonLeft.onclick = function () {
+  document.getElementById('linktreelistshop').scrollBy(0, -29);
+};
+
 }
 
 
