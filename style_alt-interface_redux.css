@@ -1,0 +1,237 @@
+/* global definitions */
+:root {
+	/* this sets a lot of our sizing rules and defines various spacing paramters */
+	--ratio: 1.314 /* pi */;
+	--s-5: calc(var(--s-4) / var(--ratio));
+	--s-4: calc(var(--s-3) / var(--ratio));
+	--s-3: calc(var(--s-2) / var(--ratio));
+	--s-2: calc(var(--s-1) / var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s0: 1rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s1) * var(--ratio));
+	--s3: calc(var(--s2) * var(--ratio));
+	--s4: calc(var(--s3) * var(--ratio));
+	--s5: calc(var(--s4) * var(--ratio));
+	/* this is mainly used to define/exclude/capture the max-inline-size, in units of characters */
+	--measure: 60ch;
+}
+
+/* universal definitions */
+* {
+	box-sizing: border-box;
+	max-inline-size: var(--measure);
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: var(--s0); 
+}
+
+body {
+	width: 98vw;
+	height: 96vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	position: fixed;
+
+
+	/* background image */
+    background-image: url("images/background/tsbg-hres.jpg"), url("images/background/tsbg-lres.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-size: cover, cover;
+    background-position: center,center;
+	
+    overflow: hidden;
+}
+
+/* important exclusions to the max-inline-size definition */
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
+/* for header tag */
+h1 { font-weight:bold; font-size:var(--s1); }
+/* for draggable elements headings */
+h2 { font-weight:bold; font-size:var(--s1); } 
+/* for post titles */
+h3 { font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
+/* for other titles : categories, archive dates, reset button */
+h4 { font-weight:bold; font-size:var(--s-1); }
+
+/* <p> tag is by default covered by universal definitions [ln 20],
+hence why it doesn't need to be defined below */
+
+/* for post subtitles */
+em { font-size:var(--s-1); }
+/* class for initials */
+.initials { font-weight:600; }
+
+img { 
+	width: var(--measure);
+	max-width: 100%;
+	height: auto;
+}
+
+iframe {
+	width: var(--measure);
+	max-width: 100%;
+	min-height: 15rem;
+	height: 20vh;	
+}
+
+header {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 0 0 auto;
+	justify-content: center;
+
+	padding-left: 5vw;
+	padding-right: 5vw;
+
+	overflow: hidden;
+}
+
+header > * { padding-bottom: 1vh; }
+
+header div:first-child {
+	display: inherit; 
+	flex-basis: 100%; 
+	justify-content: space-between;
+}
+
+header div:nth-child(n+2):not(.break) {
+	display: inherit;
+	flex-basis: 100%; 
+	flex-direction: row-reverse;
+	justify-content: end;
+
+	gap: var(--s2);
+
+	overflow: scroll;
+	scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+header div:nth-child(n+2) a, button { flex-shrink: 0; }
+
+header div:last-child { margin-bottom: 3vh; }
+
+.break { flex-basis: 100%; }
+
+main {
+	display: flex;
+	overflow-x: hidden;
+	flex: 1 1 auto;
+
+	padding-left: 7vw;
+	padding-right: 7vw;	
+}
+
+.content {
+
+	width: 100vw;
+	height: 100%;
+	padding-top: 15vh;
+
+	overflow-y: scroll;
+	scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.content > *:not(h3) {
+	padding-left: 5vw;
+	margin-top: 2rem;
+}
+
+button {
+	background:none;
+	border:none;
+	width: fit-content;
+}
+
+.masked-overflow-y {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-width: 0px;
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 3rem;
+    /* If content exceeds height of container, overflow! */
+    overflow-y: auto;
+    /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+    padding-bottom: var(--mask-height);
+
+    /* The CSS mask */
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+        to bottom,
+        transparent,
+        black var(--mask-height),
+        black calc(100% - var(--mask-height)),
+        transparent
+    );
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+}
+
+.masked-overflow-x {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-height: 0px;
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 2rem;
+    /* If content exceeds height of container, overflow! */
+    overflow-x: auto;
+    /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+    padding-left: var(--mask-height);
+	padding-right: var(--mask-height);
+    
+    /* The CSS mask */
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+        to right,
+		transparent,
+        black var(--mask-height),
+        black calc(100% - var(--mask-height)),
+		transparent
+  
+    );
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-height)) 100%;
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-height) 100%;
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+}
+

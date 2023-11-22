@@ -14,7 +14,7 @@
 	--s4: calc(var(--s3) * var(--ratio));
 	--s5: calc(var(--s4) * var(--ratio));
 	/* this is mainly used to define/exclude/capture the max-inline-size, in units of characters */
-	--measure: 75ch;
+	--measure: 65ch;
 }
 
 /* universal definitions */
@@ -51,6 +51,11 @@ h1 { font-size: var(--s2); }
 h2 { font-size: var(--s2); }
 h3{ font-size: var(--s1); }
 
+em { max-inline-size:none; display: block; font-size: var(--s-1); font-weight: 400; }
+i { font-size: inherit; font-style: italic; font-weight: 400; }
+
+.initials { font-size: var(--s0); font-weight: 600; }
+
 li { display: inline-block; margin: auto; padding-left: var(--s-3); padding-right: var(--s2); }
 li a { display: inline-block; text-align: center; }
 
@@ -64,12 +69,11 @@ button {
 	outline:inherit;
 
     display:inline-block;
-    margin:auto;
     padding-left:var(--s-3);
     padding-right:var(--s2);
 }
 
-a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: black; }
+a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: black;}
 a:visited{ color: inherit; }
 /* nifty solution to resolve shifting during normal to italic hover transition */
 /* github user 350D proposed this */
@@ -82,7 +86,7 @@ a::before {
     overflow: hidden;
     visibility: hidden;
 }
-a:hover{ font-style: italic; }
+a:hover{ font-style: italic;}
 .linkarchives { font-style: normal; }
 .linkarchives_italic { font-style: italic; }
 .linkcategories { font-style: normal; writing-mode: vertical-rl; text-orientation: mixed;}
@@ -112,7 +116,7 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
 .nav div { margin-left:5vw; margin-right:5vw; z-index:5; }
 
 /* pop up windows styling begins */
-.window { background-color:white; min-width:50rem; box-shadow: var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); }
+.window { background-color:rgba(255, 255, 255, 0.7); min-width:50rem; box-shadow: var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); }
 
 /* styling specific to post window */ 
 #post { width:45vw; height:75vh; display:none; }
@@ -128,37 +132,58 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
 .pane {
     display: block;
     width: inherit;
-    background-color:white;
+    padding-top: var(--s5);
+    padding-bottom: var(--s2);
+    padding-right: var(--s0);
+    background-color:rgba(255, 255, 255, 0);
     flex-grow: 3; /* set the proportion of room taken by mutliple panes */
     order: 2; /* so that subsequent panes fall to the left and not the right */
     overflow-y: auto;
-    padding-top: var(--s1);
-    padding-bottom: var(--s2);
-    padding-right: var(--s0);
 }
 .pane + .pane {
     display: block;
-    background-color:white;
+    background-color:rgba(255, 255, 255, 0);
     flex-grow: 1; /* set the proportion of room taken by mutliple panes */
     order: 1; /* assures that the subsequent pane will be left of first pane */
     margin-right: var(--s1);
     padding-top: var(--s1);
     padding-bottom: var(--s1);
 }
+
+
 .pane img {
     max-inline-size: none;
     width: 100%;
     padding-top: var(--s2);
     padding-bottom: var(--s2);
+    margin-top: var(--s3);
 }
 .pane h1 {
     padding-top: var(--s2);
     padding-right: var(--s2);
+    padding-top: var(--s3);
     margin-left: var(--s4);
+}
+.pane h5 {
+    padding-right: var(--s2);
+    margin-top: var(--s3);
+    margin-right: var(--s2);
+    font-size: var(--s-1); 
+    font-weight: 600;
 }
 .pane p {
     padding-right: var(--s2);
+    padding-top: var(--s3);
+    padding-bottom: var(--s3);
     margin-left: var(--s2);
+    font-size: var(--s0); 
+    font-weight: 400;
+}
+
+.pane iframe { 
+    max-inline-size:none;
+    width:100%;
+    height:30vh;
 }
 /* pop up windows styling end */
 
@@ -195,6 +220,14 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
 #fly { width:18rem; height:18rem; padding: 5rem; }
 /* song of the day fly styling ends */
 
+#menu {
+    display:flex; 
+    width:40rem; 
+    height:10rem; 
+    margin-left:5rem; 
+    padding-top:2.5rem;
+}
+
 .grid {
     display: grid;
     grid-gap: var(--s3);
@@ -208,26 +241,104 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
 }
 .grid p { text-align:center; }
 
-.post {
-    height: 80vh;
-    width: 60vw;
-    margin: 15vh 25vw;
+.masked-overflow {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-width: 8px;
+
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 3rem;
+
+    /* If content exceeds height of container, overflow! */
+    overflow-y: auto;
+
+    /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+    padding-bottom: var(--mask-height);
+    
+    /* The CSS mask */
+
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+        to bottom,
+        transparent,
+        black var(--mask-height),
+        black calc(100% - var(--mask-height)),
+        transparent
+    );
+
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+}
+
+@media screen and (min-width:1200px){
+    
+#main-interface { display:block; }
+
+#alt-interface { display:none; }
+
+}
+
+@media screen and (max-width:1199px) {
+
+#main-interface { display:none; }
+
+#alt-interface { 
+    display:block; 
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    max-inline-size: none;
+}
+
+.alt-interface_body {
+    display: block;
+    height: 90vh;
+    width: 97vw;
+    margin-top: 5rem;
+    padding-right: 10vw;
+    max-inline-size: none;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+}
+
+.alt-interface_content {
+    padding-top: 25vh;
+    padding-left: 4rem;
+    padding-bottom: 15rem;
     max-inline-size: none;
 
     overflow-y: auto;
-    overflow-x: hidden;
-    transform: scaleX(-1);
-
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    overflow-x: hidden; 
 }
 
-.post::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
+.alt-interface_content > * { margin-top: var(--s3); }
 
-.post_content {
-    padding-left: 2rem;
-    transform: scaleX(-1);
+.alt-interface_content :not(h1) { margin-left: 5vw; }
+
+.alt-interface_content img { max-inline-size: none; width: 80vw; }
+.alt-interface_content iframe { max-inline-size: none; width: 30rem; height:20rem; object-fit: contain;}
+
+.alt-interface_content em { font-size: var(--s0); }
+.alt-interface_content h1 { font-size: var(--s3); text-transform: uppercase; }
+.alt-interface_content p { font-size: var(--s0); font-weight: 400;}
+    
 }

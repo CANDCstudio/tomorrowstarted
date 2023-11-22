@@ -124,16 +124,6 @@ document.querySelector('.linkreferences').onclick = function(){
   }
 };
 
-const buttonRight = document.getElementById('slideDownshop');
-const buttonLeft = document.getElementById('slideUpshop');
-
-buttonRight.onclick = function () {
-  document.getElementById('linktreelistshop').scrollBy(0, 29);
-};
-buttonLeft.onclick = function () {
-  document.getElementById('linktreelistshop').scrollBy(0, -29);
-};
-
 }
 
 

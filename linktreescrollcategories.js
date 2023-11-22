@@ -3,14 +3,14 @@
 
 window.onload = function() {    
     
-    const buttonRight = document.getElementById('slideDown');
-    const buttonLeft = document.getElementById('slideUp');
+    const buttonRight = document.getElementById('slideDownshop');
+    const buttonLeft = document.getElementById('slideUpshop');
 
     buttonRight.onclick = function () {
-      document.getElementById('linktreelist').scrollBy(0, 30);
+      document.getElementById('linktreelistshop').scrollBy(0, 30);
     };
     buttonLeft.onclick = function () {
-      document.getElementById('linktreelist').scrollBy(0, -30);
+      document.getElementById('linktreelistshop').scrollBy(0, -30);
     };
     
   };
