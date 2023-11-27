@@ -21,8 +21,19 @@
 * {
 	box-sizing: border-box;
 	max-inline-size: var(--measure);
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 	font-size: var(--s0); 
+}
+
+/* important exclusions to the max-inline-size definition */
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
 }
 
 body {
@@ -46,16 +57,7 @@ body {
     overflow: hidden;
 }
 
-/* important exclusions to the max-inline-size definition */
-html,
-body,
-div,
-header,
-nav,
-main,
-footer {
-  max-inline-size: none;
-}
+
 
 /* for header tag */
 h1 { font-weight:bold; font-size:var(--s1); }
@@ -73,6 +75,42 @@ hence why it doesn't need to be defined below */
 em { font-size:var(--s-1); }
 /* class for initials */
 .initials { font-weight:600; }
+
+button {
+	background:none;
+  color: inherit;
+	border:none;
+  padding:0;
+	font:inherit;
+  outline:inherit;
+	width: max-content;
+  cursor:pointer;
+  display:inline-block;
+}
+
+a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: black; padding:0;}
+a:visited{ color: inherit; }
+/* nifty solution to resolve shifting during normal to italic hover transition */
+/* github user 350D proposed this */
+/* does not work with the default serif fonts for whatever reason */ 
+a::before {
+    display: block;
+    content: attr(title);
+    font-style: italic;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+a:hover{ font-style:italic; }
+/* accordingly assign the .link[...] class to the desired element */
+.linkarchives { font-style: normal; }
+.linkarchives_italic { font-style: italic; }
+.linkshop { font-style: normal; }
+.linkshop_italic { font-style: italic; }
+.linkcategories { font-style: normal; }
+.linkcategories_italic { font-style: italic; }
+.linklistenup { font-style: normal; }
+.linklistenup_italic { font-style: italic; }
 
 img { 
 	width: var(--measure);
@@ -95,36 +133,53 @@ header {
 
 	padding-left: 5vw;
 	padding-right: 5vw;
+  padding-bottom: 4vh;
 
 	overflow: hidden;
 }
 
-header > * { padding-bottom: 1vh; }
-
 header div:first-child {
-	display: inherit; 
+	display: flex; 
 	flex-basis: 100%; 
 	justify-content: space-between;
+  padding-bottom: 2vh;
 }
 
-header div:nth-child(n+2):not(.break) {
-	display: inherit;
-	flex-basis: 100%; 
-	flex-direction: row-reverse;
-	justify-content: end;
+header .search-container {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: row;
+  justify-content:left;
+  flex-wrap: wrap;
+
+	overflow: hidden;
+}
+
+header .search-container > * {
+	display: flex;
+  flex-direction: row;
+  flex-basis: auto;
 
 	gap: var(--s2);
+  margin-bottom: var(--s0);
+  padding-left: var(--s2);
 
-	overflow: scroll;
-	scrollbar-width: none;
-    -ms-overflow-style: none;
+  overflow: scroll;
 }
 
-header div:nth-child(n+2) a, button { flex-shrink: 0; }
 
-header div:last-child { margin-bottom: 3vh; }
 
-.break { flex-basis: 100%; }
+header .search-container a, button { flex-shrink: 0; }
+
+.searchbar { height:3rem; border-style:solid; border-color:black; }
+
+/* we set the elements in the menu bar to display:none by default */
+/* to hide them until they are toggled */
+#searchalt { display: none; }
+#archivesalt { display: none; }
+#categoriesalt { display: none; }
+#listenupalt { display: none; }
+#shopalt { display: none; }
 
 main {
 	display: flex;
@@ -151,11 +206,19 @@ main {
 	margin-top: 2rem;
 }
 
-button {
-	background:none;
-	border:none;
-	width: fit-content;
+.hide-scrollbar {
+  /*FireFox*/
+  scrollbar-width: none;
+  /*IE10+*/
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+.hide-scrollbar::-webkit-scrollbar {
+  /*Chrome, Safari, Edge*/
+  display: none;
+}
+
+
+#fly { width: 10rem; height: 10rem; padding: 1rem;}
 
 .masked-overflow-y {
     /* scroll bar width, for use in mask calculations */
@@ -202,10 +265,9 @@ button {
     --mask-height: 2rem;
     /* If content exceeds height of container, overflow! */
     overflow-x: auto;
-    /* Need to make sure container has bottom space,
-  otherwise content at the bottom is always faded out */
-    padding-left: var(--mask-height);
-	padding-right: var(--mask-height);
+    /* Need to make sure container has space to the right,
+  otherwise content at that end is always faded out */
+	  padding-right: var(--mask-height);
     
     /* The CSS mask */
     /* The content mask is a linear gradient from top to bottom */
@@ -235,3 +297,7 @@ button {
     mask-repeat: no-repeat, no-repeat;
 }
 
+#landing { position:absolute; bottom:13vh; right:20vw; }
+#landing h1 { direction: rtl; }
+#landing img { display: none; mix-blend-mode: multiply; width: auto; height: 25rem; padding-bottom: 10vh;;}
+#landing:hover img {display: block; mix-blend-mode: multiply; }

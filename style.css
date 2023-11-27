@@ -7,7 +7,7 @@
 	--s-3: calc(var(--s-2) / var(--ratio));
 	--s-2: calc(var(--s-1) / var(--ratio));
 	--s-1: calc(var(--s0) / var(--ratio));
-	--s0: 1.05rem;
+	--s0: 1rem;
 	--s1: calc(var(--s0) * var(--ratio));
 	--s2: calc(var(--s1) * var(--ratio));
 	--s3: calc(var(--s2) * var(--ratio));
@@ -21,9 +21,8 @@
 * {
 	box-sizing: border-box;
 	max-inline-size: var(--measure);
-	font-size: var(--s-1);
-	font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+	font-size: var(--s0); 
 }
 
 /* important exclusions to the max-inline-size definition */
@@ -33,31 +32,37 @@ div,
 header,
 nav,
 main,
-footer,
-.cover {
+footer {
   max-inline-size: none;
 }
 
 body {
+    /* background image */
     background-image: url("images/background/tsbg-hres.jpg"), url("images/background/tsbg-lres.jpg");
     background-repeat: no-repeat, no-repeat;
     background-attachment: fixed, fixed;
     background-size: cover, cover;
     background-position: center,center;
+
     overflow: hidden;
 }
 
-h1 { font-size: var(--s2); }
-h2 { font-size: var(--s2); }
-h3{ font-size: var(--s1); }
+/* for header tag */
+h1 { font-weight:bold; font-size:var(--s1); }
+/* for draggable elements headings */
+h2 { font-weight:bold; font-size:var(--s1); } 
+/* for post titles */
+h3 { font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
+/* for other titles : categories, archive dates, reset button */
+h4 { font-weight:bold; font-size:var(--s-1); }
 
-em { max-inline-size:none; display: block; font-size: var(--s-1); font-weight: 400; }
-i { font-size: inherit; font-style: italic; font-weight: 400; }
+/* <p> tag is by default covered by universal definitions [ln 20],
+hence why it doesn't need to be defined below */
 
-.initials { font-size: var(--s0); font-weight: 600; }
-
-li { display: inline-block; margin: auto; padding-left: var(--s-3); padding-right: var(--s2); }
-li a { display: inline-block; text-align: center; }
+/* for post subtitles */
+em { font-size:var(--s-1); }
+/* class for initials */
+.initials { font-weight:600; }
 
 button {
     background:none;
@@ -73,7 +78,7 @@ button {
     padding-right:var(--s2);
 }
 
-a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: black;}
+a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: black; }
 a:visited{ color: inherit; }
 /* nifty solution to resolve shifting during normal to italic hover transition */
 /* github user 350D proposed this */
@@ -95,6 +100,17 @@ a:hover{ font-style: italic;}
 .linkpost_italic { font-style: italic; }
 .linkcast { font-style: normal; }
 .linkcast_italic { font-style: italic; }
+
+img { 
+	width: var(--measure);
+	max-width: 100%;
+	height: auto;
+}
+
+iframe {
+	width: 35rem;
+    height: 20rem;
+}
 
 ::-webkit-scrollbar { width: 20px; }
 ::-webkit-scrollbar-track { border-left: 10px transparent; }
@@ -150,41 +166,11 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
     padding-bottom: var(--s1);
 }
 
-
-.pane img {
-    max-inline-size: none;
-    width: 100%;
-    padding-top: var(--s2);
-    padding-bottom: var(--s2);
-    margin-top: var(--s3);
-}
-.pane h1 {
-    padding-top: var(--s2);
-    padding-right: var(--s2);
-    padding-top: var(--s3);
-    margin-left: var(--s4);
-}
-.pane h5 {
-    padding-right: var(--s2);
-    margin-top: var(--s3);
-    margin-right: var(--s2);
-    font-size: var(--s-1); 
-    font-weight: 600;
-}
-.pane p {
-    padding-right: var(--s2);
-    padding-top: var(--s3);
-    padding-bottom: var(--s3);
-    margin-left: var(--s2);
-    font-size: var(--s0); 
-    font-weight: 400;
+.pane > *:not(h3) {
+	padding-left: 5vw;
+	margin-top: 2rem;
 }
 
-.pane iframe { 
-    max-inline-size:none;
-    width:100%;
-    height:30vh;
-}
 /* pop up windows styling end */
 
 /* link trees style begin , to change after demo */
@@ -287,58 +273,4 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
 
     /* We don't repeat our mask images */
     mask-repeat: no-repeat, no-repeat;
-}
-
-@media screen and (min-width:1200px){
-    
-#main-interface { display:block; }
-
-#alt-interface { display:none; }
-
-}
-
-@media screen and (max-width:1199px) {
-
-#main-interface { display:none; }
-
-#alt-interface { 
-    display:block; 
-    overflow: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;
-    max-inline-size: none;
-}
-
-.alt-interface_body {
-    display: block;
-    height: 90vh;
-    width: 97vw;
-    margin-top: 5rem;
-    padding-right: 10vw;
-    max-inline-size: none;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;
-}
-
-.alt-interface_content {
-    padding-top: 25vh;
-    padding-left: 4rem;
-    padding-bottom: 15rem;
-    max-inline-size: none;
-
-    overflow-y: auto;
-    overflow-x: hidden; 
-}
-
-.alt-interface_content > * { margin-top: var(--s3); }
-
-.alt-interface_content :not(h1) { margin-left: 5vw; }
-
-.alt-interface_content img { max-inline-size: none; width: 80vw; }
-.alt-interface_content iframe { max-inline-size: none; width: 30rem; height:20rem; object-fit: contain;}
-
-.alt-interface_content em { font-size: var(--s0); }
-.alt-interface_content h1 { font-size: var(--s3); text-transform: uppercase; }
-.alt-interface_content p { font-size: var(--s0); font-weight: 400;}
-    
 }

@@ -72,6 +72,7 @@ document.querySelector('.linkarchives').onclick = function(){
       this.className = 'linkarchives linkarchives_italic';
   }
 };
+
 document.querySelector('.linkcategories').onclick = function(){
   if(this.className.match('linkcategories_italic')) {
       this.className = 'linkcategories';
@@ -125,5 +126,3 @@ document.querySelector('.linkreferences').onclick = function(){
 };
 
 }
-
-
