@@ -210,7 +210,7 @@ main {
 }
 
 .content > *:not(h3) {
-	padding-left: 5vw;
+	margin-left: 5vw;
 	margin-top: 2rem;
 }
 
