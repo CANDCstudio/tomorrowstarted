@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-mobile.css">
     <link rel="stylesheet" href="style-foractionjs.css">
     
     <script src="menutoggle.js"></script>
@@ -10,7 +14,6 @@
 </head>
 
 <body>
-<div id="main-interface">
 
 <div style="position: absolute; bottom: 5vh; left:5vw; padding-top:2rem; margin-left:0.75rem;">
 <button onClick="window.location.reload()">
@@ -143,7 +146,7 @@
         </div>
     </div>
     </div>
-    </div>
+</div>
 
 <!-- this is a draggable element -->
 <div id="dragpost">
@@ -182,6 +185,7 @@
 </div>
 
 <!-- this is a draggable element -->
+<!-- cast of characters -->
 <div id="dragcast">
 <div id="dragcastheader">
 <div class="window" id="cast">
@@ -239,18 +243,16 @@
 </div>
 </div>
 
-
-<!-- this is a draggable element.-->
+<!-- this is a draggable element -->
+<!-- daily track feature - FLY -->
 <div id="dragfly">
 <div id="dragflyheader">
 <img onclick="flyToggle()" title="fly" id="fly" src="images/fly-houseful-photograph leo edit.png">
 </div>
 </div>
 
-</div>
-
-
 <script>
+
 const buttonRight = document.getElementById('slideDownshop');
 const buttonLeft = document.getElementById('slideUpshop');
 
@@ -260,6 +262,7 @@ buttonRight.onclick = function () {
 buttonLeft.onclick = function () {
   document.getElementById('linktreelistshop').scrollBy(0, -29);
 };
+
 </script>
 
 </body>

@@ -46,7 +46,6 @@ body {
 	align-items: stretch;
 	position: fixed;
 
-
 	/* background image */
     background-image: url("images/background/tsbg-hres.jpg"), url("images/background/tsbg-lres.jpg");
     background-repeat: no-repeat, no-repeat;
@@ -56,8 +55,6 @@ body {
 	
     overflow: hidden;
 }
-
-
 
 /* for header tag */
 h1 { font-weight:bold; font-size:var(--s1); }
@@ -88,7 +85,7 @@ button {
   display:inline-block;
 }
 
-a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: black; padding:0;}
+a:link { text-decoration:none; font-family:inherit; font-size:inherit; color:black; padding:0;}
 a:visited{ color: inherit; }
 /* nifty solution to resolve shifting during normal to italic hover transition */
 /* github user 350D proposed this */
@@ -103,14 +100,28 @@ a::before {
 }
 a:hover{ font-style:italic; }
 /* accordingly assign the .link[...] class to the desired element */
-.linkarchives { font-style: normal; }
-.linkarchives_italic { font-style: italic; }
-.linkshop { font-style: normal; }
-.linkshop_italic { font-style: italic; }
-.linkcategories { font-style: normal; }
-.linkcategories_italic { font-style: italic; }
-.linklistenup { font-style: normal; }
-.linklistenup_italic { font-style: italic; }
+.linkcastalt { font-style:normal; }
+.linkcastalt_italic { font-style:italic; }
+.linksearchalt  { font-style:normal; }
+.linksearchalt_italic { font-style:italic; }
+
+.linkshopalt { font-style:normal; }
+.linkshopalt_italic { font-style:italic; }
+.linklistenupalt { font-style:normal; }
+.linklistenupalt_italic { font-style:italic; }
+.linkcategoriesalt { font-style:normal; }
+.linkcategoriesalt_italic { font-style:italic; }
+.linkarchivesalt { font-style:normal; }
+.linkarchivesalt_italic { font-style:italic; }
+
+/* we set the elements in the menu bar to display:none by default */
+/* to hide them until they are toggled */
+#searchalt { display:none; }
+#castalt { display:none; }
+#archivesalt { display:none; }
+#categoriesalt { display:none; }
+#listenupalt { display:none; }
+#shopalt { display:none; }
 
 img { 
 	width: var(--measure);
@@ -125,6 +136,11 @@ iframe {
 	height: 20vh;	
 }
 
+#landing { position:absolute; bottom:13vh; right:15vw; }
+#landing h1 { direction:rtl; }
+#landing img { display:none;  mix-blend-mode:multiply; width:auto; height:65vh; padding-bottom:10vh; }
+#landing:hover img { display:block; mix-blend-mode:multiply; }
+
 header {
 	display: flex;
 	flex-wrap: wrap;
@@ -138,11 +154,13 @@ header {
 	overflow: hidden;
 }
 
+header > * { padding-bottom: 1rem; }
+
 header div:first-child {
 	display: flex; 
 	flex-basis: 100%; 
 	justify-content: space-between;
-  padding-bottom: 2vh;
+  max-height: 4rem;
 }
 
 header .search-container {
@@ -161,25 +179,16 @@ header .search-container > * {
   flex-basis: auto;
 
 	gap: var(--s2);
-  margin-bottom: var(--s0);
   padding-left: var(--s2);
 
   overflow: scroll;
 }
 
+header .search-container a, button { flex-shrink:0; }
 
+.menu-button { max-width:11rem; max-height:4rem; }
 
-header .search-container a, button { flex-shrink: 0; }
-
-.searchbar { height:3rem; border-style:solid; border-color:black; }
-
-/* we set the elements in the menu bar to display:none by default */
-/* to hide them until they are toggled */
-#searchalt { display: none; }
-#archivesalt { display: none; }
-#categoriesalt { display: none; }
-#listenupalt { display: none; }
-#shopalt { display: none; }
+.searchbar { height:3rem; border-style:solid; border-color:black; margin-bottom: 1rem;}
 
 main {
 	display: flex;
@@ -191,20 +200,40 @@ main {
 }
 
 .content {
-
 	width: 100vw;
 	height: 100%;
 	padding-top: 15vh;
 
 	overflow-y: scroll;
 	scrollbar-width: none;
-    -ms-overflow-style: none;
+  -ms-overflow-style: none;
 }
 
 .content > *:not(h3) {
 	padding-left: 5vw;
 	margin-top: 2rem;
 }
+
+/* pop up windows styling begins */
+.window { background-color:rgba(255, 255, 255, 0.7); box-shadow:var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); }
+
+/* styling specific to cast of characters window */
+#castalt { width:85vw; max-width:45rem; height:65vh; display:none; }
+
+.container { display:flex; height:inherit; padding:var(--s1); }
+
+.pane {
+  display: block;
+  width: inherit;
+  padding-top: var(--s5);
+  padding-bottom: var(--s2);
+  padding-right: var(--s0);
+  background-color:rgba(255, 255, 255, 0);
+  flex-grow: 3; /* set the proportion of room taken by mutliple panes */
+  order: 2; /* so that subsequent panes fall to the left and not the right */
+  overflow-y: auto;
+}
+/* pop up windows styling ends */
 
 .hide-scrollbar {
   /*FireFox*/
@@ -217,8 +246,22 @@ main {
   display: none;
 }
 
-
 #fly { width: 10rem; height: 10rem; padding: 1rem;}
+
+.grid {
+  display: grid;
+  grid-gap: var(--s3);
+  margin-left: var(--s3);
+  margin-right: var(--s3);
+}  
+
+@supports (width: min(200px, 100%)) {
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+}
+
+.grid p { text-align:center; }
 
 .masked-overflow-y {
     /* scroll bar width, for use in mask calculations */
@@ -296,8 +339,3 @@ main {
     /* We don't repeat our mask images */
     mask-repeat: no-repeat, no-repeat;
 }
-
-#landing { position:absolute; bottom:13vh; right:20vw; }
-#landing h1 { direction: rtl; }
-#landing img { display: none; mix-blend-mode: multiply; width: auto; height: 25rem; padding-bottom: 10vh;;}
-#landing:hover img {display: block; mix-blend-mode: multiply; }

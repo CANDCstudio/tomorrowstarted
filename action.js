@@ -9,8 +9,7 @@ window.onload = function() {
     dragElement(document.getElementById("dragpost"));
     dragElement(document.getElementById("dragcast"));
     dragElement(document.getElementById("dragmenu"));
-    
-    
+
 };
 
 function dragElement(elmnt) {
@@ -63,6 +62,8 @@ window.onload = function () {
     prev_handler();
   }
 
+// to toggle italic and normal when certain elements are clicked (actived/inactive)
+
 // menu items 
 document.querySelector('.linkarchives').onclick = function(){
   if(this.className.match('linkarchives_italic')) {
@@ -72,7 +73,6 @@ document.querySelector('.linkarchives').onclick = function(){
       this.className = 'linkarchives linkarchives_italic';
   }
 };
-
 document.querySelector('.linkcategories').onclick = function(){
   if(this.className.match('linkcategories_italic')) {
       this.className = 'linkcategories';
@@ -98,7 +98,6 @@ document.querySelector('.linkcast').onclick = function(){
   }
 };
 
-
 // linktrees
 document.querySelector('.linkshop').onclick = function(){
   if(this.className.match('linkshop_italic')) {
@@ -122,6 +121,15 @@ document.querySelector('.linkreferences').onclick = function(){
   }
   else {
       this.className = 'linkreferences linkreferences_italic';
+  }
+};
+
+document.querySelector('.linkarchivesalt').onclick = function(){
+  if(this.className.match('linkarchivesalt_italic')) {
+      this.className = 'linkarchivesalt';
+  }
+  else {
+      this.className = 'linkarchivesalt linkarchivesalt_italic';
   }
 };
 

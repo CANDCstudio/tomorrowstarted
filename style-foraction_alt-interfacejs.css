@@ -1,0 +1,28 @@
+/* dragging styling begins */
+/* in conjunction with action_alt-interface.js file */
+
+/* for alternative interface ! */
+
+#dragfly {
+  z-index: 7;
+  position: absolute;
+  top: 75vh;
+  right: 19vw;
+}
+#dragflyheader {
+  cursor: move;
+  z-index: 10;
+}
+
+#dragcastalt {
+  z-index: 1;
+  position: absolute;
+  top: 15vh;
+  left: 5vw;
+}
+#dragcastaltheader {
+  cursor: move;
+  z-index: 10;
+}
+
+/* dragging styling ends */

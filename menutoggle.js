@@ -1,3 +1,5 @@
+// to toggle on/off specific elements when clicking on certain elements.
+
 // link trees
 
 /*
@@ -32,6 +34,7 @@ function referencesToggle() {
 
 */
 
+// for main interface !
 // posts
 function postToggle() {
     var x = document.getElementById("post");
@@ -73,13 +76,23 @@ function postToggle() {
   }
 
 // for alternative interface !
-
+// search
 function searchaltToggle() {
   var x = document.getElementById("searchalt");
   if (x.style.display === "flex") {
     x.style.display = "none";
   } else {
     x.style.display = "flex";
+  }
+}
+
+// cast-of-character _tomorrowstarted_
+function castaltToggle() {
+  var x = document.getElementById("castalt");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
   }
 }
 
@@ -93,6 +106,7 @@ function archivesaltToggle() {
   }
 }
 
+// categories
 function categoriesaltToggle() {
   var x = document.getElementById("categoriesalt");
   if (x.style.display === "flex") {
@@ -101,6 +115,8 @@ function categoriesaltToggle() {
     x.style.display = "flex";
   }
 }
+
+// listen up
 function listenupaltToggle() {
   var x = document.getElementById("listenupalt");
   if (x.style.display === "flex") {
@@ -109,6 +125,8 @@ function listenupaltToggle() {
     x.style.display = "flex";
   }
 }
+
+// shop
 function shopaltToggle() {
   var x = document.getElementById("shopalt");
   if (x.style.display === "flex") {
@@ -117,15 +135,4 @@ function shopaltToggle() {
     x.style.display = "flex";
   }
 }
-  
 
-const buttonElements = Array.from(document.querySelectorAll('.button'));
-buttonElements.forEach(buttonElement => {
-  buttonElement.addEventListener('click', () => { 
-    const activeElements = Array.from(document.querySelectorAll('.is-active'));
-    activeElements.forEach(activeElement => {
-      activeElement.classList.remove('is-active');
-    });
-    buttonElement.parentElement.classList.add('is-active');
-  });
-});
