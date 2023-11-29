@@ -64,7 +64,7 @@ window.onload = function () {
 
 // to toggle italic and normal when certain elements are clicked (actived/inactive)
 
-// menu items 
+// archives
 document.querySelector('.linkarchives').onclick = function(){
   if(this.className.match('linkarchives_italic')) {
       this.className = 'linkarchives';
@@ -73,6 +73,8 @@ document.querySelector('.linkarchives').onclick = function(){
       this.className = 'linkarchives linkarchives_italic';
   }
 };
+
+// categories
 document.querySelector('.linkcategories').onclick = function(){
   if(this.className.match('linkcategories_italic')) {
       this.className = 'linkcategories';
@@ -81,6 +83,8 @@ document.querySelector('.linkcategories').onclick = function(){
       this.className = 'linkcategories linkcategories_italic';
   }
 };
+
+// posts
 document.querySelector('.linkpost').onclick = function(){
   if(this.className.match('linkpost_italic')) {
       this.className = 'linkpost';
@@ -89,6 +93,8 @@ document.querySelector('.linkpost').onclick = function(){
       this.className = 'linkpost linkpost_italic';
   }
 };
+
+// cast-of-characters _ tomorrow-started
 document.querySelector('.linkcast').onclick = function(){
   if(this.className.match('linkcast_italic')) {
       this.className = 'linkcast';
@@ -98,6 +104,18 @@ document.querySelector('.linkcast').onclick = function(){
   }
 };
 
+// search
+document.querySelector('.linksearch').onclick = function(){
+  if(this.className.match('linksearch_italic')) {
+      this.className = 'linksearch';
+  }
+  else {
+      this.className = 'linksearch linksearch_italic';
+  }
+};
+
+// presently, not in use
+/*
 // linktrees
 document.querySelector('.linkshop').onclick = function(){
   if(this.className.match('linkshop_italic')) {
@@ -123,14 +141,6 @@ document.querySelector('.linkreferences').onclick = function(){
       this.className = 'linkreferences linkreferences_italic';
   }
 };
-
-document.querySelector('.linkarchivesalt').onclick = function(){
-  if(this.className.match('linkarchivesalt_italic')) {
-      this.className = 'linkarchivesalt';
-  }
-  else {
-      this.className = 'linkarchivesalt linkarchivesalt_italic';
-  }
-};
+*/
 
 }

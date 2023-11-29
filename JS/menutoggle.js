@@ -75,6 +75,16 @@ function postToggle() {
     }
   }
 
+// search 
+function searchToggle() {
+  var x = document.getElementById("search");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
 // for alternative interface !
 // search
 function searchaltToggle() {
@@ -99,6 +109,16 @@ function castaltToggle() {
 // archives
 function archivesaltToggle() {
   var x = document.getElementById("archivesalt");
+  if (x.style.display === "flex") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+
+// referencealt
+function referencealtToggle() {
+  var x = document.getElementById("referencealt");
   if (x.style.display === "flex") {
     x.style.display = "none";
   } else {

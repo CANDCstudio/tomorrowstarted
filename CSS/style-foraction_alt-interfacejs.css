@@ -6,8 +6,8 @@
 #dragfly {
   z-index: 7;
   position: absolute;
-  top: 75vh;
-  right: 19vw;
+  top: 70vh;
+  right: 13vw;
 }
 #dragflyheader {
   cursor: move;

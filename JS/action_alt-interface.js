@@ -96,6 +96,16 @@ window.onload = function () {
     }
   };
 
+// reference
+  document.querySelector('.linkreferencealt').onclick = function(){
+    if(this.className.match('linkreferencealt_italic')) {
+        this.className = 'linkreferencealt';
+    }
+    else {
+        this.className = 'linkreferencealt linkreferencealt_italic';
+    }
+  };
+
   // categories
   document.querySelector('.linkcategoriesalt').onclick = function(){
     if(this.className.match('linkcategoriesalt_italic')) {

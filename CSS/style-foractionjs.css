@@ -69,8 +69,8 @@
 #dragcast {
     z-index: 1;
     position: absolute;
-    top: 15vh;
-    left: 65rem;
+    top: 10vh;
+    left: 95rem;
 }
 #dragcastheader {
     cursor: move;

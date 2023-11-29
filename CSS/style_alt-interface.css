@@ -14,7 +14,7 @@
 	--s4: calc(var(--s3) * var(--ratio));
 	--s5: calc(var(--s4) * var(--ratio));
 	/* this is mainly used to define/exclude/capture the max-inline-size, in units of characters */
-	--measure: 60ch;
+	--measure: 75ch;
 }
 
 /* universal definitions */
@@ -47,7 +47,7 @@ body {
 	position: fixed;
 
 	/* background image */
-    background-image: url("images/background/tsbg-hres.jpg"), url("images/background/tsbg-lres.jpg");
+    background-image: url("../images/background/tsbg-hres.jpg"), url("../images/background/tsbg-lres.jpg");
     background-repeat: no-repeat, no-repeat;
     background-attachment: fixed, fixed;
     background-size: cover, cover;
@@ -75,7 +75,7 @@ em { font-size:var(--s-1); }
 
 button {
 	background:none;
-  color: inherit;
+  color: black;
 	border:none;
   padding:0;
 	font:inherit;
@@ -85,12 +85,13 @@ button {
   display:inline-block;
 }
 
-a:link { text-decoration:none; font-family:inherit; font-size:inherit; color:black; padding:0;}
-a:visited{ color: inherit; }
+a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: #9A928E; }
+a:visited{ color: #9A928E; }
 /* nifty solution to resolve shifting during normal to italic hover transition */
 /* github user 350D proposed this */
 /* does not work with the default serif fonts for whatever reason */ 
-a::before {
+/* we make sure to set :not(.content p a) so that any link inside a post does not break to next line as that is a side effect of this solution */
+a::before:not(.content p a) {
     display: block;
     content: attr(title);
     font-style: italic;
@@ -98,8 +99,8 @@ a::before {
     overflow: hidden;
     visibility: hidden;
 }
-a:hover{ font-style:italic; }
-/* accordingly assign the .link[...] class to the desired element */
+a:hover{ font-style:italic; color: orange;}
+/* accordingly assign the .link[...] class to the desired element to allow italic/normal toggle */
 .linkcastalt { font-style:normal; }
 .linkcastalt_italic { font-style:italic; }
 .linksearchalt  { font-style:normal; }
@@ -113,6 +114,8 @@ a:hover{ font-style:italic; }
 .linkcategoriesalt_italic { font-style:italic; }
 .linkarchivesalt { font-style:normal; }
 .linkarchivesalt_italic { font-style:italic; }
+.linkreferencealt { font-style:normal; }
+.linkreferencealt_italic { font-style:italic; }
 
 /* we set the elements in the menu bar to display:none by default */
 /* to hide them until they are toggled */
@@ -122,6 +125,7 @@ a:hover{ font-style:italic; }
 #categoriesalt { display:none; }
 #listenupalt { display:none; }
 #shopalt { display:none; }
+#referencealt { display:none; }
 
 img { 
 	width: var(--measure);
@@ -214,6 +218,10 @@ main {
 	margin-top: 2rem;
 }
 
+.content h3:nth-child(n+1) { padding-top: var(--s5); }
+.content h3 a { color:black; }
+.content h3 a:hover { color:orange; }
+
 /* pop up windows styling begins */
 .window { background-color:rgba(255, 255, 255, 0.7); box-shadow:var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); }
 
@@ -222,6 +230,7 @@ main {
 
 .container { display:flex; height:inherit; padding:var(--s1); }
 
+
 .pane {
   display: block;
   width: inherit;
@@ -229,10 +238,18 @@ main {
   padding-bottom: var(--s2);
   padding-right: var(--s0);
   background-color:rgba(255, 255, 255, 0);
-  flex-grow: 3; /* set the proportion of room taken by mutliple panes */
   order: 2; /* so that subsequent panes fall to the left and not the right */
   overflow-y: auto;
+  
 }
+
+.pane > *:not(h3, h4) {
+padding-left: 5vw;
+margin-top: 2rem;
+}
+.pane h3 { margin-left:3rem; }
+.pane h3 a { color:black; }
+.pane h3 a:hover { color:orange; }
 /* pop up windows styling ends */
 
 .hide-scrollbar {
@@ -246,7 +263,7 @@ main {
   display: none;
 }
 
-#fly { width: 10rem; height: 10rem; padding: 1rem;}
+#fly { width: 18rem; height: 18rem; padding: 5rem;}
 
 .grid {
   display: grid;

@@ -6,31 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-foractionjs.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/style-foractionjs.css">
     
-    <script src="menutoggle.js"></script>
-    <script src="action.js"></script>
+    <script src="JS/menutoggle.js"></script>
+    <script src="JS/action.js"></script>
+    
 </head>
 
 <body>
 
-<div style="position: absolute; bottom: 5vh; left:5vw; padding-top:2rem; margin-left:0.75rem;">
-<button onClick="window.location.reload()">
-    reset
-</button >
-</div>
+<div id="reset-btn" onClick="window.location.reload()">reset</div>
 
 <header class="nav">
-    <div>
-        <button href="#" title="search"><h2 style="opacity:0.3;">search</h2></button>
+    <div class="linksearch">
+        <button onclick="searchToggle()">
+            <h1>search</h1>
+        </button>
     </div>
     <div onclick="castToggle()" title="meet the cast">
         <button class="linkcast"><h2 >tomorrow started</h2></button>
     </div>
 </header>
 
+<!-- searchbar -->
+<div id="search" class="hide-scrollbar searchbar"></div>
+
 <!-- this is a draggable element -->
+<!-- linktree - shop -->
 <div id="dragshop">
 <div id="dragshopheader">
     <div onclick="shopToggle()" title="shop"><h1 class="linkshop">shop</h1></div>
@@ -39,7 +42,7 @@
             <div ><img class="arrow" id="slideUpshop" src="images/arrow up.png" alt="arrow up image"></div>
             <div ><img class="arrow" id="slideDownshop" src="images/arrow down.png" alt="arrow down image"></div>
         </div>
-        <div id="linktreelistshop">
+        <div id="linktreelistshop" class="masked-overflow">
             <a href="https://10corsocomo.com/en-us" target="_blank"><p>10 CORSO COMO</p></a>
             <a href="https://247archives.online/" target="_blank"><p>247</p></a>
             <a href="https://threeasfour.com/" target="_blank"><p>3 AS FOUR SHOP</p></a>
@@ -70,6 +73,7 @@
 </div>
 
 <!-- this is a draggable element -->
+<!-- linktree - listen-up -->
 <div id="draglistenup">
 <div id="draglistenupheader">
     <div><h1>listen up</h1></div>
@@ -89,6 +93,7 @@
 </div>
 
 <!-- this is a draggable element -->
+<!-- linktree - reference -->
 <div id="dragreferences">
 <div id="dragreferencesheader">
     <div onclick="referencesToggle()" title="references"><h1 class="linkreferences">references</h1></div>
@@ -106,42 +111,43 @@
 </div>
 
 <!-- this is a draggable element -->
+<!-- window - archives -->
 <div id="dragarchives">
 <div id="dragarchivesheader">
     <div class="window" id="archives">
         <div class="container">
-            <div class="pane scroll scroll-color-colors">
-                <a href="#"><h3>HOW TO COME UP WITH A GOOD TITLE</h3></a>
+            <div class="pane hide-scrollbar masked-overflow">
+                <h3><a href="#">how to come up with a good title</a></h3>
                 <img src="images/andre kertesz distortion 1 TS.jpg">
                 <p>here is an example. here is an example. here is an example. here is an example. here is an example. here is an example. </p>
                 <img src="images/andre kertesz distortion 1 TS.jpg">
                 <p>here is an example. here is an example. here is an example. here is an example. here is an example. here is an example. </p>
             </div>
-            <div class="pane scroll scroll-color-colors">
-                <a href="#"><h4>10-2023</h4></a>
-                <a href="#"><h4>09-2023</h4></a>
-                <a href="#"><h4>08-2023</h4></a>
-                <a href="#"><h4>07-2023</h4></a>
-                <a href="#"><h4>06-2023</h4></a>
-                <a href="#"><h4>05-2023</h4></a>
-                <a href="#"><h4>04-2023</h4></a>
-                <a href="#"><h4>03-2023</h4></a>
-                <a href="#"><h4>02-2023</h4></a>
-                <a href="#"><h4>01-2022</h4></a>
-                <a href="#"><h4>12-2022</h4></a>
-                <a href="#"><h4>11-2022</h4></a>
-                <a href="#"><h4>10-2022</h4></a>
-                <a href="#"><h4>09-2022</h4></a>
-                <a href="#"><h4>08-2022</h4></a>
-                <a href="#"><h4>07-2022</h4></a>
-                <a href="#"><h4>06-2022</h4></a>
-                <a href="#"><h4>05-2022</h4></a>
-                <a href="#"><h4>04-2022</h4></a>
-                <a href="#"><h4>03-2022</h4></a>
-                <a href="#"><h4>02-2022</h4></a>
-                <a href="#"><h4>01-2021</h4></a>
-                <a href="#"><h4>12-2021</h4></a>
-                <a href="#"><h4>11-2021</h4></a>
+            <div class="pane hide-scrollbar masked-overflow">
+                <h4><a href="#">10-2023</a></h4>
+                <h4><a href="#">09-2023</a></h4>
+                <h4><a href="#">08-2023</a></h4>
+                <h4><a href="#">07-2023</a></h4>
+                <h4><a href="#">06-2023</a></h4>
+                <h4><a href="#">05-2023</a></h4>
+                <h4><a href="#">04-2023</a></h4>
+                <h4><a href="#">03-2023</a></h4>
+                <h4><a href="#">02-2023</a></h4>
+                <h4><a href="#">01-2022</a></h4>
+                <h4><a href="#">12-2022</a></h4>
+                <h4><a href="#">11-2022</a></h4>
+                <h4><a href="#">10-2022</a></h4>
+                <h4><a href="#">09-2022</a></h4>
+                <h4><a href="#">08-2022</a></h4>
+                <h4><a href="#">07-2022</a></h4>
+                <h4><a href="#">06-2022</a></h4>
+                <h4><a href="#">05-2022</a></h4>
+                <h4><a href="#">04-2022</a></h4>
+                <h4><a href="#">03-2022</a></h4>
+                <h4><a href="#">02-2022</a></h4>
+                <h4><a href="#">01-2021</a></h4>
+                <h4><a href="#">12-2021</a></h4>
+                <h4><a href="#">11-2021</a></h4>
             </div>
         </div>
     </div>
@@ -149,12 +155,13 @@
 </div>
 
 <!-- this is a draggable element -->
+<!-- window - posts -->
 <div id="dragpost">
 <div id="dragpostheader">
 <div class="window" id="post">
     <div class="container">
         <button onclick="categoriesToggle()" title="categories"><h4 class="linkcategories">categories</h4></button>
-        <div class="pane scroll scroll-color-colors">
+        <div class="pane hide-scrollbar masked-overflow">
                 <h3><a href="z_post1.html" target="_blank">what is wrong with the palestinians?</a></h3>
                 <img src="images/z_article 1/settlements-in-westbank-gaza-palestine-1536x972.png" alt="">
 
@@ -171,12 +178,48 @@
                 <p style="text-align: center;"> <em>finally this can not be watched without a bit of history on how this country came to be and why. <a href="https://www.youtube.com/watch?v=6foH3Zc82ZQ" target="_blank" rel="noopener">"how israel was created"</a></em> </p>
 
                 <p>please educate yourselves by reading and watching multiple sides of the same story and judge for yourself. everything is biased, some are more biased than others. I find these to be factual and fair, but that is me.<br><br>if you watch this and you feel hatred in you, you are falling for the trap that is set for us all. understand your world and know that no one people can be all bad or good. there are good people and bad people in every country and culture. if this makes you hate all jews know that you have succumbed to oldest of racist means. you can condemn an act of a government or a group but to assign that guilt to their family and neighborhood and all such people is what we all must condemn. <strong class="initials">by xy</strong> </p>
-        </div>
-        <div class="pane scroll scroll-color-colors" id="categories">
-            
-            <a href="#"><h4>category</h4></a>
-            <a href="#"><h4>category</h4></a>
-            <a href="#"><h4>category</h4></a>
+
+        <!-- next post -->
+
+                <h3> <a href="z_post2.html" target="_blank"> website of the day | Donald Judd Library </a> </h3>
+
+                <img src="https://www.tomorrowstarted.com/wp-content/uploads/2023/11/Screenshot-2023-11-28-at-1.17.34-PM-480x310.png"/>
+
+                <br>
+
+                <iframe src="https://player.vimeo.com/video/849111959?h=ec83b07cfd&amp;dnt=1&amp;app_id=122963&amp;playsinline=1&amp;controls=0&amp;autoplay=1&amp;loop=1&amp;byline=0&amp;title=0&amp;muted=1&amp;api=1" frameborder="0"></iframe> 
+
+                <br>
+
+                <p>some incredible work by the folks over at <a href="https://chips.nyc/">chips</a>, friends to the south all the way in brooklyn (shudder). knocked it out of the park with this website. a quick tour through it, made available by the agency, can be viewed here, above.</p>
+
+                <br>
+
+                <img src="https://www.tomorrowstarted.com/wp-content/uploads/2023/11/Screenshot-2023-11-28-at-1.41.02-PM-480x310.png" alt=""/>
+                <p style="text-align: center;"><em>digital floorplan</em></p>
+                <img src="https://www.tomorrowstarted.com/wp-content/uploads/2023/11/Screenshot-2023-11-28-at-1.41.33-PM-480x310.png" alt=""/>
+                <p style="text-align: center;"><em>a bookcase for 'japan'</em></p>
+                <br>
+
+                <img src="https://www.tomorrowstarted.com/wp-content/uploads/2023/11/Screenshot-2023-11-28-at-1.41.41-PM-480x310.png" alt="" />
+                <p style="text-align: center;"><em>detail view of that bookcase</em></p>
+                <br>
+
+                <img src="https://www.tomorrowstarted.com/wp-content/uploads/2023/11/Screenshot-2023-11-28-at-1.41.45-PM-480x310.png" alt="" />
+                <p style="text-align: center;"><em>every single book is listed, has its own data sheet, and is linked on WorldCat to find at your nearest library. </em></p>
+                <br>
+
+                <p>the donald judd foundation put this together, judd's library is a space rebuilt all over in the desert and now available to us all online. i cannot overemphasize how priceless this work they've done is. truly a place to get lost.</p>
+
+                <img src="https://www.tomorrowstarted.com/wp-content/uploads/2023/11/Screenshot-2023-11-28-at-1.17.32-PM-480x310.png" alt="" />
+
+                <p>here is the website - <a href="https://library.juddfoundation.org">judd foundation &#8212; library</a> - please, please, enjoy! <strong class="initials">by lsd</strong></p>
+                </div>
+                <div class="pane hide-scrollbar masked-overflow" id="categories">
+
+                    <h4><a href="#">category</a></h4>
+                    <h4><a href="#">category</a></h4>
+                    <h4><a href="#">category</a></h4>
 
         </div>
     </div>
@@ -185,12 +228,12 @@
 </div>
 
 <!-- this is a draggable element -->
-<!-- cast of characters -->
+<!-- window - cast of characters -->
 <div id="dragcast">
 <div id="dragcastheader">
 <div class="window" id="cast">
     <div class="container">
-    <div class="pane scroll scroll-color-colors">
+    <div class="pane hide-scrollbar masked-overflow">
 
         <h3>ABOUT US</h3>
 
@@ -198,8 +241,12 @@
 
         <p>tomorrow started is a visual collective<br><br>this blog serves as a visual notebook for a group of bandit bloggers. we post things we see and like. our lives don’t revolve around singular topics and neither does our blog.<br><br>sorry! nothing is in-or-out of context here. enjoy xx</p>
 
+        <br>
+
             
         <h3>CAST OF CHARACTERS</h3>
+
+        <br>
 
         <div class="grid"> 
             <div><img src="images/cast-of-characters/tomorrow-started-uh-square.png"><p><i>uh</i>, getting old, but not tired</p></div>
@@ -215,10 +262,10 @@
             
         </div>
 
-        <br><br>
+        <br>
 
         <div>
-        <p>subjects in this rear view mirror may appear slightly better<br>than they really are… well except uh. but nonetheless, they are entertaining.<br><br>disclaimer: all characters appearing in this work are fictitious. any resemblance to real persons, living or dead, is purely coincidental. </p>
+        <p>subjects in this rear view mirror may appear slightly better<br>than they really are… well except <i>uh</i>. but nonetheless, they are entertaining.<br><br>disclaimer: all characters appearing in this work are fictitious. any resemblance to real persons, living or dead, is purely coincidental. </p>
         </div>
     </div>
     </div>
@@ -227,18 +274,21 @@
 </div>
 
 <!-- this is a draggable element -->
+<!-- menu bar for archives, posts, randomizer -->
 <div id="dragmenu">
 <div id="dragmenuheader">
     <div id="menu">
+    
         <div>
             <div class="linkarchives"><button onclick="archivesToggle()" title="archives"><h1>archives</h1></button></div>
         </div>
+
         <div>
             <div class="linkpost"><button onclick="postToggle()" title="post"><h1>posts</h1></button></div>
         </div>
-        <a href="randomizer.html" target="_blank">
-            <h1>randomizer</h1>
-        </a>
+        
+        <h1><a href="randomizer.html" target="_blank">randomizer</a></h1>
+
     </div>
 </div>
 </div>
@@ -246,9 +296,11 @@
 <!-- this is a draggable element -->
 <!-- daily track feature - FLY -->
 <div id="dragfly">
-<div id="dragflyheader">
-<img onclick="flyToggle()" title="fly" id="fly" src="images/fly-houseful-photograph leo edit.png">
-</div>
+    <div id="dragflyheader">
+        <div id="fly">
+            <img src="images/fly-houseful-photograph leo edit.png">
+        </div>
+    </div>
 </div>
 
 <script>
