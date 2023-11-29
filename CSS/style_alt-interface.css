@@ -1,0 +1,358 @@
+/* global definitions */
+:root {
+	/* this sets a lot of our sizing rules and defines various spacing paramters */
+	--ratio: 1.314 /* pi */;
+	--s-5: calc(var(--s-4) / var(--ratio));
+	--s-4: calc(var(--s-3) / var(--ratio));
+	--s-3: calc(var(--s-2) / var(--ratio));
+	--s-2: calc(var(--s-1) / var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s0: 1rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s1) * var(--ratio));
+	--s3: calc(var(--s2) * var(--ratio));
+	--s4: calc(var(--s3) * var(--ratio));
+	--s5: calc(var(--s4) * var(--ratio));
+	/* this is mainly used to define/exclude/capture the max-inline-size, in units of characters */
+	--measure: 75ch;
+}
+
+/* universal definitions */
+* {
+	box-sizing: border-box;
+	max-inline-size: var(--measure);
+  font-family: Arial, Helvetica, sans-serif;
+	font-size: var(--s0); 
+}
+
+/* important exclusions to the max-inline-size definition */
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
+body {
+	width: 98vw;
+	height: 96vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	position: fixed;
+
+	/* background image */
+    background-image: url("../images/background/tsbg-hres.jpg"), url("../images/background/tsbg-lres.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-size: cover, cover;
+    background-position: center,center;
+	
+    overflow: hidden;
+}
+
+/* for header tag */
+h1 { font-weight:bold; font-size:var(--s1); }
+/* for draggable elements headings */
+h2 { font-weight:bold; font-size:var(--s1); } 
+/* for post titles */
+h3 { font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
+/* for other titles : categories, archive dates, reset button */
+h4 { font-weight:bold; font-size:var(--s-1); }
+
+/* <p> tag is by default covered by universal definitions [ln 20],
+hence why it doesn't need to be defined below */
+
+/* for post subtitles */
+em { font-size:var(--s-1); }
+/* class for initials */
+.initials { font-weight:600; }
+
+button {
+	background:none;
+  color: black;
+	border:none;
+  padding:0;
+	font:inherit;
+  outline:inherit;
+	width: max-content;
+  cursor:pointer;
+  display:inline-block;
+}
+
+a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: #9A928E; }
+a:visited{ color: #9A928E; }
+/* nifty solution to resolve shifting during normal to italic hover transition */
+/* github user 350D proposed this */
+/* does not work with the default serif fonts for whatever reason */ 
+/* we make sure to set :not(.content p a) so that any link inside a post does not break to next line as that is a side effect of this solution */
+a::before:not(.content p a) {
+    display: block;
+    content: attr(title);
+    font-style: italic;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+a:hover{ font-style:italic; color: orange;}
+/* accordingly assign the .link[...] class to the desired element to allow italic/normal toggle */
+.linkcastalt { font-style:normal; }
+.linkcastalt_italic { font-style:italic; }
+.linksearchalt  { font-style:normal; }
+.linksearchalt_italic { font-style:italic; }
+
+.linkshopalt { font-style:normal; }
+.linkshopalt_italic { font-style:italic; }
+.linklistenupalt { font-style:normal; }
+.linklistenupalt_italic { font-style:italic; }
+.linkcategoriesalt { font-style:normal; }
+.linkcategoriesalt_italic { font-style:italic; }
+.linkarchivesalt { font-style:normal; }
+.linkarchivesalt_italic { font-style:italic; }
+.linkreferencealt { font-style:normal; }
+.linkreferencealt_italic { font-style:italic; }
+
+/* we set the elements in the menu bar to display:none by default */
+/* to hide them until they are toggled */
+#searchalt { display:none; }
+#castalt { display:none; }
+#archivesalt { display:none; }
+#categoriesalt { display:none; }
+#listenupalt { display:none; }
+#shopalt { display:none; }
+#referencealt { display:none; }
+
+img { 
+	width: var(--measure);
+	max-width: 100%;
+	height: auto;
+}
+
+iframe {
+	width: var(--measure);
+	max-width: 100%;
+	min-height: 15rem;
+	height: 20vh;	
+}
+
+#landing { position:absolute; bottom:13vh; right:15vw; }
+#landing h1 { direction:rtl; }
+#landing img { display:none;  mix-blend-mode:multiply; width:auto; height:65vh; padding-bottom:10vh; }
+#landing:hover img { display:block; mix-blend-mode:multiply; }
+
+header {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 0 0 auto;
+	justify-content: center;
+
+	padding-left: 5vw;
+	padding-right: 5vw;
+  padding-bottom: 4vh;
+
+	overflow: hidden;
+}
+
+header > * { padding-bottom: 1rem; }
+
+header div:first-child {
+	display: flex; 
+	flex-basis: 100%; 
+	justify-content: space-between;
+  max-height: 4rem;
+}
+
+header .search-container {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: row;
+  justify-content:left;
+  flex-wrap: wrap;
+
+	overflow: hidden;
+}
+
+header .search-container > * {
+	display: flex;
+  flex-direction: row;
+  flex-basis: auto;
+
+	gap: var(--s2);
+  padding-left: var(--s2);
+
+  overflow: scroll;
+}
+
+header .search-container a, button { flex-shrink:0; }
+
+.menu-button { max-width:11rem; max-height:4rem; }
+
+.searchbar { height:3rem; border-style:solid; border-color:black; margin-bottom: 1rem;}
+
+main {
+	display: flex;
+	overflow-x: hidden;
+	flex: 1 1 auto;
+
+	padding-left: 7vw;
+	padding-right: 7vw;	
+}
+
+.content {
+	width: 100vw;
+	height: 100%;
+	padding-top: 15vh;
+
+	overflow-y: scroll;
+	scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.content > *:not(h3) {
+	margin-left: 5vw;
+	margin-top: 2rem;
+}
+
+.content h3:nth-child(n+1) { padding-top: var(--s5); }
+.content h3 a { color:black; }
+.content h3 a:hover { color:orange; }
+
+/* pop up windows styling begins */
+.window { background-color:rgba(255, 255, 255, 0.7); box-shadow:var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); }
+
+/* styling specific to cast of characters window */
+#castalt { width:85vw; max-width:45rem; height:65vh; display:none; }
+
+.container { display:flex; height:inherit; padding:var(--s1); }
+
+
+.pane {
+  display: block;
+  width: inherit;
+  padding-top: var(--s5);
+  padding-bottom: var(--s2);
+  padding-right: var(--s0);
+  background-color:rgba(255, 255, 255, 0);
+  order: 2; /* so that subsequent panes fall to the left and not the right */
+  overflow-y: auto;
+  
+}
+
+.pane > *:not(h3, h4) {
+padding-left: 5vw;
+margin-top: 2rem;
+}
+.pane h3 { margin-left:3rem; }
+.pane h3 a { color:black; }
+.pane h3 a:hover { color:orange; }
+/* pop up windows styling ends */
+
+.hide-scrollbar {
+  /*FireFox*/
+  scrollbar-width: none;
+  /*IE10+*/
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  /*Chrome, Safari, Edge*/
+  display: none;
+}
+
+#fly { width: 18rem; height: 18rem; padding: 5rem;}
+
+.grid {
+  display: grid;
+  grid-gap: var(--s3);
+  margin-left: var(--s3);
+  margin-right: var(--s3);
+}  
+
+@supports (width: min(200px, 100%)) {
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+}
+
+.grid p { text-align:center; }
+
+.masked-overflow-y {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-width: 0px;
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 3rem;
+    /* If content exceeds height of container, overflow! */
+    overflow-y: auto;
+    /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+    padding-bottom: var(--mask-height);
+
+    /* The CSS mask */
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+        to bottom,
+        transparent,
+        black var(--mask-height),
+        black calc(100% - var(--mask-height)),
+        transparent
+    );
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+}
+
+.masked-overflow-x {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-height: 0px;
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 2rem;
+    /* If content exceeds height of container, overflow! */
+    overflow-x: auto;
+    /* Need to make sure container has space to the right,
+  otherwise content at that end is always faded out */
+	  padding-right: var(--mask-height);
+    
+    /* The CSS mask */
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+        to right,
+		transparent,
+        black var(--mask-height),
+        black calc(100% - var(--mask-height)),
+		transparent
+  
+    );
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-height)) 100%;
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-height) 100%;
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+}
