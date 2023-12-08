@@ -57,11 +57,11 @@ body {
 }
 
 /* for header tag */
-h1 { font-weight:bold; font-size:var(--s1); }
+h1 { font-family: 'Crimson Text', serif; font-weight:bold; font-size:var(--s1); }
 /* for draggable elements headings */
-h2 { font-weight:bold; font-size:var(--s1); } 
+h2 { font-family: 'Crimson Text', serif; font-weight:bold; font-size:var(--s1); } 
 /* for post titles */
-h3 { font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
+h3 { font-family: 'Crimson Text', serif; font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
 /* for other titles : categories, archive dates, reset button */
 h4 { font-weight:bold; font-size:var(--s-1); }
 
@@ -72,6 +72,38 @@ hence why it doesn't need to be defined below */
 em { font-size:var(--s-1); }
 /* class for initials */
 .initials { font-weight:600; }
+
+/* in lieu of using hr tags, which would have to be placed/templated, we can instead define h3 as the post title heading, and then assign to it a visual equivalent by using ::before and ::after for the position of the lines and the 'content' definition in css to then reproduce the desired hr tag style. */
+h3::before{
+  display: block;
+  position: relative;
+  content: "";
+
+  width: 80vw;
+  height: .25rem;
+  margin-bottom: 1rem;
+
+  border: 0;
+  border-top: .25rem solid black;
+  border-bottom: .1rem solid black;
+
+  max-inline-size: none;
+}
+h3::after{
+  display: block;
+  position: relative;
+  content: "";
+
+  width: 80vw;
+  height: .25rem;
+  margin-top: 1rem;
+
+  border: 0;
+  border-top: .1rem solid black;
+  border-bottom: .25rem solid black;
+
+  max-inline-size: none;
+}
 
 button {
 	background:none;

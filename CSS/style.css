@@ -21,7 +21,7 @@
 * {
 	box-sizing: border-box;
 	max-inline-size: var(--measure);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 	font-size: var(--s0); 
 }
 
@@ -47,14 +47,15 @@ body {
     overflow: hidden;
 }
 
+
 /* for header tag */
-h1 { font-weight:bold; font-size:var(--s1); }
+h1 { font-family: 'Crimson Text', serif; font-weight:700; font-size:var(--s1); }
 /* for draggable elements headings */
-h2 { font-weight:bold; font-size:var(--s1); } 
+h2 { font-family: 'Crimson Text', serif; font-weight:700; font-size:var(--s1); } 
 /* for post titles */
-h3 { font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
+h3 { font-family: 'Crimson Text', serif; font-weight:700; font-size:var(--s3); text-transform:uppercase; }
 /* for other titles : categories, archive dates, reset button */
-h4 { font-weight:bold; font-size:var(--s-1); }
+h4 { font-weight:700; font-size:var(--s-1); }
 
 /* <p> tag is by default covered by universal definitions [ln 20],
 hence why it doesn't need to be defined below */
@@ -63,6 +64,39 @@ hence why it doesn't need to be defined below */
 em { font-size:var(--s-1); }
 /* class for initials */
 .initials { font-weight:600; }
+
+/* in lieu of using hr tags, which would have to be placed/templated, we can instead define h3 as the post title heading, and then assign to it a visual equivalent by using ::before and ::after for the position of the lines and the 'content' definition in css to then reproduce the desired hr tag style. */
+h3::before{
+    display: block;
+    position: relative;
+    content: "";
+
+    width: 50rem;
+    height: .25rem;
+    margin-bottom: 1rem;
+
+    border: 0;
+    border-top: .25rem solid black;
+    border-bottom: .1rem solid black;
+
+    max-inline-size: none;
+}
+h3::after{
+    display: block;
+    position: relative;
+    content: "";
+
+    width: 50rem;
+    height: .25rem;
+    margin-top: 1rem;
+
+    border: 0;
+    border-top: .1rem solid black;
+    border-bottom: .25rem solid black;
+
+    max-inline-size: none;
+}
+
 
 button {
     background:none;
@@ -77,18 +111,52 @@ button {
     padding-left:var(--s-3);
     padding-right:var(--s2);
 }
-#reset-btn {
+
+.button2 {
+
+    color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.03);
+
+    font-weight: bold;
+    text-align: center;
+
+    border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+
+    box-sizing: content-box;
+
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+
+    cursor: pointer;
+    z-index: 2;
+
+}
+.button2:hover { 
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.06);
+
+    border-bottom: none;
+    border-top: 0.25rem solid rgba(0, 0, 0, 0.2);
+    border-radius: .5rem;
+}
+#btn-reset {
+
+    font-variant: small-caps;
     position: absolute;
     bottom: 5vh;
     left:5vw;
-    padding: var(--s-5) var(--s-3);
 
-    font-variant: small-caps;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
+    height: 1.5rem;
+    padding-top: .4rem;
+
 }
-#reset-btn:hover { background-color: #9A928E; color: white; }
+
+#btn-aboutus {
+    width: fit-content;
+}
+
+
 
 a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: #9A928E; }
 a:visited{ color: #9A928E; }
@@ -97,7 +165,7 @@ a:visited{ color: #9A928E; }
 /* does not work with the default serif fonts for whatever reason */ 
 /* we make sure to set :not(.window p a) so that any link inside a post does not break to next line as that is a side effect of this solution */
 a::before:not(.window p a) {
-    display: block;
+    display: inline-block;
     content: attr(title);
     font-style: italic;
     height: 0;
@@ -113,6 +181,8 @@ a:hover{ font-style:italic; color: orange; }
 .linkpost_italic { font-style: italic; }
 .linkcast { font-style: normal; }
 .linkcast_italic { font-style: italic; }
+.linkrandomizer { font-style: normal; }
+.linkrandomizer_italic { font-style: italic; }
 .linksearch { font-style: normal; }
 .linksearch_italic { font-style: italic; }
 
@@ -146,7 +216,10 @@ iframe {
 
 header { margin-top:5vh; padding-bottom:var(--s4); }
 .nav { display: flex; justify-content: space-between; text-align: center;}
-.nav div { margin-left:5vw; margin-right:5vw; z-index:5; }
+.nav > div { margin-left:5vw; margin-right:5vw; z-index:5; }
+/* by defining width of elements we avoid italicized font changes from shifting neighboring elements */
+/* not incredibly clean but the solution above by user 350D does not seem to work with serif fonts */
+header div div { width: 12rem; }
 
 .searchbar { 
     position: absolute; 
@@ -174,6 +247,8 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
 #archives { width:25vw; height:55vh; display:none; }
 /* styling specific to cast of characters window */
 #cast { width:35vw; height:65vh; display:none; }
+/* styling specific to randomizer window */
+#randomizer { width:25vw; height:50vh; display:none; }
 /* styling specific to categories pane */
 #categories { display:none; }
 
@@ -208,6 +283,7 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
 	margin-top: 2rem;
 }
 .pane h3 { margin-left:3rem; }
+.pane h3:nth-child(n+2) { padding-top: 5rem; }
 .pane h3 a { color:black; }
 .pane h3 a:hover { color:orange; }
 
@@ -259,7 +335,23 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
   }
 
 /* song of the day fly styling begins */
-#fly { width:18rem; height:18rem; padding: 5rem; }
+#fly-container { 
+    width:18rem; 
+    height:18rem; 
+    padding: 5rem;
+}
+#fly { 
+    background-image:url("../images/spider icon tomorrow started.gif");
+    background-repeat: no-repeat;
+    background-size:8rem;
+    background-position: center;
+
+    width:8rem; 
+    height:8rem;
+}
+#fly:hover { 
+    background-image:url("../images/spider icon play button.gif");
+}
 /* song of the day fly styling ends */
 
 #menu {
@@ -268,7 +360,11 @@ header { margin-top:5vh; padding-bottom:var(--s4); }
     height:10rem; 
     margin-left:5rem; 
     padding-top:2.5rem;
+    text-align: center;
 }
+/* by defining width of elements we avoid italicized font changes from shifting neighboring elements */
+/* not incredibly clean but the solution above by user 350D does not seem to work with serif fonts */
+#menu div { width: 7rem; }
 
 .grid {
     display: grid;

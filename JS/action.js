@@ -8,7 +8,9 @@ window.onload = function() {
     dragElement(document.getElementById("dragarchives"));
     dragElement(document.getElementById("dragpost"));
     dragElement(document.getElementById("dragcast"));
+    dragElement(document.getElementById("dragrandomizer"));
     dragElement(document.getElementById("dragmenu"));
+
 
 };
 
@@ -101,6 +103,16 @@ document.querySelector('.linkcast').onclick = function(){
   }
   else {
       this.className = 'linkcast linkcast_italic';
+  }
+};
+
+// cast-of-characters _ tomorrow-started
+document.querySelector('.linkrandomizer').onclick = function(){
+  if(this.className.match('linkrandomizer_italic')) {
+      this.className = 'linkrandomizer';
+  }
+  else {
+      this.className = 'linkrandomizer linkrandomizer_italic';
   }
 };
 

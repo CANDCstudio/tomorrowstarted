@@ -8,6 +8,11 @@
 
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/style-foractionjs.css">
+    <link rel="stylesheet" href="CSS/style-forbackgroundoutlines.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     
     <script src="JS/menutoggle.js"></script>
     <script src="JS/action.js"></script>
@@ -16,19 +21,43 @@
 
 <body>
 
-<!-- this is a draggable element.-->
-<div id="dragfly">
-    <div id="dragflyheader">
-        <div id="fly">
-            <img src="images/fly-houseful-photograph leo edit.png">
-        </div>
-    </div>
+
+<!-- background outlines -->
+<div class="outline-grid">
+    <!-- search -->
+        <div class="outline-dashed" id="outline_search"></div>
+    <!-- header -->
+        <div class="outline-dashed" id="outline_tomorrowstarted"></div>
+    <!-- linktree - shop -->
+        <div class="outline-dashed" id="outline_shop"></div>
+    <!-- linktree - listenup -->
+        <div class="outline-dashed" id="outline_listenup"></div>
+    <!-- linktree - reference -->
+        <div class="outline-dashed" id="outline_reference"></div>
+    <!-- nav menu -->
+        <div class="outline-dashed" id="outline_navmenu"></div>
+    <!-- window - posts -->
+        <div class="outline-dashed" id="outline_posts"></div>
+    <!-- window - archives -->
+        <div class="outline-dashed" id="outline_archives"></div>
+    <!-- window - about us -->
+        <div class="outline-dashed" id="outline_about"></div>
+    <!-- window - about us -->
+        <div class="outline-dashed" id="outline_randomizer"></div>
+    <!-- fly -->
+        <div class="outline-dashed" id="outline_fly"></div>
 </div>
 
-<a href="index.html" id="landing">
-        <img src="images/andre kertesz distortion 1 TS.jpg" alt="">
-        <h1>enter tomorrow started</h1>
-</a>
+<header class="nav">
+
+    <div></div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 2rem; ">
+        <div style="text-align: right;">
+            <h1><a href="index.html" style="color: black; font-style: normal;">tomorrow started</a></h1>
+        </div>
+    </div>
+</header>
 
 </body>
 </html>

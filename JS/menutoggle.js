@@ -75,6 +75,16 @@ function postToggle() {
     }
   }
 
+//randomizer
+  function randomizerToggle() {
+    var x = document.getElementById("randomizer");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
 // search 
 function searchToggle() {
   var x = document.getElementById("search");
@@ -84,6 +94,10 @@ function searchToggle() {
     x.style.display = "block";
   }
 }
+
+///////////////
+///////////////
+///////////////
 
 // for alternative interface !
 // search
