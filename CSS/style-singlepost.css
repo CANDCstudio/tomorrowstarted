@@ -1,18 +1,131 @@
+/* global definitions */
+:root {
+	/* this sets a lot of our sizing rules and defines various spacing paramters */
+	--ratio: 1.314 /* pi */;
+	--s-5: calc(var(--s-4) / var(--ratio));
+	--s-4: calc(var(--s-3) / var(--ratio));
+	--s-3: calc(var(--s-2) / var(--ratio));
+	--s-2: calc(var(--s-1) / var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s0: 1rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s1) * var(--ratio));
+	--s3: calc(var(--s2) * var(--ratio));
+	--s4: calc(var(--s3) * var(--ratio));
+	--s5: calc(var(--s4) * var(--ratio));
+	/* this is mainly used to define/exclude/capture the max-inline-size, in units of characters */
+	--measure: 75ch;
+}
+
+/* universal definitions */
+* {
+	box-sizing: border-box;
+	max-inline-size: var(--measure);
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: var(--s0); 
+}
+
+/* important exclusions to the max-inline-size definition */
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
+/* for header tag */
+h1 { font-family: 'Crimson Text', serif; font-weight:700; font-size:var(--s1); }
+/* for draggable elements headings */
+h2 { font-family: 'Crimson Text', serif; font-weight:700; font-size:var(--s1); } 
+/* for post titles */
+h3 { font-family: 'Crimson Text', serif; font-weight:700; font-size:var(--s3); text-transform:uppercase; }
+/* for other titles : categories, archive dates, reset button */
+h4 { font-weight:700; font-size:var(--s-1); }
+
+/* <p> tag is by default covered by universal definitions [ln 20],
+hence why it doesn't need to be defined below */
+
+/* for post subtitles */
+em { font-size:var(--s-1); }
+/* class for initials */
+.initials { font-weight:600; }
+
+/* in lieu of using hr tags, which would have to be placed/templated, we can instead define h3 as the post title heading, and then assign to it a visual equivalent by using ::before and ::after for the position of the lines and the 'content' definition in css to then reproduce the desired hr tag style. */
+h3::before{
+    display: block;
+    position: relative;
+    content: "";
+
+    width: 50rem;
+    height: .25rem;
+    margin-bottom: 1rem;
+
+    border: 0;
+    border-top: .25rem solid black;
+    border-bottom: .1rem solid black;
+
+    max-inline-size: none;
+}
+h3::after{
+    display: block;
+    position: relative;
+    content: "";
+
+    width: 50rem;
+    height: .25rem;
+    margin-top: 1rem;
+
+    border: 0;
+    border-top: .1rem solid black;
+    border-bottom: .25rem solid black;
+
+    max-inline-size: none;
+}
+
+a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: #9A928E; }
+a:visited{ color: #9A928E; }
+/* nifty solution to resolve shifting during normal to italic hover transition */
+/* github user 350D proposed this */
+/* does not work with the default serif fonts for whatever reason */ 
+/* we make sure to set :not(.window p a) so that any link inside a post does not break to next line as that is a side effect of this solution */
+a::before:not(.window p a) {
+    display: inline-block;
+    content: attr(title);
+    font-style: italic;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+a:hover{ font-style:italic; color: orange; }
+
+img { 
+	width: var(--measure);
+	max-width: 100%;
+	height: auto;
+}
+
 .post {
     display: block;
-    height: 96vh;
-    width: 100vw;
-    padding-left: 5vw;
-    padding-right: 15vw;
+    padding-right: 5vw;
     max-inline-size: none;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-    transform: scaleX(-1);
-
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
+
+.post > *:not(h3, h4) {
+	padding-left: 5vw;
+	margin-top: 2rem;
+}
+.post h3 { margin-left:3rem; }
+.post h3:nth-child(n+2) { padding-top: 5rem; }
+.post h3 a { color:black; }
+.post h3 a:hover { color:orange; }
+
+.post h4 a { color:black; }
+.post h4 a:hover { color:orange; }
+
+/*
 
 .post::-webkit-scrollbar {
     width: 0;
@@ -31,8 +144,6 @@
 
 .post_content p { padding-left:var(--s2); padding-right:var(--s2); }
 
-
-/* for post titles */
 #post_title h3 { 
     position:absolute; 
     top:5vh; 
@@ -41,6 +152,8 @@
     font-size: var(--s3); 
     text-transform: uppercase; 
 }
+
+*/
 
 /* for social media icons */
 .social-media-icons { 

@@ -192,12 +192,12 @@ img {
 	height: auto;
 }
 
-iframe {
+/*iframe {
 	width: var(--measure);
 	max-width: 100%;
 	min-height: 15rem;
 	height: 20vh;	
-}
+}*/
 
 ::-webkit-scrollbar { width: 20px; }
 ::-webkit-scrollbar-track { border-left: 10px transparent; }
@@ -278,18 +278,17 @@ header div div { width: 12rem; }
 
 }
 
-.pane > *:not(h3, h4) {
-	padding-left: 5vw;
-	margin-top: 2rem;
+
+
+/* the use of html iframes in this mockup let's us imitate how a website with an actual backend would load in content. we place inside various html pages the content for each individual posts, and are able to arrange them/call to them in the order we wish to. the index.html page is also much lighter since it doesn't need to carry the weight of all the lines it takes to populate each post.*/
+.pane div iframe {
+    border:none; 
+    display: block;
+    width: 35vw; 
+    height:100vh;
+    
+    max-inline-size: none;
 }
-.pane h3 { margin-left:3rem; }
-.pane h3:nth-child(n+2) { padding-top: 5rem; }
-.pane h3 a { color:black; }
-.pane h3 a:hover { color:orange; }
-
-.pane h4 a { color:black; }
-.pane h4 a:hover { color:orange; }
-
 
 /* pop up windows styling end */
 
