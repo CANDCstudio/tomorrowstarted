@@ -1,7 +1,7 @@
 // Makes the DIV element draggable:
 window.onload = function() {
 
-    dragElement(document.getElementById("dragfly"));
+    dragElement(document.getElementById("dragspider"));
     dragElement(document.getElementById("dragcastalt"));
 
 };

@@ -22,7 +22,6 @@
 
 <body>
 
-
 <!-- background outlines -->
 <div class="outline-grid">
     <!-- search -->
@@ -45,20 +44,35 @@
         <div class="outline-dashed" id="outline_about"></div>
     <!-- window - about us -->
         <div class="outline-dashed" id="outline_randomizer"></div>
-    <!-- fly -->
-        <div class="outline-dashed" id="outline_fly"></div>
+    <!-- spider -->
+        <div class="outline-dashed" id="outline_spider"></div>
 </div>
 
-<header class="nav">
 
-    <div></div>
 
-    <div style="display: flex; justify-content: flex-end; gap: 2rem; ">
-        <div style="text-align: right;">
-            <h1><a href="index_showcase.html" style="color: black; font-style: normal;">tomorrow started</a></h1>
+    <!-- this is a draggable element -->
+    <!-- daily track feature - spider -->
+    <div id="dragspider">
+    <div id="dragspiderheader">
+        <div id="spider-container">
+        <div id="spider">
+        </div>
         </div>
     </div>
-</header>
+    </div>
 
+    <header class="nav">
+        <div class="linksearch">
+            <button onclick="searchToggle()">
+                <h1 style="text-align: center;"></h1>
+            </button>
+        </div>
+    
+        <div style="display: flex; justify-content: flex-end; gap: 2rem; ">
+            <div style="text-align: right;">
+                <h1><a href="index_showcase.html" style="color: black; font-style: normal;">tomorrow started</a></h1>
+            </div>
+        </div>
+    </header>
 </body>
 </html>

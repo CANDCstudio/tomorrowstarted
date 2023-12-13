@@ -1,13 +1,13 @@
 /* dragging styling begins */
 /* in conjunction with action.js file */
 
-#dragfly {
+#dragspider {
   z-index: 7;
   position: absolute;
   top: 25vh;
   left: 20vw;
 }
-#dragflyheader {
+#dragspiderheader {
   cursor: move;
   z-index: 10;
 }

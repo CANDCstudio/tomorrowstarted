@@ -47,7 +47,6 @@ body {
     overflow: hidden;
 }
 
-
 /* for header tag */
 h1 { font-family: 'Crimson Text', serif; font-weight:700; font-size:var(--s1); }
 /* for draggable elements headings */
@@ -65,7 +64,7 @@ em { font-size:var(--s-1); }
 /* class for initials */
 .initials { font-weight:600; }
 
-/* in lieu of using hr tags, which would have to be placed/templated, we can instead define h3 as the post title heading, and then assign to it a visual equivalent by using ::before and ::after for the position of the lines and the 'content' definition in css to then reproduce the desired hr tag style. */
+/* in lieu of using hr tags, which would have to be placed/templated, we can instead define h3 as the post title heading, and then assign to it a visual equivalent of <hr> by using ::before and ::after for the position of the lines and the 'content' definition in css to then reproduce the desired hr tag style. */
 h3::before{
     display: block;
     position: relative;
@@ -97,7 +96,6 @@ h3::after{
     max-inline-size: none;
 }
 
-
 button {
     background:none;
 	color:inherit;
@@ -111,52 +109,6 @@ button {
     padding-left:var(--s-3);
     padding-right:var(--s2);
 }
-
-.button2 {
-
-    color: rgba(0, 0, 0, 0.3);
-    background-color: rgba(0, 0, 0, 0.03);
-
-    font-weight: bold;
-    text-align: center;
-
-    border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
-    border-radius: .5rem;
-
-    box-sizing: content-box;
-
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-
-    cursor: pointer;
-    z-index: 2;
-
-}
-.button2:hover { 
-    color: rgba(0, 0, 0, 0.8);
-    background-color: rgba(0, 0, 0, 0.06);
-
-    border-bottom: none;
-    border-top: 0.25rem solid rgba(0, 0, 0, 0.2);
-    border-radius: .5rem;
-}
-#btn-reset {
-
-    font-variant: small-caps;
-    position: absolute;
-    bottom: 5vh;
-    left:5vw;
-
-    height: 1.5rem;
-    padding-top: .4rem;
-
-}
-
-#btn-aboutus {
-    width: fit-content;
-}
-
-
 
 a:link { text-decoration: none; font-family: inherit; font-size: inherit; color: #9A928E; }
 a:visited{ color: #9A928E; }
@@ -192,192 +144,15 @@ img {
 	height: auto;
 }
 
-/*iframe {
-	width: var(--measure);
-	max-width: 100%;
-	min-height: 15rem;
-	height: 20vh;	
-}*/
-
-::-webkit-scrollbar { width: 20px; }
-::-webkit-scrollbar-track { border-left: 10px transparent; }
-::-webkit-scrollbar-thumb { background: black; border-left: 10px solid white; }
-
 .arrow { width:var(--s1); display:block; padding:3px; cursor: pointer;}
 .up { margin-top:3ch; }
 .down { margin-bottom:1ch; }
 .hidden { opacity:0; }
 
-#landing { position:absolute; bottom:13vh; right:20vw; }
-#landing h3 { direction: rtl; }
-#landing img {display: none; mix-blend-mode: multiply; }
+.hide-scrollbar { /*FireFox*/ scrollbar-width: none; /*IE10+*/ -ms-overflow-style: -ms-autohiding-scrollbar; }
+.hide-scrollbar::-webkit-scrollbar { /*Chrome, Safari, Edge*/ display: none; }
 
-#landing:hover img { display: inline-block; position: absolute; bottom:30vh; }
-
-header { margin-top:5vh; padding-bottom:var(--s4); }
-.nav { display: flex; justify-content: space-between; text-align: center;}
-.nav > div { margin-left:5vw; margin-right:5vw; z-index:5; }
-/* by defining width of elements we avoid italicized font changes from shifting neighboring elements */
-/* not incredibly clean but the solution above by user 350D does not seem to work with serif fonts */
-header div div { width: 12rem; }
-
-.searchbar { 
-    position: absolute; 
-    top:5vh; 
-    left: 18vw; 
-    min-width: 15rem; 
-    width: 25vw;
-    height: 3rem;
-
-    border-style:solid; 
-    border-color:black;
-}
-#search { display: none; }
-
-/* pop up windows styling begins */
-.window { 
-    background-color:rgba(255, 255, 255, 0.7); 
-    min-width:30rem; 
-    box-shadow: var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); 
-}
-
-/* styling specific to post window */ 
-#post { width:45vw; height:75vh; display:none; }
-/* styling specific to archives window */
-#archives { width:25vw; height:55vh; display:none; }
-/* styling specific to cast of characters window */
-#cast { width:35vw; height:65vh; display:none; }
-/* styling specific to randomizer window */
-#randomizer { width:25vw; height:50vh; display:none; }
-/* styling specific to categories pane */
-#categories { display:none; }
-
-.container { display:flex; height:inherit; padding:var(--s1); }
-
-.pane {
-    display: block;
-    width: inherit;
-    padding-top: var(--s5);
-    padding-bottom: var(--s2);
-    padding-right: var(--s0);
-    background-color:rgba(255, 255, 255, 0);
-    order: 2; /* so that subsequent panes fall to the left and not the right */
-    overflow-y: auto;
-    
-}
-.pane + .pane {
-    display: block;
-    background-color:rgba(255, 255, 255, 0);
-    order: 1; /* assures that the subsequent pane will be left of first pane */
-    padding-top: var(--s1);
-    padding-bottom: var(--s1);
-    padding-left: var(--s1);
-    padding-right: var(--s3);
-
-    overflow-x: hidden;
-
-}
-
-
-
-/* the use of html iframes in this mockup let's us imitate how a website with an actual backend would load in content. we place inside various html pages the content for each individual posts, and are able to arrange them/call to them in the order we wish to. the index.html page is also much lighter since it doesn't need to carry the weight of all the lines it takes to populate each post.*/
-.pane div iframe {
-    border:none; 
-    display: block;
-    width: 35vw; 
-    height:100vh;
-    
-    max-inline-size: none;
-}
-
-/* pop up windows styling end */
-
-/* link trees style begin , to change after demo */
-.linktree_content{
-    margin-left: var(--s0);
-    display: flex;
-    justify-content: flex-start;
-}
-.linktree_nav{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    padding-right: var(--s0);
-  }
-#linktreelistshop{
-    height: 12rem;
-    overflow: hidden;
-    direction: ltr;
-    margin-right: 3rem;
-}
-#linktreelistlistenup{
-    height: 12rem;
-    overflow: hidden;
-    direction: ltr;
-}
-#linktreelistreferences{
-    height: 10rem;
-    overflow: hidden;
-    direction: ltr;
-}
-/* link trees styling ends */
-
-.hide-scrollbar {
-    /*FireFox*/
-    scrollbar-width: none;
-    /*IE10+*/
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
-  .hide-scrollbar::-webkit-scrollbar {
-    /*Chrome, Safari, Edge*/
-    display: none;
-  }
-
-/* song of the day fly styling begins */
-#fly-container { 
-    width:18rem; 
-    height:18rem; 
-    padding: 5rem;
-}
-#fly { 
-    background-image:url("../images/spider icon tomorrow started.gif");
-    background-repeat: no-repeat;
-    background-size:8rem;
-    background-position: center;
-
-    width:8rem; 
-    height:8rem;
-}
-#fly:hover { 
-    background-image:url("../images/spider icon play button.gif");
-}
-/* song of the day fly styling ends */
-
-#menu {
-    display:flex; 
-    width:40rem; 
-    height:10rem; 
-    margin-left:5rem; 
-    padding-top:2.5rem;
-    text-align: center;
-}
-/* by defining width of elements we avoid italicized font changes from shifting neighboring elements */
-/* not incredibly clean but the solution above by user 350D does not seem to work with serif fonts */
-#menu div { width: 7rem; }
-
-.grid {
-    display: grid;
-    grid-gap: var(--s3);
-    margin-left: var(--s3);
-    margin-right: var(--s3);
-}  
-@supports (width: min(200px, 100%)) {
-.grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-}
-}
-.grid p { text-align:center; }
-
+/* styling for faded edges on scrollable elements begins */
 .masked-overflow {
     /* scroll bar width, for use in mask calculations */
     --scrollbar-width: 8px;
@@ -425,3 +200,200 @@ header div div { width: 12rem; }
     /* We don't repeat our mask images */
     mask-repeat: no-repeat, no-repeat;
 }
+/* styling for faded edges on scrollable elements ends */
+
+/* CLASSES AND IDS FOR SPECIFIC ELEMENTS */
+
+/* landing page styling begins */
+#landing { position:absolute; bottom:13vh; right:20vw; }
+#landing h3 { direction: rtl; }
+#landing img {display: none; mix-blend-mode: multiply; }
+#landing:hover img { display: inline-block; position: absolute; bottom:30vh; }
+/* landing page styling ends */
+
+/* header styling beging */
+header { margin-top:5vh; padding-bottom:var(--s4); }
+.nav { display: flex; justify-content: space-between; text-align: center;}
+.nav > div { margin-left:5vw; margin-right:5vw; z-index:5; }
+/* by defining width of elements we avoid italicized font changes from shifting neighboring elements */
+/* not incredibly clean but the solution above by user 350D does not seem to work with serif fonts */
+header div div { width: 12rem; }
+
+.searchbar { 
+    position: absolute; 
+    top:5vh; 
+    left: 18vw; 
+    min-width: 15rem; 
+    width: 25vw;
+    height: 3rem;
+    border-style:solid; 
+    border-color:black;
+}
+#search { display: none; }
+/* header styling ends */
+
+/* nav menu styling begins */
+#menu {
+    display:flex; 
+    width:40rem; 
+    height:10rem; 
+    margin-left:5rem; 
+    padding-top:2.5rem;
+    text-align: center;
+}
+/* nav menu styling ends */
+
+/* pop up windows styling begins */
+.window { 
+    background-color:rgba(255, 255, 255, 0.7); 
+    min-width:30rem; 
+    box-shadow: var(--s-2) var(--s-3) 4rem 0.5rem rgba(0,0,0,0.2); 
+}
+
+/* styling specific to post window */ 
+#post { width:45vw; height:75vh; display:none; }
+/* styling specific to archives window */
+#archives { width:25vw; height:55vh; display:none; }
+/* styling specific to cast of characters window */
+#cast { width:35vw; height:65vh; display:none; }
+/* styling specific to randomizer window */
+#randomizer { width:25vw; height:50vh; display:none; }
+/* styling specific to categories pane */
+#categories { display:none; }
+
+.container { display:flex; height:inherit; padding:var(--s1); }
+
+.pane {
+    display: block;
+    width: inherit;
+    padding-top: var(--s5);
+    padding-bottom: var(--s2);
+    padding-right: var(--s0);
+    background-color:rgba(255, 255, 255, 0);
+    order: 2; /* so that subsequent panes fall to the left and not the right */
+    overflow-y: auto;   
+}
+.pane + .pane {
+    display: block;
+    padding-top: var(--s1);
+    padding-bottom: var(--s1);
+    padding-left: var(--s1);
+    padding-right: var(--s3);
+    background-color:rgba(255, 255, 255, 0);
+    order: 1; /* assures that the subsequent pane will be left of first pane */
+    overflow-x: hidden;
+}
+/* the use of html iframes in this mockup let's us imitate how a website with an actual backend would load in content. we place inside various html pages the content for each individual posts, and are able to arrange them/call to them in the order we wish to. the index.html page is also much lighter since it doesn't need to carry the weight of all the lines it takes to populate each post.*/
+.pane div iframe {
+    border:none; 
+    display: block;
+    width: 35vw; 
+    height:100vh;
+    max-inline-size: none;
+}
+/* pop up windows styling end */
+
+/* link trees style begin , to change after demo */
+.linktree_content{
+    margin-left: var(--s0);
+    display: flex;
+    justify-content: flex-start;
+}
+.linktree_nav{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-right: var(--s0);
+  }
+#linktreelistshop{
+    height: 12rem;
+    overflow: hidden;
+    direction: ltr;
+    margin-right: 3rem;
+}
+#linktreelistlistenup{
+    height: 12rem;
+    overflow: hidden;
+    direction: ltr;
+}
+#linktreelistreferences{
+    height: 10rem;
+    overflow: hidden;
+    direction: ltr;
+}
+/* link trees styling ends */
+
+/* song of the day spider styling begins */
+#spider-container { 
+    width:18rem; 
+    height:18rem; 
+    padding: 5rem;
+}
+#spider { 
+    background-image:url("../images/spider icon tomorrow started.gif");
+    background-repeat: no-repeat;
+    background-size:8rem;
+    background-position: center;
+
+    width:8rem; 
+    height:8rem;
+}
+#spider:hover { 
+    background-image:url("../images/spider icon play button.gif");
+}
+/* song of the day spider styling ends */
+
+/* reset button styling begins */
+.button2 {
+    color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.03);
+
+    font-weight: bold;
+    text-align: center;
+
+    border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+
+    box-sizing: content-box;
+
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+
+    cursor: pointer;
+    z-index: 2;
+}
+.button2:hover { 
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.06);
+
+    border-bottom: none;
+    border-top: 0.25rem solid rgba(0, 0, 0, 0.2);
+    border-radius: .5rem;
+}
+#btn-reset {
+    font-variant: small-caps;
+    position: absolute;
+    bottom: 5vh;
+    left:5vw;
+
+    height: 1.5rem;
+    padding-top: .4rem;
+}
+/* reset button styling ends */
+
+/* grid styling begins */
+/* every layout tool - used here for the about-us/cast-of-characters pictures */
+.grid {
+    display: grid;
+    grid-gap: var(--s3);
+    margin-left: var(--s3);
+    margin-right: var(--s3);
+}  
+@supports (width: min(200px, 100%)) {
+.grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+}
+.grid p { text-align:center; }
+/* grid styling ends */
+

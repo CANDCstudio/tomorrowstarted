@@ -3,13 +3,13 @@
 
 /* for alternative interface ! */
 
-#dragfly {
+#dragspider {
   z-index: 7;
   position: absolute;
   top: 70vh;
   right: 13vw;
 }
-#dragflyheader {
+#dragspiderheader {
   cursor: move;
   z-index: 10;
 }

@@ -295,7 +295,25 @@ margin-top: 2rem;
   display: none;
 }
 
-#fly { width: 18rem; height: 18rem; padding: 5rem;}
+/* song of the day spider styling begins */
+#spider-container { 
+  width:18rem; 
+  height:18rem; 
+  padding: 5rem;
+}
+#spider { 
+  background-image:url("../images/spider icon tomorrow started.gif");
+  background-repeat: no-repeat;
+  background-size:8rem;
+  background-position: center;
+
+  width:8rem; 
+  height:8rem;
+}
+#spider:hover { 
+  background-image:url("../images/spider icon play button.gif");
+}
+/* song of the day spider styling ends */
 
 .grid {
   display: grid;

@@ -1,7 +1,7 @@
 // Makes the DIV element draggable:
 window.onload = function() {
 
-    dragElement(document.getElementById("dragfly"));
+    dragElement(document.getElementById("dragspider"));
     dragElement(document.getElementById("dragshop"));
     dragElement(document.getElementById("draglistenup"));
     dragElement(document.getElementById("dragreferences"));
@@ -125,6 +125,7 @@ document.querySelector('.linksearch').onclick = function(){
       this.className = 'linksearch linksearch_italic';
   }
 };
+}
 
 // presently, not in use
 /*
@@ -155,4 +156,3 @@ document.querySelector('.linkreferences').onclick = function(){
 };
 */
 
-}

@@ -4,7 +4,9 @@ https://betterprogramming.pub/how-to-automatically-resize-an-iframe-7be6bfbb1214
 
 requires a membership to medium to read, though you can use the files iframetestchild.html and iframetestparent.html as a template to work off. 
 
-here below is the article: 
+here below is the article:
+
+========
 
 The <iframe> allows web developers to embed one HTML page inside another. It’s so useful because they’re a part of HTML so you can use them almost anywhere — in website builders like Wix and Squarespace or in your next full-stack project.
 
