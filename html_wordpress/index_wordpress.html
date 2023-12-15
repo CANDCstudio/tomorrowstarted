@@ -83,151 +83,187 @@
 <header>
 
     <div class="nav_bar">
-
         <div>
             <h1>tomorrow started</h1>
         </div>
-
-        <div>
-            <h1>about us</h1>
-            <h1>randomizer</h1>
-            <h1>menu</h1>
-        </div>
-
-    </div>
-
-    <div class="dropdown">
-
-        <div>
-            <!-- search bar -->
-        </div>
-
-        <div>
-            <h1>categories</h1>
-            <h1>
-        </div>
-
-    </div>
-
-    <div>
-        <div class="linkcastalt menu-button">
-            <h1><a href="../html_wordpress/index_wordpress.html" style="color: black; font-style: normal;">tomorrow started</a></h1   >
-        </div>
-
-        <div class="linkcastalt menu-button">
-            <button onclick="castaltToggle()">
-                <h1>about us</h1>
-            </button>
-        </div>
-        <div>
-            <h1> <a href="../html_z_misc/randomizer.html" target="_blank"> randomizer </a> </h1>
-        </div>
-        <div class="linksearchalt menu-button">
-            <button onclick="searchaltToggle()">
+        <div class="linkmenualt">
+            <button onclick="menualtToggle()">
                 <h1>menu</h1>
             </button>
         </div>
-
-
     </div>
 
-    <div class="search-container hide-scrollbar" id="searchalt">
-        <div class="hide-scrollbar searchbar"></div>
+    <div id="menualt" class="dropdown">
+
+        <div class="searchbar">
+            <!-- search bar -->
+        </div>
+
         <div class="masked-overflow-x hide-scrollbar">
-
-            <div class="linkcategoriesalt menu-button">
+            <div class="linkcastalt">
+                <button onclick="castaltToggle()">
+                    <h1>about us</h1>
+                </button>
+            </div>
+            <div>
+                <button>
+                    <h1>randomizer</h1>
+                </button>
+            </div>
+            <div class="linkcategoriesalt">
                 <button onclick="categoriesaltToggle()">
-                    <h1>categories</h1>
+                    <h1 style="opacity: 0.65">categories</h1>
                 </button>
-            </div>  
-            <div class="linkarchivesalt menu-button">
+            </div>
+            <div class="linkarchivesalt">
                 <button onclick="archivesaltToggle()">
-                    <h1>archives</h1>
+                    <h1 style="opacity: 0.4">archives</h1>
                 </button>
             </div>
-            <div class="linkshopalt menu-button">
+        </div>
+
+        <div class="dropdown-lists">
+            <ul id="categoriesalt" class="masked-overflow-x hide-scrollbar" style="opacity: 0.65">
+                <li><a href="#">album covers</a></li>
+                <li><a href="#">architecture</a></li>
+                <li><a href="#">art</a></li>
+                <li><a href="#">ask</a></li>
+                <li><a href="#">audio-electronics</a></li>
+                <li><a href="#">backstage</a></li>
+                <li><a href="#">beauty</a></li>
+                <li><a href="#">bikes</a></li>
+                <li><a href="#">book covers</a></li>
+                <li><a href="#">books</a></li>
+                <li><a href="#">cars</a></li>
+                <li><a href="#">clips</a></li>
+                <li><a href="#">design</a></li>
+                <li><a href="#">earth-related</a></li>
+                <li><a href="#">eye-candy</a></li>
+                <li><a href="#">f#@k your heroes... look at ours</a></li>
+                <li><a href="#">fashion</a></li>
+                <li><a href="#">fashion birds: women of style</a></li>
+                <li><a href="#">fashion blokes: men of style</a></li>
+                <li><a href="#">fashion mens</a></li>
+                <li><a href="#">foot fetish</a></li>
+                <li><a href="#">fragrance</a></li>
+                <li><a href="#">history</a></li>
+                <li><a href="#">hotels</a></li>
+                <li><a href="#">lovely</a></li>
+                <li><a href="#">mind candy</a></li>
+                <li><a href="#">mom and dads</a></li>
+                <li><a href="#">mugshots</a></li>
+                <li><a href="#">music</a></li>
+                <li><a href="#">musings</a></li>
+                <li><a href="#">must be considered films</a></li>
+                <li><a href="#">must not see films</a></li>
+                <li><a href="#">must see docs</a></li>
+                <li><a href="#">must see films</a></li>
+                <li><a href="#">naughty stuff</a></li>
+                <li><a href="#">ny places</a></li>
+                <li><a href="#">objects</a></li>
+                <li><a href="#">other places</a></li>
+                <li><a href="#">perfect gifts</a></li>
+                <li><a href="#">photography</a></li>
+                <li><a href="#">quote of the day</a></li>
+                <li><a href="#">read</a></li>
+                <li><a href="#">rules of style</a></li>
+                <li><a href="#">surf-skate</a></li>
+                <li><a href="#">take care</a></li>
+                <li><a href="#">top 5</a></li>
+                <li><a href="#">watches</a></li>
+                <li><a href="#">what to drink</a></li>
+            </ul>
+            <ul id="archivesalt" class="masked-overflow-x hide-scrollbar" style="opacity: 0.4">
+                <li><a href="#">NOV 2023</a></li>
+                <li><a href="#">OCT 2023</a></li>
+                <li><a href="#">SEP 2023</a></li>
+                <li><a href="#">JUL 2023</a></li>
+                <li><a href="#">JUN 2023</a></li>
+                <li><a href="#">MAY 2023</a></li>
+                <li><a href="#">APR 2023</a></li>
+                <li><a href="#">MAR 2023</a></li>
+                <li><a href="#">FEB 2023</a></li>
+                <li><a href="#">JAN 2022</a></li>
+                <li><a href="#">DEC 2022</a></li>
+                <li><a href="#">NOV 2022</a></li>
+                <li><a href="#">OCT 2022</a></li>
+                <li><a href="#">SEP 2022</a></li>
+                <li><a href="#">JUL 2022</a></li>
+                <li><a href="#">JUN 2022</a></li>
+                <li><a href="#">MAY 2022</a></li>
+                <li><a href="#">APR 2022</a></li>
+                <li><a href="#">MAR 2022</a></li>
+                <li><a href="#">FEB 2022</a></li>
+                <li><a href="#">JAN 2021</a></li>
+                <li><a href="#">DEC 2021</a></li>
+            </ul>
+        </div>
+
+        <div class="masked-overflow-x hide-scrollbar">
+            <div class="linkshopalt">
                 <button onclick="shopaltToggle()">
-                    <h1>shop</h1>
+                    <h1 style="opacity: 0.65">shop</h1>
                 </button>
             </div>
-            <div class="linklistenupalt menu-button">
+            <div class="linklistenupalt">
                 <button onclick="listenupaltToggle()">
-                    <h1>listen-up</h1>
+                    <h1 style="opacity: 0.4">listen-up</h1>
                 </button>
             </div>
-            <div class="linkreferencealt menu-button">
+            <div class="linkreferencealt">
                 <button onclick="referencealtToggle()">
-                    <h1>reference</h1>
+                    <h1 style="opacity: 0.2">reference</h1>
                 </button>
             </div>
         </div>
 
-        <div id="shopalt" class="masked-overflow-x hide-scrollbar">
-            <a href="https://10corsocomo.com/en-us" target="_blank"><p>10 CORSO COMO</p></a>
-            <a href="https://247archives.online/" target="_blank"><p>247</p></a>
-            <a href="https://threeasfour.com/" target="_blank"><p>3 AS FOUR SHOP</p></a>
-            <a href="https://www.apc-us.com/" target="_blank"><p>A.P.C</p></a>
-            <a href="https://acrnm.com/" target="_blank"><p>ACRNM</p></a>
-            <a href="https://www.aimeleondore.com//" target="_blank"><p>AIM&Eacute; LEON DORE</p></a>
-            <a href="https://antonioli.eu/en-us" target="_blank"><p>ANTONIOLI</p></a>
-            <a href="https://apoc-store.com/" target="_blank"><p>APOC</p></a>
-            <a href="https://store.apolisglobal.com/" target="_blank"><p>APOLIS</p></a>
-            <a href="https://www.assemblynewyork.com//" target="_blank"><p>ASSEMBLY NEW YORK</p></a>
-            <a href="https://www.audiogon.com/" target="_blank"><p>AUDIOGON</p></a>
-            <a href="http://basicchannel.com/" target="_blank"><p>BASIC CHANNEL</p></a>
-            <a href="https://www.brooksengland.com/" target="_blank"><p>BROOKS ENGLAND</p></a>
-            <a href="https://www.byredo.com/us_en/" target="_blank"><p>BYREDO</p></a>
-            <a href="https://www.dashwoodbooks.com/" target="_blank"><p>DASHWOOD BOOKS</p></a>
-            <a href="https://www.etudes-studio.com/en-us#store" target="_blank"><p>&Eacute;TUDES STUDIO</p></a>
-            <a href="https://www.feitdirect.com/shop/" target="_blank"><p>FEIT</p></a>
-            <a href="https://www.fleetilya.com/" target="_blank"><p>FLEET ILYA</p></a>
-            <a href="https://www.gentlemonster.com/us/" target="_blank"><p>GENTLE MONSTER</p></a>
-            <a href="https://www.imperfectfoods.com/" target="_blank"><p>IMPERFECT FOODS</p></a>
-            <a href="https://www.jacquessoloviere.com/" target="_blank"><p>JACQUES SOLOVIERE</p></a>
-            <a href="https://www.jjjjound.com/" target="_blank"><p>JJJJOUND</p></a>
-            <a href="https://www.lelabofragrances.com/" target="_blank"><p>LE LABO</p></a>
-            <a href="https://maisonfabre.com/en/" target="_blank"><p>MAISON FABRE</p></a>
-        </div>
-
-        <div id="listenupalt" class="masked-overflow-x hide-scrollbar">
-            <a href="https://daily.bandcamp.com/" target="_blank"><p>BANDCAMP DAILY</p></a>
-            <a href="https://www.democracynow.org" target="_blank"><p>DEMOCRACY NOW</p></a>
-            <a href="https://everynoise.com//" target="_blank"><p>EVERY NOISE</p></a>
-            <a href="https://www.radiofrance.fr/franceculture" target="_blank"><p>FRANCE CULTURE</p></a>
-            <a href="https://www.nts.live/" target="_blank"><p>NTS</p></a>
-            <a href="https://somafm.com/" target="_blank"><p>SOMA.FM</p></a>
-            <a href="https://soundcloud.com" target="_blank"><p>SOUND CLOUD</p></a>
-            <a href="https://tyt.com/home" target="_blank"><p>THE YOUNG TURKS</p></a>
-        </div>
-
-        <div id="referencealt" class="masked-overflow-x hide-scrollbar">
-            <a href="#"><p>ITEM REFERENCE</p></a>
-            <a href="#"><p>ITEM REFERENCE</p></a>
-            <a href="#"><p>ITEM REFERENCE</p></a>
-            <a href="#"><p>ITEM REFERENCE</p></a>
-            <a href="#"><p>ITEM REFERENCE</p></a>
-            <a href="#"><p>ITEM REFERENCE</p></a>
-            <a href="#"><p>ITEM REFERENCE</p></a>
-        </div>
-
-        <div id="categoriesalt" class="masked-overflow-x hide-scrollbar">
-            <a href="#"><p>ITEM CATEGORIES</p></a>
-            <a href="#"><p>ITEM CATEGORIES</p></a>
-            <a href="#"><p>ITEM CATEGORIES</p></a>
-            <a href="#"><p>ITEM CATEGORIES</p></a>
-            <a href="#"><p>ITEM CATEGORIES</p></a>
-            <a href="#"><p>ITEM CATEGORIES</p></a>
-            <a href="#"><p>ITEM CATEGORIES</p></a>
-        </div>
-
-        <div id="archivesalt" class="masked-overflow-x hide-scrollbar">
-            <a href="#"><p>ITEM ARCHIVES</p></a>
-            <a href="#"><p>ITEM ARCHIVES</p></a>
-            <a href="#"><p>ITEM ARCHIVES</p></a>
-            <a href="#"><p>ITEM ARCHIVES</p></a>
-            <a href="#"><p>ITEM ARCHIVES</p></a>
-            <a href="#"><p>ITEM ARCHIVES</p></a>
-            <a href="#"><p>ITEM ARCHIVES</p></a>
+        <div class="dropdown-lists">
+            <ul id="shopalt" class="masked-overflow-x hide-scrollbar" style="opacity: 0.65">
+                <li><a href="https://10corsocomo.com/en-us" target="_blank">10 CORSO COMO</a></li>
+                <li><a href="https://247archives.online/" target="_blank">247</a></li>
+                <li><a href="https://threeasfour.com/" target="_blank">3 AS FOUR SHOP</a></li>
+                <li><a href="https://www.apc-us.com/" target="_blank">A.P.C</a></li>
+                <li><a href="https://acrnm.com/" target="_blank">ACRNM</a></li>
+                <li><a href="https://www.aimeleondore.com//" target="_blank">AIM&Eacute; LEON DORE</a></li>
+                <li><a href="https://antonioli.eu/en-us" target="_blank">ANTONIOLI</a></li>
+                <li><a href="https://apoc-store.com/" target="_blank">APOC</a></li>
+                <li><a href="https://store.apolisglobal.com/" target="_blank">APOLIS</a></li>
+                <li><a href="https://www.assemblynewyork.com//" target="_blank">ASSEMBLY NEW YORK</a></li>
+                <li><a href="https://www.audiogon.com/" target="_blank">AUDIOGON</a></li>
+                <li><a href="http://basicchannel.com/" target="_blank">BASIC CHANNEL</a></li>
+                <li><a href="https://www.brooksengland.com/" target="_blank">BROOKS ENGLAND</a></li>
+                <li><a href="https://www.byredo.com/us_en/" target="_blank">BYREDO</a></li>
+                <li><a href="https://www.dashwoodbooks.com/" target="_blank">DASHWOOD BOOKS</a></li>
+                <li><a href="https://www.etudes-studio.com/en-us#store" target="_blank">ÉTUDES STUDIO</a></li>
+                <li><a href="https://www.feitdirect.com/shop/" target="_blank">FEIT</a></li>
+                <li><a href="https://www.fleetilya.com/" target="_blank">FLEET ILYA</a></li>
+                <li><a href="https://www.gentlemonster.com/us/" target="_blank">GENTLE MONSTER</a></li>
+                <li><a href="https://www.imperfectfoods.com/" target="_blank">IMPERFECT FOODS</a></li>
+                <li><a href="https://www.jacquessoloviere.com/" target="_blank">JACQUES SOLOVIERE</a></li>
+                <li><a href="https://www.jjjjound.com/" target="_blank">JJJJOUND</a></li>
+                <li><a href="https://www.lelabofragrances.com/" target="_blank">LE LABO</a></li>
+                <li><a href="https://maisonfabre.com/en/" target="_blank">MAISON FABRE</a></li>
+            </ul>
+            <ul id="listenupalt" class="masked-overflow-x hide-scrollbar" style="opacity: 0.4">
+                <li><a href="https://daily.bandcamp.com/" target="_blank">BANDCAMP DAILY</a></li>
+                <li><a href="https://www.democracynow.org" target="_blank">DEMOCRACY NOW</a></li>
+                <li><a href="https://everynoise.com//" target="_blank">EVERY NOISE</a></li>
+                <li><a href="https://www.radiofrance.fr/franceculture" target="_blank">FRANCE CULTURE</a></li>
+                <li><a href="https://www.nts.live/" target="_blank">NTS</a></li>
+                <li><a href="https://somafm.com/" target="_blank">SOMA.FM</a></li>
+                <li><a href="https://soundcloud.com" target="_blank">SOUND CLOUD</a></li>
+                <li><a href="https://tyt.com/home" target="_blank">THE YOUNG TURKS</a></li>
+            </ul>
+            <ul id="referencealt" class="masked-overflow-x hide-scrollbar" style="opacity: 0.2">
+                <li><a href="">REFERENCE ITEM</a></li>
+                <li><a href="">REFERENCE ITEM</a></li>
+                <li><a href="">REFERENCE ITEM</a></li>
+                <li><a href="">REFERENCE ITEM</a></li>
+                <li><a href="">REFERENCE ITEM</a></li>
+                <li><a href="">REFERENCE ITEM</a></li>
+                <li><a href="">REFERENCE ITEM</a></li>
+                <li><a href="">REFERENCE ITEM</a></li>
+            </ul>
         </div>
 
     </div>

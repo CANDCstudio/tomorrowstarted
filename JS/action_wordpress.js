@@ -56,6 +56,16 @@ window.onload = function () {
     prev_handler();
   }
 
+// menu
+document.querySelector('.linkmenualt').onclick = function(){
+  if(this.className.match('linkmenualt_italic')) {
+      this.className = 'linkmenualt';
+  }
+  else {
+      this.className = 'linkmenualt linkmenualt_italic';
+  }
+};
+
 // cast-of-characters _ tomorrow-started
   document.querySelector('.linkcastalt').onclick = function(){
     if(this.className.match('linkcastalt_italic')) {
@@ -66,13 +76,23 @@ window.onload = function () {
     }
   };
 
-// search
-  document.querySelector('.linksearchalt').onclick = function(){
-    if(this.className.match('linksearchalt_italic')) {
-        this.className = 'linksearchalt';
+  // categories
+  document.querySelector('.linkcategoriesalt').onclick = function(){
+    if(this.className.match('linkcategoriesalt_italic')) {
+        this.className = 'linkcategoriesalt';
     }
     else {
-        this.className = 'linksearchalt linksearchalt_italic';
+        this.className = 'linkcategoriesalt linkcategoriesalt_italic';
+    }
+  };
+
+  // archives
+  document.querySelector('.linkarchivesalt').onclick = function(){
+    if(this.className.match('linkarchivesalt_italic')) {
+        this.className = 'linkarchivesalt';
+    }
+    else {
+        this.className = 'linkarchivesalt linkarchivesalt_italic';
     }
   };
 
@@ -105,26 +125,5 @@ window.onload = function () {
         this.className = 'linkreferencealt linkreferencealt_italic';
     }
   };
-
-  // categories
-  document.querySelector('.linkcategoriesalt').onclick = function(){
-    if(this.className.match('linkcategoriesalt_italic')) {
-        this.className = 'linkcategoriesalt';
-    }
-    else {
-        this.className = 'linkcategoriesalt linkcategoriesalt_italic';
-    }
-  };
-
-  // archives
-    document.querySelector('.linkarchivesalt').onclick = function(){
-      if(this.className.match('linkarchivesalt_italic')) {
-          this.className = 'linkarchivesalt';
-      }
-      else {
-          this.className = 'linkarchivesalt linkarchivesalt_italic';
-      }
-    };
-
 
 }
