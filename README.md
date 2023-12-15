@@ -54,7 +54,7 @@ We can see this to be the case with the use of serif fonts, the presence of the 
 
 **However** the website was designed in the early aughts and has not been revisited since. 
 It behaves much like how blogs of the time behaved. 
-With the absence of blogs in today's web landscape, and our intent on keeping this one around, we though it not without merit to produce a redesign that could not only hold the same visual queues as the original design but also factor and revel in the tendencies of contemporary web design. 
+With the absence of blogs in today's web landscape, and our intent on keeping this one around, we thought it not without merit to produce a redesign that could not only hold the same visual queues as the original design but also factor and revel in the tendencies of contemporary web design. 
 
 <br>
 
@@ -120,9 +120,9 @@ We stuck mainly to what is now possible with web development not to produce some
 
 ### Philosophy in practice and usage –
 
-To produce this we chose [every layout][def2]'s ingenuous and elegant modular scale to make up the foundation of the website's proportions and dimensions. 
+To produce this we chose [every layout][def2]'s modular scale to make up the foundation of the website's proportions and dimensions. 
 
-Both the showcase and wordpress mock-up stylesheets begin with : 
+Both the showcase website and wordpress mock-up stylesheets begin with : 
 
     /* global definitions */
     :root {
@@ -162,9 +162,9 @@ Both the showcase and wordpress mock-up stylesheets begin with :
       max-inline-size: none;
     }
 
-We first set up a scale as a global definition for which we use the the `rem` unit for a wide variety of applications by defining `--s0` and producing equations off of `--ratio` that we can then arbitrarily set.
+We first set up a scale as a global definition for which we use the the `rem` unit for a wide variety of applications by defining `--s0` and producing equations off of `--ratio`, creating proportional curves.
 
-We also define `--measure` using the `ch` unit that will inform the maximum dimensions of any elements on the website in our universal definitions (`max-inline-size: var(--measure);`). Meaning here that nothing can be longer than `75ch`. 
+We also define `--measure` using the `ch` unit that will inform the maximum dimensions of any elements on the website in our universal definitions (`max-inline-size: var(--measure);`). We set that at `75ch`, 75 character units atr the given scale. 
 
 Though we quickly amend possible unintended issues by setting certain important global exclusions using `max-inline-size: none;`. 
 
@@ -195,11 +195,11 @@ Relevant files :
 
 <br>
 
-The showcase website is a static html/css/js website. With no backend we intend to use workarounds, mentioned later, to mimick or behave as if it did in order to support the features required of it. These workarounds are there to also show off how a website could be done without the use of popular templates like wordpress should the developer or client wish to be a little savy and experiment. 
+The showcase website is a static html/css/js website. With no backend we intend to use workarounds, mentioned later, to mimick or behave as if it did – in order to support the features required of it. These workarounds are there to also show off how a website could be done without the use of popular templates like wordpress should the developer or client wish to be a little savy and experiment. 
 
- While it can manage windowed use somewhat, it is really intended to be used in fullscreen mode. This screen size limitation in practical terms is in place due to the design. The whole of the website is presented on a single browser window, and takes up no more than the entirety of that window. 
+While the website can manage windowed use somewhat, it is really intended to be used in fullscreen mode. This screen size limitation in practical terms is in place due to the design. The whole of the website is presented on a single browser window, and takes up no more than the entirety of that window. 
  
- The posts, archives, about-us, and "randomizer" pages that make up the bulk of the surfing are all loaded in via draggable pop-up windows that can be toggled on or off using the menu.
+The posts, archives, about-us, and "randomizer" pages that make up the bulk of the surfing are all loaded in via draggable pop-up windows that can be toggled on or off using the menu navigation bar.
 
 The idea, as mentioned above, was to replicate a real-life desktop, wherein :
 >papers, items, notes, objects, thoughts, mementos, tend to organize and perputually disorganize themselves.
@@ -227,11 +227,11 @@ These windows are made up of the following structure :
     </div>
     </div>
 
-The first two `div` are used by the file [action_showcase.js](JS/action_showcase.js) lines 2-59, they allows for the windows to be draggable. 
+The first two `div` are used by the file [action_showcase.js](JS/action_showcase.js) lines 2-59, they allow for the windows to be draggable. 
 
-The following `div. window` defines the window, using the class {window} and contains the various nested elements of the window. We also assign the id {nameofwindow} (be it #archives, #post, #cast etc.) that is used by [menutoggle.js](JS/menutoggle.js) lines 70-128 to toggle them on or off, as well as how we give the specific dimensions of the window in question in the CSS file. 
+The following `div .window` defines the window, it contains the various nested elements of the window. We also assign the id {nameofwindow} (be it #archives, #post, #cast etc.) that is used by [menutoggle.js](JS/menutoggle.js) to toggle them on or off, as well as how we call out the specific dimensions of the window in question in the CSS file. 
 
-The following `div .container` defines the layout of the content through the use of the class {container} assigning it `display;flex;`. This helps us with the remaining `div`.
+The following `div .container` defines the layout of the content through the use of the class {container} assigning it `display;flex;`. This helps us with the remaining `div`s.
 
 While we can load as many of these as we want, the `div .pane` that makes up the content, is really best used only twice per window. Make sure to look at the [CSS file](CSS/style_showcase.css) lines 255-274 to best understand how these work.
 
@@ -241,7 +241,7 @@ While we can load as many of these as we want, the `div .pane` that makes up the
 
 We make use of code devised by Ariana Freitag to allow elements to be draggable within the website. Their work is used in the the file [action_showcase.js](JS/action_showcase.js) lines 2-59 and [action_wordpress.js](JS/action_wordpress.js) lines 2-51. 
 
-Make sure to look at those files, they left really solid and comprehensive comments on how this all works. Essentially we use `onmousedown` and `onmousemove` events to calculate the distance of the cursor as you drag your mouse to match the distance traveled by the windows. 
+Make sure to look at those files, ariana left really comments on how this all works. Essentially we use `onmousedown` and `onmousemove` events to calculate the distance of the cursor as you drag your mouse to match the distance traveled by the windows, and `onmouseup` to stop the process. 
 
 <br>
 
@@ -249,15 +249,15 @@ Make sure to look at those files, they left really solid and comprehensive comme
 
 To ease the user into understanding the concept of windows and dragibility (as well as to double as a design accent) we made use of dashed lines that populate the homepage. They give an indication of where windows will be once toggled on, as well as imply a place where you might want to put back the various elements. Though this remains an implication while in use, if the page is refreshed elemetns go back to those outlined locations automatically. 
 
-The implementation feels a little bit clunky as it requires the use of another stylesheet ([style-forbackgrounbdoutlines.css](CSS/style-forbackgroundoutlines.css)) in order to not clog up the main stylesheet. We feel as though they could have maybe been done using the exisiting `id` and maybe the `::before` tag in CSS for each of the elements on the homepage (as it would forgo elongating the already lengthy HTML file). However, short of coming up with an elegant solution we felt it best to simply populate the HTML with something clearly demarked and write a concise secondary stylesheet. 
+The present implementation feels a little bit clunky as it requires the use of another stylesheet ([style-forbackgrounbdoutlines.css](CSS/style-forbackgroundoutlines.css)) in order to not clog up the main stylesheet. We feel as though they could have maybe been done using the windows' exisiting `id` and maybe the `::before` tag in CSS for each of the elements on the homepage (as it would forgo elongating the already lengthy HTML file). However, short of coming up with an elegant solution we felt it best to simply populate the HTML with something clearly demarked and write a concise secondary stylesheet. 
 
 <br>
 
 #### *The Spider*
 
-The spider on the screen is the intruder in the design. It's functionality is not specified to the user. The user must be oay with interacting with it in order to begin to understand what it does. 
+The spider on the screen is the intruder in the design. Its functionality is not specified to the user. The user must be okay with interacting with it in order to begin to understand what it does. 
 
-The purpose of the spider is to behave as a button that once clicked on plays a track of music. That track is part of a playlist of 31 songs. Each of these songs corresponds to a day of the month. The song that interacting with the spider will play thus changes daily. Again this is not specified to the user and must be experienced in order to be ascertained. 
+The purpose of the spider is to behave as a button that once clicked on plays a track of music. That track is part of a playlist of 31 songs. Each of these songs corresponds to a day of the month. The song that interacting with the spider will play thus changes daily, using the browser to call that day out. Again this is not specified to the user and must be experienced in order to be ascertained. 
 
 We have not yet made this feature but have a strong sense of how one might go about it. Feel free to reach out the owner of this repo to get a debrief on this feature. 
 
@@ -287,13 +287,13 @@ The wordpress mock-up is a far more straightforward design. With a post feed and
 
 What we built here is a static HTML/CSS version of what should eventually become a wordpress theme. The scope of this repo covers the design and the mock-up. Though we will try and give as much relevant insight into how this came to be, so as to have this run smoothly as a wordpress theme.
 
-This mockup is intended to run well and look good across all screens and devices. A single responsive design that can accomodate mobile, laptop, and desktop use. As such we have stripped away many of the experimental features (notably the replacement of windows in favor of a single feed). What has not gone away is the feeling that this is the same identity. Much of the CSS is borrowed from the showcase design, and in an effort to make that clear we have tried our best to also match the structure of the two main stylesheets. 
+This mockup is intended to run well and look good across most screens and devices. A single responsive design that can accomodate mobile, laptop, and desktop use. As such we have stripped away many of the experimental features (notably the replacement of the majority of windows in favor of a single feed). What has not gone away is the feeling that this is the same identity. Much of the CSS is borrowed from the showcase design, and in an effort to make that clear we have tried our best to also match the structure of the two main stylesheets. 
 
 <br>
 
 #### *Windows*
 
-Here we have done away with all the windows prominently used in the showcase website, retaining only the about-us window as we felt it essential to bridging the gap between the two solutions to the redesign prompt. The window looks, and behaves, the same as it does on the showcase website. In fact, you'll notice that the way that the photos under the *cast of characters* subheader benefit from [every layout][def2]'s `grid` class in both designs. 
+Here we have done away with all the windows prominently used in the showcase website, retaining only the about-us window as we felt it essential to bridging the gap between the two solutions of the redesign prompt. The window looks, and behaves, the same as it does on the showcase website. In fact, you'll notice that the way that the photos under the *cast of characters* subheader benefit from [every layout][def2]'s `grid` class in both designs. 
 
 Do make sure to read the article they've written about their solution. What we inluded is slightly edited to match our exact needs, considering it is also the only instance across the whole site that we make use of it. 
 
@@ -301,11 +301,13 @@ Do make sure to read the article they've written about their solution. What we i
 
 #### *Dragability*
 
-Another reason to strip down the design for this mock-up, compared to the showcase design, is the way in which our dragibility of windows is implemented. There are usability concerns which could not be met with a responsive design. It was that question of usability that won the argument for switching over to a single feed system. Essentially, simply too much content to try and parse with the showcase website on what would could be a screen as small as that of an iphone se. 
+Another reason to strip down the design for this mock-up, compared to the showcase design, is the way in which our dragibility of windows is implemented. There are usability concerns which could not be reliably met in a responsive design. It was that question of usability that won the argument for switching over to a single feed system. Essentially, simply too much content to try and parse with the showcase website on what would could be a screen as small as that of an iphone se. 
 
-We tend to provide plenty of padding to a draggable element so that a user can comfortably manage the effect without fussing over either what to drag, and how dragging could lead to accidental scrolling or clicking. 
+We were aware of the existence of thise [interact.js](https://interactjs.io) project, and strongly considered using it. We held off on making use of it in favor of Ariana's vanilla js script, for fear it might have not meshed easily once used with wordpress.
 
-The two elements we kept draggable are the *about-us* page and the *spider* daily track button. They are at once inconsequential enoguh to the experience of browsing the website and their inclusion essential to the identity of the redesign.
+We tend to provide plenty of padding to a draggable element so that a user can comfortably drag without fussing over being too precise on what they intend to drag, and how dragging could lead to accidental scrolling or clicking. 
+
+The two elements we kept draggable for the wordpress mock-up are the *about-us* page and the *spider* daily track button. They are at once inconsequential enough to the experience of browsing the website and their inclusion essential to the identity of the redesign.
 
 <br>
 
@@ -317,13 +319,13 @@ The spider button behaves in the same manner as it does on the showcase website.
 
 #### *Header and Menuing*
 
-For the wordpress mock-up we need to overhaul how we presented content to the user. This is because we did away with the windows used int eh showcase website in favor of the single post feed. The idea was to make a menu that felt like it was living on the webpage like words on the pages of a book. There would not be boxes or any graphic interference that would deleneate the various elements. Instead just using type, with feedback provided by the possibilities of type-setting. 
+For the wordpress mock-up we needed to overhaul how we presented content to the user. This is because we did away with the windows used in the showcase website in favor of the single post feed. The idea was to make a menu that felt like it was living on the webpage like words on the pages of a book. There would not be boxes or any graphic interference that would deleneate the various elements. Instead just using type, with feedback provided by the possibilities of type-setting. 
 
-The solution required solving another (more interesting) problem. How to dynamically change the height of one of two elements and alter the height pf the other without pushing that one down the page? In other words, we wanted to maintain the `height` of the parent while changing the proportions of the children dynamically.
+The solution required solving another (more interesting) problem. How to dynamically change the height of one of two elements and alter the height of the other without pushing it one down the page. In other words, we wanted to maintain the `height` of the parent while changing the proportions of the children dynamically.
 
-The reason behind solving this was because we thought it nice to use a fade-out effect on the feed, to make it look like the feed disappeared at the top of the page, and appeared at the bottom of the page, as one scrolls through it. 
+The reason behind solving this was because of the use of a fade-out effect on the feed. Scrollable elements look like they appear/disappear on and off the page. 
 
-Thought there are plenty of ways to resolve this, we're happy with what we made.
+There are plenty of ways to resolve the dynamic height problem, this is the solution we went with.
 
 We begin by setting the `body` tag as the parent, and `header` and `main` as the children. 
 
@@ -332,7 +334,7 @@ We begin by setting the `body` tag as the parent, and `header` and `main` as the
 
 This is how we lay out our CSS, using `flex` :
 
-For the `body` we give assign to `height` and `width`  slightly less that 100 percent of the `vh` and `vw`. With the `align-items: stretch;` that setting our display as `flex` allows our children to occupy the most amount of room available by the parent. Setting `flex-direction: column;` and `justify-content: flex-start;` ensures that whichever child comes first in the HTML will be on above the others.
+For the `body` we give assign to `height` and `width`  slightly less that 100 percent of the `vh` and `vw`. With the `align-items: stretch;`, that setting our display as `flex` allows, our children occupy the most amount of room made available by the parent. Setting `flex-direction: column;` and `justify-content: flex-start;` ensures that whichever child comes first in the HTML will be on above the others.
 
     body {
 	    width: 98vw;
@@ -364,7 +366,7 @@ For the `header` tag we set `flex: 0 0 auto;`, meaning that it will not have to 
     	overflow: hidden;
     }
 
-For the `main` tag we set `flex: 1 1 auto;`, meaning that it will take up all the space not taken by the top child (defined by the first `0`) and that it will shrink to fit the space left over by the top child (defined by the second `0`). `auto` means the content will take up the amount of space it requires (no more, no less).
+For the `main` tag we set `flex: 1 1 auto;`, meaning that it will take up all the space not taken by the top child (defined by the first `1`) and that it will shrink to fit the space left over by the top child (defined by the second `1`). `auto` means the content will take up the amount of space it requires (no more, no less).
 
     main {
     	display: flex;
@@ -390,7 +392,7 @@ Given the short design and development time of this project, and most importantl
 
 ### Still to do : Showcase Website –
 
-Part of the challenge of making this website is the absence of a backend. We wish to generate something that has the functionalities of a dynamic website, yet remains static. Part of the reason we opted for a static website is the ease of hosting/maintenance that comes with this solution. We want this webiste to function as its title implies, a showcase. The focus is not on the content but on the method by which we display that content. As it pertains to Tomorrow Started it still felt important to be able to house content of the blog as it has existed.
+Part of the challenge of making this website is the absence of a backend. We wish to generate something that has the functionalities of a dynamic website, yet remains static. Part of the reason we opted for a static website is the ease of hosting/maintenance that comes with this option. We want this webiste to function as its title implies, a showcase. The focus is not on the content but on the method by which we display that content. As it pertains to Tomorrow Started it still felt important to be able to house content of the blog as it has existed.
 
 Most of the challenges we still have not resolved have to do with this decision. Though we believe that going with a dynamic website would have presented other, unnecessary, problems given the scope of this project.
 
@@ -400,9 +402,9 @@ Most of the challenges we still have not resolved have to do with this decision.
 
 We looked into using `iframe` tags to populate the website's posts by making individual HTML pages for each post. There are a few reasons to do so: 
 
-- It noticably lightens the load of really the only HTML page on the site (aside from the landing page). That makes it far more easy to parse the HTML and more quickly get a sense of the purposefully strange website, and lets us focus on more pressing issues.
-- It allows us to set up the parameters required to then replicate a lot of the functionality of a backend (namely category and date tags used for categories and archives respectively). The fact that we call to internal links gives us confidenc regarding loading the content
-- It lets us create a system wherein a cursory understanding of the template used for individual posts could let someone update or populate the website with new posts. Their organization within the various windows is also as straightforward as changing the order of single line `iframe` elements.
+- It noticably lightens the load of essentially the only HTML page on the site (aside from the landing page). That makes it far easier to parse the HTML and rapidly get a sense of the purposefully strange website.
+- It allows us to set up the parameters required to then replicate a lot of the functionality of a backend (namely category and date tagging used for categories and archives respectively). The fact that we are only calling to internal links for the `iframe`s gives us confidence regarding loading the content.
+- It lets us create a system wherein a cursory understanding of the template used for individual posts could let someone update or populate the website with new posts. Their order within the various windows is made as straightforward as changing the order of single line `iframe` elements.
 
 The main hurdle in implementing the `iframe` solution is how we handle the irregular height of any given individual post. In the end, we found this wonderful [article](https://betterprogramming.pub/how-to-automatically-resize-an-iframe-7be6bfbb1214) written by [Bret Cameron](https://bretcameron.medium.com/) that seems to resolve this issue in an elegant fashion. We have included a [transcript](z_design-and-project-files/iframetest.txt) of the article, as well as copied the code he wrote to make his point ([parent](z_design-and-project-files/iframetestparent.html) and [child](z_design-and-project-files/iframetestchild.html)). 
 
@@ -412,21 +414,21 @@ We've read through this solution and a dozen others available online. We found t
 
 #### *Making a back-end out of thin air*
 
-The reason we give so much attention to the `iframe` question is because of what we believe it opens up to create a sensible and approximative mock back-end. The way in which we can solve the *categories*. *archives*, and (not mentioned thus far) *search* function is by assigning each post their appropriate tags that can then be toggled like we do with menus (using a variant/matured version of [menutoggle.js](JS/menutoggle.js)).
+The reason we give so much attention to the `iframe` question is because of what we believe it opens up to create a sensible and approximative mock back-end. The way in which we can solve the *categories*. *archives*, and (not mentioned thus far) *search* function is by assigning each post their appropriate "tags" that can then be toggled like we do with menus (using a variant/matured version of [menutoggle.js](JS/menutoggle.js)).
 
-Part of the challenge is that so far our javascript has been rather bruttish. We need to either spend more time learning javascript or finding a developer sensitive enough, at present, to build something logical and automatic. The problem could be solved by stuffing as many lines into a javascript file as we want, but it presents all sorts of unforseen, though easily guessed, issues for the future.
+Part of the challenge is that so far our javascript has been rather bruttish. We need to either spend more time maturing it or find a developer currently able to build something more sensible. The problem could be solved by stuffing as many lines into a javascript file as we want, but that presents all sorts of unforseen, though easily guessed, issues for the future.
 
-We think that using systematized `id` or `title` tags is the way to produce a convincing imitation of a backend. 
+We think that using systematized `id` or `title` "tags" assigned to each `iframe` is a way to produce a convincing imitation of a backend, given the right scripts. 
 
 <br>
 
 #### *The Daily Track feature*
 
-The daily track feature is theoritaclly easy enough. We simply did not have the time to devote to its implementation.
+The daily track feature is theoretically easy enough. We simply did not have the time to devote to its implementation.
 
-The daily track feature was borne out of a series of posts we'd made in the Summer of 2023 where we picked a song for the morning and one for the evening. They had no relation to one another, but put together they did string together a sense of mood. A playlist by means of association. We thought it neat to use browser's ability to call out the days of the month and exploit that to load in a song from a pre-determined track list.
+The daily track feature was borne out of a series of posts we'd made in the Summer of 2023 where we picked a song for the morning and one for the evening. They had no relation to one another, but put together they did string together a sense of mood. *A playlist by means of association*. We thought it neat to use browser's ability to call out the days of the month and exploit that to load in a song from a pre-determined track list.
 
-To us, from all the back here, it seems like it requires writing a file that outlines the location of the tracklist. Appropriately naming the various tracks on the tracklist to coincide with how the browser records the days of the month (1 thru 31). Connecting the current date with the correct track. Loading the track in when the play button is pressed. 
+To us, from all the back here, it seems like it requires outlining a script that loads in the tracks from the location of the tracklist. Appropriately naming the various tracks on the tracklist to coincide with how the browser records the days of the month (days 1 thru 31). Connecting the current date with the correct track. Loading the track in when the play button is pressed. 
 
 To make sure the feature stays abstract we thought it neat to make it such that a user could only play or pause a track. We do not provide the name of the track, let the user know songs change every day, or give insight to the rest of the tracklists. These songs come and go!
 
