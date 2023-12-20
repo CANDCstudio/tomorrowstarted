@@ -1,0 +1,91 @@
+incredible resource for managing variable heights for iframes :
+
+https://betterprogramming.pub/how-to-automatically-resize-an-iframe-7be6bfbb1214
+
+requires a membership to medium to read, though you can use the files iframetestchild.html and iframetestparent.html as a template to work off. 
+
+here below is the article:
+
+========
+
+The <iframe> allows web developers to embed one HTML page inside another. It’s so useful because they’re a part of HTML so you can use them almost anywhere — in website builders like Wix and Squarespace or in your next full-stack project.
+
+YouTube uses iframes to allow embedded videos, Google uses them for their OAuth2 authentication, and by SaaS companies such as Mailchimp, Typeform and Outgrow to offer embeddable content.
+
+However, iframes can also cause their fair share of problems and we’ll discuss some of the most common ones in this article.
+The Problem
+
+By default, iframes have a fixed height. That’s fine if your content also has a fixed height but if your content’s height changes you could easily end up looking at a double-scrollbar monstrosity like this:
+An iframe with a scrollbar within a browser viewport with a scrollbar.
+
+What if we wanted our iframe to behave like regular HTML elements, with content that wraps vertically?
+
+To do this, we’d need to dynamically change the iframe’s height but security considerations mean it is impossible for a parent window to access elements within the iframe.
+
+In this article, I’ll explain a foolproof way of achieving this effect, using vanilla JavaScript.
+
+The Solution
+
+Using the window.postMessage() method, we can safely communicate between the iframe and the parent window. That way, we can send a height value from the iframe to the parent window. Then, in the parent window, we can set a simple script to dynamically update the height of the iframe.
+The Code
+
+For this tutorial, we’ll need two HTML files: a parent file where we put the iframe, and a child file containing the iframe’s contents.
+child.html
+
+Our child file will contain a simple dummy text generator, where people can click a button to add another paragraph of lorem ipsum text.
+
+As this tutorial is about the iframe, and not the functionality of what’s in it, feel free to copy and paste the following into child.html:
+
+You can try out the code above in this CodePen:
+parent.html
+
+We can now insert our iframe into parent.html.
+
+Add the usual HTML5 boilerplate code, and then insert the following between the body tags:
+
+<iframe id="iframe" src="child.html" style="width:100%;border:none;"></iframe>
+
+But here we encounter our problem. Because we set overflow: hidden, the buttons and half of the first paragraph disappear.
+
+And if we hadn’t set overflow: hidden we’d see two scroll-bars, as in the image above. To resolve this, we need to send post messages from child.html to the parent window!
+child.html
+
+So, back in child.html, we need to add new event listeners to the script section.
+
+We need to notify the parent element of the iframe’s height:
+
+    every time it loads,
+    whenever the window is resized, and
+    whenever a button is pressed.
+
+When each of these events occurs, we’ll trigger a function called sendPostMessage.
+
+Put the following code just before the closing <script> tag:
+
+Now let’s create our sendPostMessage() function.
+
+We want to measure the height of the element with the id container. If (and only if) the height changes, we want to send a message called frameHeight to the parent window, notifying it of the update.
+
+The following code should go above what we just wrote:
+
+The second argument of the postMessage method represents the target origin: the hostname of the parent window.
+
+This is useful for security, making sure the message is only sent to specific domains but for development purposes, we can set the target origin to '*'. This means any parent window will receive the message.
+
+Overall, the code of child.html should look like this:
+parent.html
+
+Let’s load parent.html in the browser and open up the console (press CTRL+Shift+ J in Google Chrome).
+
+Whenever we resize the window, we should now see values appear in the console. The final step is to use these to set the iframe height whenever one of these values is sent.
+
+We need to listen for message events and whenever we receive one we should use it to set the height property of the iframe (plus a little padding):
+
+Overall, your parent.html file should look like this:
+
+If you followed the steps correctly, your iframe will now resize automatically as if its contents were part of the parent window!
+Minification
+
+As a final step, you could minify the above code so it’s easy for non-developers to copy and paste into their HTML:
+
+<iframe id="i" src="child.html" style="width:100%;border:none;"></iframe><script>window.onmessage=e=>{e.data.hasOwnProperty("frameHeight")&&(document.getElementById("i").style.height=`${e.data.frameHeight+30}px`)}</script>

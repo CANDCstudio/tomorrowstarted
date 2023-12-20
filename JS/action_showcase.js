@@ -1,14 +1,16 @@
 // Makes the DIV element draggable:
 window.onload = function() {
 
-    dragElement(document.getElementById("dragfly"));
+    dragElement(document.getElementById("dragspider"));
     dragElement(document.getElementById("dragshop"));
     dragElement(document.getElementById("draglistenup"));
     dragElement(document.getElementById("dragreferences"));
     dragElement(document.getElementById("dragarchives"));
     dragElement(document.getElementById("dragpost"));
     dragElement(document.getElementById("dragcast"));
+    dragElement(document.getElementById("dragrandomizer"));
     dragElement(document.getElementById("dragmenu"));
+
 
 };
 
@@ -104,6 +106,16 @@ document.querySelector('.linkcast').onclick = function(){
   }
 };
 
+// cast-of-characters _ tomorrow-started
+document.querySelector('.linkrandomizer').onclick = function(){
+  if(this.className.match('linkrandomizer_italic')) {
+      this.className = 'linkrandomizer';
+  }
+  else {
+      this.className = 'linkrandomizer linkrandomizer_italic';
+  }
+};
+
 // search
 document.querySelector('.linksearch').onclick = function(){
   if(this.className.match('linksearch_italic')) {
@@ -113,6 +125,7 @@ document.querySelector('.linksearch').onclick = function(){
       this.className = 'linksearch linksearch_italic';
   }
 };
+}
 
 // presently, not in use
 /*
@@ -143,4 +156,3 @@ document.querySelector('.linkreferences').onclick = function(){
 };
 */
 
-}

@@ -57,11 +57,11 @@ body {
 }
 
 /* for header tag */
-h1 { font-weight:bold; font-size:var(--s1); }
+h1 { font-family: 'Crimson Text', serif; font-weight:bold; font-size:var(--s1); }
 /* for draggable elements headings */
-h2 { font-weight:bold; font-size:var(--s1); } 
+h2 { font-family: 'Crimson Text', serif; font-weight:bold; font-size:var(--s1); } 
 /* for post titles */
-h3 { font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
+h3 { font-family: 'Crimson Text', serif; font-weight:bold; font-size:var(--s3); text-transform:uppercase; }
 /* for other titles : categories, archive dates, reset button */
 h4 { font-weight:bold; font-size:var(--s-1); }
 
@@ -72,6 +72,38 @@ hence why it doesn't need to be defined below */
 em { font-size:var(--s-1); }
 /* class for initials */
 .initials { font-weight:600; }
+
+/* in lieu of using hr tags, which would have to be placed/templated, we can instead define h3 as the post title heading, and then assign to it a visual equivalent by using ::before and ::after for the position of the lines and the 'content' definition in css to then reproduce the desired hr tag style. */
+h3::before{
+  display: block;
+  position: relative;
+  content: "";
+
+  width: 80vw;
+  height: .25rem;
+  margin-bottom: 1rem;
+
+  border: 0;
+  border-top: .25rem solid black;
+  border-bottom: .1rem solid black;
+
+  max-inline-size: none;
+}
+h3::after{
+  display: block;
+  position: relative;
+  content: "";
+
+  width: 80vw;
+  height: .25rem;
+  margin-top: 1rem;
+
+  border: 0;
+  border-top: .1rem solid black;
+  border-bottom: .25rem solid black;
+
+  max-inline-size: none;
+}
 
 button {
 	background:none;
@@ -101,10 +133,13 @@ a::before:not(.content p a) {
 }
 a:hover{ font-style:italic; color: orange;}
 /* accordingly assign the .link[...] class to the desired element to allow italic/normal toggle */
+
+.linkmenualt { font-style:normal; }
+.linkmenualt_italic { font-style:italic; }
 .linkcastalt { font-style:normal; }
 .linkcastalt_italic { font-style:italic; }
-.linksearchalt  { font-style:normal; }
-.linksearchalt_italic { font-style:italic; }
+
+
 
 .linkshopalt { font-style:normal; }
 .linkshopalt_italic { font-style:italic; }
@@ -119,7 +154,7 @@ a:hover{ font-style:italic; color: orange;}
 
 /* we set the elements in the menu bar to display:none by default */
 /* to hide them until they are toggled */
-#searchalt { display:none; }
+#menualt { display:none; }
 #castalt { display:none; }
 #archivesalt { display:none; }
 #categoriesalt { display:none; }
@@ -148,49 +183,60 @@ iframe {
 header {
 	display: flex;
 	flex-wrap: wrap;
-	flex: 0 0 auto;
-	justify-content: center;
-
 	padding-left: 5vw;
 	padding-right: 5vw;
   padding-bottom: 4vh;
-
-	overflow: hidden;
 }
 
-header > * { padding-bottom: 1rem; }
-
-header div:first-child {
+.nav_bar {
 	display: flex; 
 	flex-basis: 100%; 
 	justify-content: space-between;
-  max-height: 4rem;
+  padding-bottom: 1rem;
 }
 
-header .search-container {
+.nav_bar div {
+	display: flex; 
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.dropdown {
   display: flex;
-  flex-basis: 100%;
+  flex-direction: column;
+  padding-left: 2vw;
+  overflow: hidden;
+  
+}
+
+.dropdown > div:not(.searchbar, .dropdown-lists) {
+  display:flex;
   flex-direction: row;
-  justify-content:left;
+  gap: 2rem;
+  overflow-x: scroll;
+  padding-left: 2rem;
+}
+
+.dropdown-lists {
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-
-	overflow: hidden;
 }
 
-header .search-container > * {
-	display: flex;
+.dropdown-lists ul {
+  display:flex;
   flex-direction: row;
-  flex-basis: auto;
-
-	gap: var(--s2);
-  padding-left: var(--s2);
-
-  overflow: scroll;
+  width:85vw;
+  gap: 2rem;
+  overflow-y:hidden;
+  overflow-x: scroll;
+  list-style-type: none; 
+  max-inline-size: none;
 }
 
-header .search-container a, button { flex-shrink:0; }
+.dropdown-lists ul li { flex-shrink: 0; }
 
-.menu-button { max-width:11rem; max-height:4rem; }
+.dropdown-lists a { color: rgba(0,0,0,1)}
 
 .searchbar { height:3rem; border-style:solid; border-color:black; margin-bottom: 1rem;}
 
@@ -230,7 +276,6 @@ main {
 
 .container { display:flex; height:inherit; padding:var(--s1); }
 
-
 .pane {
   display: block;
   width: inherit;
@@ -240,15 +285,17 @@ main {
   background-color:rgba(255, 255, 255, 0);
   order: 2; /* so that subsequent panes fall to the left and not the right */
   overflow-y: auto;
-  
 }
 
 .pane > *:not(h3, h4) {
 padding-left: 5vw;
 margin-top: 2rem;
 }
+
 .pane h3 { margin-left:3rem; }
+
 .pane h3 a { color:black; }
+
 .pane h3 a:hover { color:orange; }
 /* pop up windows styling ends */
 
@@ -263,7 +310,25 @@ margin-top: 2rem;
   display: none;
 }
 
-#fly { width: 18rem; height: 18rem; padding: 5rem;}
+/* song of the day spider styling begins */
+#spider-container { 
+  width:18rem; 
+  height:18rem; 
+  padding: 5rem;
+}
+#spider { 
+  background-image:url("../images/spider icon tomorrow started.gif");
+  background-repeat: no-repeat;
+  background-size:8rem;
+  background-position: center;
+
+  width:8rem; 
+  height:8rem;
+}
+#spider:hover { 
+  background-image:url("../images/spider icon play button.gif");
+}
+/* song of the day spider styling ends */
 
 .grid {
   display: grid;
